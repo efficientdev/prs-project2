@@ -1,0 +1,11 @@
+{
+    "name": "COMMs",
+    "alias": "comms",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\COMMs\\Providers\\COMMsServiceProvider"
+    ],
+    "files": []
+}

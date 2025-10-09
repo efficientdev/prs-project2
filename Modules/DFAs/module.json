@@ -1,0 +1,11 @@
+{
+    "name": "DFAs",
+    "alias": "dfas",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DFAs\\Providers\\DFAsServiceProvider"
+    ],
+    "files": []
+}

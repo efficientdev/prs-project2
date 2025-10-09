@@ -1,0 +1,125 @@
+.display-none, .display-hide {
+  display: none;
+}
+
+.form-group.form-md-line-input+.input-icon {
+    padding-top: 0
+}
+
+.form-group.form-md-line-input>.input-icon {
+    padding-top: 20px
+}
+
+.form-group.form-md-line-input>.input-icon>i {
+    left: 0;
+    bottom: 0;
+    color: #888;
+    margin: 9px 2px 10px 10px
+}
+
+.form-group.form-md-line-input>.input-icon.right>i {
+    left: auto;
+    right: 8px;
+    margin: 11px 2px 10px 10px
+}
+
+.form-group.form-md-line-input.form-md-floating-label .input-icon>label,.form-group.form-md-line-input>.input-icon .form-control {
+    padding-left: 34px
+}
+
+.form-group.form-md-line-input.form-md-floating-label .input-icon.right>label,.form-group.form-md-line-input>.input-icon.right .form-control {
+    padding-left: 0;
+    padding-right: 34px
+}
+
+.form-inline .form-md-line-input>.input-icon {
+    padding: 0
+}
+
+.form-horizontal .form-group.form-md-line-input .input-icon .form-control,.input-icon>.form-control {
+    padding-left: 33px
+}
+
+.form-horizontal .form-group.form-md-line-input .input-icon>i {
+    top: 0
+}
+
+.form-horizontal .form-group.form-md-line-input .input-icon.right .form-control {
+    padding-left: 0;
+    padding-right: 33px
+}
+
+.form-horizontal .form-group.form-md-line-input .input-icon>.form-control-focus {
+    left: 0!important;
+    right: 0!important
+}
+
+.input-icon {
+    position: relative
+}
+
+.input-group .input-icon>.form-control {
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    -o-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px
+}
+
+.input-icon>i {
+    color: #ccc;
+    display: block;
+    position: absolute;
+    margin: 11px 2px 4px 10px;
+    z-index: 3;
+    width: 16px;
+    font-size: 16px;
+    text-align: center
+}
+
+.modal .input-icon>i {
+    z-index: 10055
+}
+
+.has-success .input-icon>i {
+    color: #45b6af
+}
+
+.has-warning .input-icon>i {
+    color: #dfba49
+}
+
+.has-info .input-icon>i {
+    color: #89c4f4
+}
+
+.has-error .input-icon>i {
+    color: #f3565d
+}
+
+.input-icon.right>.form-control {
+    padding-right: 33px;
+    padding-left: 12px
+}
+
+.input-group .input-icon.right>.form-control {
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    -ms-border-radius: 0 4px 4px 0;
+    -o-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0
+}
+
+.input-icon.right>i {
+    right: 8px;
+    float: right
+}
+
+.input-icon.input-icon-lg>i {
+    margin-top: 16px
+}
+
+.input-icon.input-icon-sm>i {
+    margin-top: 8px;
+    font-size: 13px
+}

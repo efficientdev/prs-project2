@@ -1,0 +1,239 @@
+@page :first  {
+  /*margin-top: 0.5cm;*/
+}
+
+@page{
+  margin: 1.2cm;
+  /*margin-left: 1.2cm;
+  margin-right: 1.2cm;*/
+}
+
+.row.header {
+  padding-top: 20px;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+  display: table;
+  content: " ";
+}
+
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.h2, h2 {
+  font-size: 30px;
+}
+
+.row.header h2.p{
+  font-size: 22px;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.h5, h5 {
+  font-size: 18px;
+}
+
+.h4, .h5, .h6, h4, h5, h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pull-left {
+  float: left!important;
+}
+
+.pull-right {
+  float: right!important;
+}
+
+img {
+  vertical-align: middle;
+}
+
+img {
+  border: 0;
+}
+
+.btn-group-vertical>.btn-group:after, .btn-toolbar:after, .clearfix:after, .container-fluid:after, .container:after, .dl-horizontal dd:after, .form-horizontal .form-group:after, .modal-footer:after, .nav:after, .navbar-collapse:after, .navbar-header:after, .navbar:after, .pager:after, .panel-body:after, .row:after {
+  clear: both;
+}
+
+.btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+  display: table;
+  content: " ";
+}
+
+table {
+  background-color: transparent;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+body {
+  background-color: #fff !important;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 !important;
+  max-width: 8.5in;
+  max-height: 12in;
+  font-family: Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+.top-box{
+  padding: 10px;
+  border: 2px solid #000;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+.box{
+  border: 1px #000 solid;
+  height: 35px;
+}
+
+.print-content{
+  border: 1px #000 solid;
+  /*margin: 1cm !important;*/
+  /*margin: 20px !important;*/
+}
+
+.row.pad{
+  padding:0 10px;
+}
+
+.form-group{
+  margin-bottom: 10px;
+}
+
+.row.header img.qr{
+  margin-right:16px;
+}
+
+.row.header img.coa{
+  margin-left:15px;
+}
+
+img.photo{
+  margin-bottom: 5px;
+}
+
+.row.header h4{
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.row.header{
+  padding-top:20px;
+}
+
+table{
+  width: 100%;
+}
+
+table.divide{
+  width: 50%;
+}
+
+td{
+  margin-bottom: 15px;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+td.dust{
+  margin-bottom: 15px;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.heading{
+  text-transform: uppercase;
+  color: #333333;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+}
+
+.row div{
+  font-size: 11px;
+}
+
+.lab{
+  font-size: 15.5px;
+}
+
+.lab{
+  padding: 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+.row > .row{
+  padding-right: 0;
+}
+
+.row div .lab{
+  text-align: right;
+}
+
+.divider{
+  border-bottom: 1px #000 solid;
+}
+
+.divider.dash{
+  border-bottom: 2px #000 dashed !important;
+}
+
+.row.header h2{
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+  font-size: 25px;
+}
+
+.page-break{
+  page-break-before: always;
+}
+
+.text-lowercase{
+  text-transform: lowercase;
+}

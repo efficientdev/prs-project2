@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/ssas",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\SSAs\\": "app/",
+            "Modules\\SSAs\\Database\\Factories\\": "database/factories/",
+            "Modules\\SSAs\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\SSAs\\Tests\\": "tests/"
+        }
+    }
+}

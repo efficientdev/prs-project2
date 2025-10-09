@@ -1,0 +1,65 @@
+@import url('bootstrap.css');
+@import url('base.css');
+@import url('nav.css');
+@import url('simple-line-icons.css');
+@import url('font-awesome.min.css');
+@import url('dataTables.bootstrap.css');
+@import url('datepicker3.css');
+
+.dataTables_filter {
+    display: none;
+}
+
+.dataTables_length .form-control{
+    display: inline-block;
+}
+
+.haslink{
+    cursor: pointer;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.filters{
+    font-size: 13px;
+}
+
+.filters .form-control{
+    font-size: 13px;
+}
+
+.print-only, .hidden{
+    display: none;
+}
+
+@media print{
+    .print-only{
+        display: block !important;
+    }
+
+    .no-print, .dataTables_paginate, .dataTables_length {
+        display: none !important;
+    }
+
+    table{
+        width: 100%;
+    }
+
+    .table td, .table th{
+        padding: .5em;
+    }
+
+    .col{
+        padding: 0;
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "DPRSs",
+    "alias": "dprss",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DPRSs\\Providers\\DPRSsServiceProvider"
+    ],
+    "files": []
+}

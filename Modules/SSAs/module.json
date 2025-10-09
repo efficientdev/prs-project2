@@ -1,0 +1,11 @@
+{
+    "name": "SSAs",
+    "alias": "ssas",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SSAs\\Providers\\SSAsServiceProvider"
+    ],
+    "files": []
+}

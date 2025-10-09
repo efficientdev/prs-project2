@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/deds",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\DEDs\\": "app/",
+            "Modules\\DEDs\\Database\\Factories\\": "database/factories/",
+            "Modules\\DEDs\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\DEDs\\Tests\\": "tests/"
+        }
+    }
+}

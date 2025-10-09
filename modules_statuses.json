@@ -1,0 +1,18 @@
+{
+    "Proprietors": true,
+    "ADMs": true,
+    "CIEs": true,
+    "COMMs": true,
+    "DEDs": true,
+    "DFAs": true,
+    "DGs": true,
+    "DPRSs": true,
+    "OFFs": true,
+    "PRSs": true,
+    "PSs": true,
+    "SSAs": true,
+    "Applications": true,
+    "PrivateValidations": true,
+    "PublicValidations": true,
+    "Registrations": true
+}

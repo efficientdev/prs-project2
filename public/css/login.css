@@ -1,0 +1,6 @@
+@import url('bootstrap.css');
+@import url('base.css');
+
+.login .logo{
+    text-align: center;
+}

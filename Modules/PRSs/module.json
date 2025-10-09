@@ -1,0 +1,11 @@
+{
+    "name": "PRSs",
+    "alias": "prss",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PRSs\\Providers\\PRSsServiceProvider"
+    ],
+    "files": []
+}

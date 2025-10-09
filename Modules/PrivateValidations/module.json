@@ -1,0 +1,11 @@
+{
+    "name": "PrivateValidations",
+    "alias": "privatevalidations",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PrivateValidations\\Providers\\PrivateValidationsServiceProvider"
+    ],
+    "files": []
+}

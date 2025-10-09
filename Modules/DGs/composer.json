@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/dgs",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\DGs\\": "app/",
+            "Modules\\DGs\\Database\\Factories\\": "database/factories/",
+            "Modules\\DGs\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\DGs\\Tests\\": "tests/"
+        }
+    }
+}

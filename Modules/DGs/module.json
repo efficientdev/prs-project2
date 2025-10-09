@@ -1,0 +1,11 @@
+{
+    "name": "DGs",
+    "alias": "dgs",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DGs\\Providers\\DGsServiceProvider"
+    ],
+    "files": []
+}

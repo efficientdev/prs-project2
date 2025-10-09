@@ -1,0 +1,26 @@
+.barba-container{
+    padding: 0 20px;
+}
+
+.header{
+    margin: 25px 0;
+}
+
+.greet{
+    padding:10px;
+}
+
+.copyright{
+    text-align: center;
+    padding: 25px;
+    font-size: 80%;
+}
+
+.col-1{
+    max-width: 35px;
+}
+
+label{
+    font-weight: bold;
+    font-size: 12px;
+}

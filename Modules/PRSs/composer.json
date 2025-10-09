@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/prss",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\PRSs\\": "app/",
+            "Modules\\PRSs\\Database\\Factories\\": "database/factories/",
+            "Modules\\PRSs\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\PRSs\\Tests\\": "tests/"
+        }
+    }
+}

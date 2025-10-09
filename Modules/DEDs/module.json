@@ -1,0 +1,11 @@
+{
+    "name": "DEDs",
+    "alias": "deds",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DEDs\\Providers\\DEDsServiceProvider"
+    ],
+    "files": []
+}

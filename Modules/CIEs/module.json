@@ -1,0 +1,11 @@
+{
+    "name": "CIEs",
+    "alias": "cies",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CIEs\\Providers\\CIEsServiceProvider"
+    ],
+    "files": []
+}

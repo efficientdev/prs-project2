@@ -1,0 +1,38 @@
+@import url('bootstrap.css');
+@import url('base.css');
+@import url('nav.css');
+@import url('simple-line-icons.css');
+@import url('font-awesome.min.css');
+@import url('validation.css');
+@import url('datepicker3.css');
+
+.tab-content{
+    margin: 20px 0;
+}
+
+.rounded{
+    border: 1px #666 solid;
+    text-align:center;
+}
+
+.controls .btn i{
+    font-size: 18px;
+}
+
+.controls .btn{
+    cursor: pointer;
+}
+
+.no-gutter{
+    padding: 0;
+}
+
+.print-only{
+    display: none;
+}
+
+@media print{
+    .print-only{
+        display: block !important;
+    }   
+}

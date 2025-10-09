@@ -1,0 +1,11 @@
+{
+    "name": "PublicValidations",
+    "alias": "publicvalidations",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PublicValidations\\Providers\\PublicValidationsServiceProvider"
+    ],
+    "files": []
+}

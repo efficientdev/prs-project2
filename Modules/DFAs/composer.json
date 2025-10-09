@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/dfas",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\DFAs\\": "app/",
+            "Modules\\DFAs\\Database\\Factories\\": "database/factories/",
+            "Modules\\DFAs\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\DFAs\\Tests\\": "tests/"
+        }
+    }
+}

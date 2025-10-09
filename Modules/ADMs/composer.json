@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/adms",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ADMs\\": "app/",
+            "Modules\\ADMs\\Database\\Factories\\": "database/factories/",
+            "Modules\\ADMs\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\ADMs\\Tests\\": "tests/"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "PSs",
+    "alias": "pss",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PSs\\Providers\\PSsServiceProvider"
+    ],
+    "files": []
+}

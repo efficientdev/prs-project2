@@ -1,0 +1,17 @@
+@import url('bootstrap.css');
+@import url('base.css');
+@import url('nav.css');
+@import url('simple-line-icons.css');
+@import url('font-awesome.min.css');
+
+.card{
+    padding: 20px;
+}
+
+.sbox{
+    display: none;
+}
+
+.sbox.on{
+    display: block;
+}
