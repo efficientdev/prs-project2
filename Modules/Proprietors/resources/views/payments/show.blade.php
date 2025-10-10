@@ -23,7 +23,7 @@
             <h3 class="text-lg font-semibold text-gray-700 mb-4">Details</h3>
             <ul class="space-y-2 text-sm text-gray-700">
                 <li>
-                    <strong>Amount:</strong> {{ data_get($payment->meta, 'amount') }}
+                    <strong>Amount:</strong> ₦{{ number_format(data_get($payment->meta, 'amount'),2) }}
                 </li>
 
                 @if ($payment->payment_type === 'bank')

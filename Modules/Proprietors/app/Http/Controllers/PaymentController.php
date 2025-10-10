@@ -172,6 +172,19 @@ class PaymentController extends Controller
             /*if ($parts[0]=="ApplicationPayment") {
                 # code...
             }*/
+
+            if ($parts[0]=="ApplicationPayment" && isset($parts[1])) {
+                # code...
+
+                $owner = ApplicationPayment::findOrFail($parts[1]);
+
+                $app1=Registration::find($owner->registration_id);
+                 
+                $ndata=$app1->data??[];
+                $ndata['sectionF']=['reference'=>$payment->reference];
+                $app1->data=$ndata;//sectionA
+                    $app1->save();
+            }
             if ($parts[0]=="ApprovalPayment" && isset($parts[1])) {
                 # code...
                 ApprovalService::finalApproval($parts[1],auth()->user());

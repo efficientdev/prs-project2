@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Payment;
     use Symfony\Component\HttpFoundation\StreamedResponse;
 
+
+use Modules\Proprietors\Models\{ApprovalPayment,ApplicationPayment};
+use Modules\Registrations\Models\Registration;
 use Modules\Registrations\Services\ApprovalService;
 
 class AdminPaymentController extends Controller
@@ -160,6 +163,18 @@ public function export(Request $request): StreamedResponse
             if ($parts[0]=="ApprovalPayment" && isset($parts[1])) { 
                 ApprovalService::finalApproval($parts[1],$user);
             } 
+
+            if ($parts[0]=="ApplicationPayment" && isset($parts[1])) { 
+
+                $owner = ApplicationPayment::findOrFail($parts[1]);
+
+                $app1=Registration::find($owner->registration_id);
+                 
+                $ndata=$app1->data??[];
+                $ndata['sectionF']=['reference'=>$payment->reference];
+                $app1->data=$ndata;//sectionA
+                $app1->save();
+            }
         } catch (\Exception $e) {
             
         }

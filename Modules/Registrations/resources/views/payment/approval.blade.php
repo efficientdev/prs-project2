@@ -52,7 +52,7 @@
                                     <p><strong>Reference:</strong> {{ $payment1['reference'] ?? 'N/A' }}</p>
                                     <p><strong>Type:</strong> {{ ucfirst($payment1['payment_type']) }}</p>
                                     <p><strong>Status:</strong> {{ ucfirst($payment1['status']) }}</p>
-                                    <p><strong>Amount Paid:</strong> ₦{{ number_format($payment1['meta']['amount']) }}</p>
+                                    <p><strong>Amount Paid:</strong> ₦{{ number_format($payment1['meta']['amount'],2) }}</p>
                                 </div>
                                 <div>
                                     @if($payment1['payment_type']=="bank")<h6 class="mt-2">Payment Meta</h6>
