@@ -166,7 +166,7 @@
  
                 
                 <!-- Progress bar for multi-step forms -->
-                <div class="px-6 pb-4">
+                <!--<div class="px-6 pb-4">
                     <div class="text-xs text-gray-500 mb-1">Form Completion 
 <?php
 /*
@@ -184,6 +184,8 @@ $perc=0;
                         <div class="bg-indigo-600 h-2 rounded-full" style="width: 
                             {{$perc}}%">
                         </div>
+                    </div>
+                </div>-->
                         <!--<div class="bg-indigo-600 h-2 rounded-full" style="width: 
                             @if($form->status == 'completed') 100%
                             @elseif($form->status == 'in_progress') 65%
@@ -191,8 +193,6 @@ $perc=0;
                             @else 10%
                             @endif">
                         </div>-->
-                    </div>
-                </div>
             </div>
             @endforeach
         </div>

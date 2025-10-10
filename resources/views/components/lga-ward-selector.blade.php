@@ -11,7 +11,12 @@
 git remote set-url origin https://github.com/yourusername/new-repo-name.git
 
 	git remote set-url origin git@github.com:efficientdev/prs-project2.git
-	
+
+
+	git remote add origin git@github.com:efficientdev/prs-project2.git
+
+git push -f origin main
+
     x-data="lgaWardComponent({!! $wardJson !!}, '{{ $selectedLgaId }}', '{{ $selectedWardId }}')"
     x-init="init()"
 <div 

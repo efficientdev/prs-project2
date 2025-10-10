@@ -42,7 +42,7 @@ Route::get('/dashboard', function () {
             return redirect()->route('dashboard');
         } elseif ($user->hasRole('proprietor')) {
             //return redirect()->route('application.types.index');
-            return redirect()->route('public.validation.list');
+            return redirect()->route('registration.list');
         } elseif ($user->hasRole('PRS')) {
             return redirect()->route('dashboard');
         }elseif ($user->hasRole('PS')) {

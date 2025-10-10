@@ -39,7 +39,7 @@
             </div>-->
         </div> 
 
-        @if(!empty($application->payments))
+        @if(!empty($application->payments) || $application->payments!=null)
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-2xl font-bold my-1">Available Payments</h1>
@@ -68,6 +68,8 @@
                     @endforeach
                 </div>
             </div>
+            @else
+            <div>None found</div>
         @endif 
       
 @endif

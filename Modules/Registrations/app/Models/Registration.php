@@ -21,11 +21,13 @@ class Registration extends Model
     /**
      * The attributes that are mass assignable. 'emis_code', 
      */
-    protected $fillable = ['owner_id','data','status','cies_reports'];
+    protected $fillable = ['owner_id','data','status','cies_reports','submitted','submitted_at'];
+ 
 
     protected $casts = [
         'data' => 'array',
-        'cies_reports'=>'array'
+        'cies_reports'=>'array',
+        'submitted'=>'boolean'
     ];
 
     /**
@@ -84,6 +86,11 @@ class Registration extends Model
     public function registrationPayment()
     {
         return $this->hasOne(ApplicationPayment::class,'registration_id', 'id');
+    }
+
+    public function approvedRegistrationPayment()
+    {
+        return $this->hasOne(ApplicationPayment::class,'registration_id', 'id')->where('status','approved');
     }
 
     public function approvalPayment()

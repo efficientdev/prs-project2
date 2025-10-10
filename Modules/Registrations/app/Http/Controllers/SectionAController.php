@@ -28,7 +28,7 @@ class SectionAController extends BaseSectionController
         'owner_address_lga'        => 'required',
         'owner_ward_id'          => 'required', 
         'funding_source'        => 'required',
-        'funding_capital'          => 'required', 
+        //'funding_capital'          => 'required', 
         'proposed_name'        => 'required',
         'school_sector_id'          => 'required', 
         'school_address_lga'        => 'required',

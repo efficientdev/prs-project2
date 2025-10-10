@@ -1,21 +1,23 @@
-<div class="capitalize">section A</div>
+<div class="uppercase text-2xl font-bold">section A</div>
+
  @php
+    //$owner=\App\Models\User::find()
     $sectionA = $data['sectionA'] ?? [];
     // Define order you want keys to appear
     $order = [
         'owner_address',
         'owner_qualifications',
+        //'owner_address_lga',
+        'owner_lga',
+        //'owner_address_city',
+        'owner_ward',
         '','',
         'proposed_name',
         'funding_source',
         //'funding_capital',
         //'postal_address',
         'school_address',
-        'school_sector_id',
-        //'owner_address_lga',
-        'owner_lga',
-        //'owner_address_city',
-        'owner_ward',
+        'school_sector',
         //'school_address_lga',
         'school_lga',
         //'school_address_city',
@@ -25,10 +27,7 @@
         //'nearby_distance',
     ];
     
-    /*$sectionA['owner_address_city']=\App\Models\City::find($sectionA['owner_address_city'])->city_name??'n/a';
-    $sectionA['school_address_city']=\App\Models\City::find($sectionA['school_address_city'])->city_name??'n/a';*/
 
-     
     // Define groups (tables) of multiple keys to show side by side
     $groups = [
         'nearby_school' =>['nearby_school', 'nearby_distance'],
@@ -37,23 +36,24 @@
         $data=$form->data;
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionA'], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $data['sectionA'] ?? [], 'groups' => $groups, 'order' => $order])
 
 
-<div class="capitalize">section b</div>
+<div class="uppercase  my-4 text-2xl font-bold">section b</div>
 @php
  $sectionB = $data['sectionB'] ?? [];
 
  $order =[
+ 'dimension','permanent',
  //'labs',
  'fenced',
  //'stores',
- 'sickbay','toilets','dimension','inhabited','permanent',
+ 'sickbay','inhabited',
  //'workshops',
- 'classrooms',
+ 'classrooms','toilets',
  //'staff_offices',
  //'childrentoilet',
- 'other_facilities','','play_indoor',
+ '','other_facilities','play_indoor',
  //'play_indoor_size',
  'play_outdoor',
  //'play_outdoor_size'
@@ -69,7 +69,29 @@
  //print_r(implode("','",array_keys( $sectionB)));
 @endphp
 
-@include('registrations::preview.render_section', ['data' => $sectionB, 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $sectionB ?? [], 'groups' => $groups, 'order' => $order])
+
+
+@php
+ $sectionB = $data['sectionB'] ?? [];
+
+ $order =[ 
+ 'playground_types','',
+ 'Indoor_equipments',
+ 'Outdoor_equipments'
+ ];
+
+
+    // Define groups (tables) of multiple keys to show side by side
+    $groups = [
+    //'play_equipment' =>['play_equipment', 'play_equipment_qty'],
+    // add more groups if needed
+    ];
+    $xi=(array)json_decode($sectionB['playground_data']);
+//print_r($xi);
+ //print_r(implode("','",array_keys( $xi)));
+@endphp
+@include('registrations::preview.render_section', ['data' => $xi ?? [], 'groups' => $groups, 'order' => $order])
 
 
 <?php
@@ -84,7 +106,7 @@ Outdoor Play equipment (checkbox): Swings, Merry-go-round, slide, bouncing castl
 also generate llaravel validations too
 
 <hr/>
-<div class="capitalize">section c</div>
+<div class="uppercase text-2xl font-bold">section c</div>
 @php
  $sectionC = $data['sectionC'] ?? [];
 
@@ -147,7 +169,18 @@ also generate llaravel validations too
 
 
 
-<div class="capitalize">section f</div>
+<div class="uppercase my-4 text-2xl font-bold">section c</div>
+@php
+
+//for lightbox
+ $data['docs']=array_values($data['uploads'] ?? []);
+
+@endphp
+
+<div class=" capitalize font-bold">uploaded documents</div>
+    @include('cies::report.lightbox')
+<br/>
+
 @php
  $sectionF = $data['sectionF'] ?? [];
 
@@ -163,5 +196,7 @@ also generate llaravel validations too
  //print_r(implode("','",array_keys( $sectionF)));
 @endphp
 
-@include('registrations::preview.render_section', ['data' => $sectionF, 'groups' => $groups, 'order' => $order])
+
+
+@include('registrations::preview.render_section', ['data' => $sectionF ?? [], 'groups' => $groups, 'order' => $order])
 

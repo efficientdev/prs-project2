@@ -85,6 +85,12 @@
 <a href="{{route('registration.pay.approval',['id'=>$form_id])}}"  > 
                                 <span>Pay Approval Fee</span></a>
 
+
+<a href="{{route('registration.fletter',['id'=>$form_id])}}"  > 
+                                <span> First Letter</span></a>
+
+
+
                 @endif
 </div>
 </div>

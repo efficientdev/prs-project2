@@ -79,7 +79,16 @@ $approval->stage->name.' Report',
 
 @php
 $report=$application;
+    $owner=$application->owner;
 @endphp
+
+<div class="grid grid-cols-2 mb-3">
+    <div>Proprietor Name<br/>
+ {{$owner->name}}</div><div>
+    Proprietor Email<br/>
+ {{$owner->email}}</div>
+</div>
+
 @if(isset($report->cies_reports))
 @include('cies::print')
 @else

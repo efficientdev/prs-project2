@@ -47,7 +47,7 @@ class AuthenticatedSessionController extends Controller
         }elseif ($user->hasRole('OFF')) {
             return redirect()->route('dashboard');
         } elseif ($user->hasRole('proprietor')) {
-            return redirect()->route('public.validation.list');
+            return redirect()->route('registration.list');
         } elseif ($user->hasRole('PRS')) {
             return redirect()->route('dashboard');
         }elseif ($user->hasRole('PS')) {

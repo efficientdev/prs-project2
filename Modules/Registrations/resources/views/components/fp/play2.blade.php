@@ -1,6 +1,6 @@
 
 @php
-    $oldJson = old('playground_data', $playgroundData ?? '');
+    $oldJson = old('playground_data', $data['playground_data'] ?? '');
 @endphp
 
 <div x-data="playgroundForm()" x-init="initFromStored(@js($oldJson))" class="space-y-4">

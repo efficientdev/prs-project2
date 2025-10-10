@@ -13,6 +13,15 @@
                     @endphp
 
                     @if($isImage)
+                    <div class="h-[30vh] border shadow overflow-hidden">
+    <img 
+        src="{{ $url }}" 
+        alt="Image" 
+        class="w-full h-full object-cover cursor-pointer rounded shadow"
+        @click="lightboxOpen = true; currentImage = '{{ $url }}'"
+    />
+</div>
+<!--
                         <div class="h-[50vh] overflow-hidden">
                             <img 
                                 src="{{ $url }}" 
@@ -20,7 +29,7 @@
                                 class="cursor-pointer  rounded shadow"
                                 @click="lightboxOpen = true; currentImage = '{{ $url }}'"
                             />
-                        </div>
+                        </div>-->
                     @else
                         <div class="mb-1">
                             <a href="{{ $url }}" target="_blank" class="text-blue-600 underline">

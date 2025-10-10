@@ -65,6 +65,8 @@
                     @endforeach
                 </div>
             </div>
+            @else
+            <div>None found</div>
         @endif 
       
 @endif
@@ -147,7 +149,7 @@ $tabslist=['Payment Method: Bank Transfer','Payment Method: Online (Paystack)'];
          <br/>
 
             <x-primary-button class="ms-0 mt-2">
-                Request Approval
+                Request Confirmation
             </x-primary-button>
 
     </form>

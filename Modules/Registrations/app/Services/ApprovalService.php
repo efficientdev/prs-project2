@@ -10,6 +10,7 @@ use Modules\Registrations\Models\RegistrationApprovalStage;
 use Carbon\Carbon;
 use App\Notifications\ApplicationApproved;
 use App\Models\User;
+use Modules\Applications\Notifications\{ApplicantInputRequested,ApplicationStatusUpdated,ApplicationRestarted,ApplicationRejected};
 
 class ApprovalService
 {
@@ -75,15 +76,6 @@ class ApprovalService
 
         $application=$approval->application;
         
-        if(isset($application->owner)){
-            try {
-                
-                $application->owner->notify(new ApplicationStatusUpdated($application, 'approved'));
-            } catch (\Exception $e) {
-                
-            }
-        }
-
 
         // Get next stage
         $nextStage = RegistrationApprovalStage::where('order', '>', $approval->stage->order)
@@ -100,6 +92,16 @@ class ApprovalService
             // Final approval
             $approval->application->update(['status' => 'approved']);
         }
+
+        if(isset($application->owner)){
+            try {
+                
+                $application->owner->notify(new ApplicationStatusUpdated($application, 'approved'));
+            } catch (\Exception $e) {
+                //dd($e);
+            }
+        }
+
     }
 
 

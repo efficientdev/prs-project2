@@ -17,6 +17,8 @@ class SectionGController extends Controller
 
     public function show($form_id)
     {
+        //submitted
+        
         $form = Registration::findOrFail($form_id);
 //'sectionC','sectionD','sectionE',
         $requiredSections = ['sectionA','sectionB','sectionF'];
@@ -41,7 +43,9 @@ class SectionGController extends Controller
     {
         $form = Registration::findOrFail($form_id);
 
-        $requiredSections = ['sectionA','sectionB','sectionC','sectionD','sectionE','sectionF'];
+        //'sectionC','sectionD','sectionE',
+
+        $requiredSections = ['sectionA','sectionB','sectionF'];
 
         $data = $form->data[$this->sectionKey] ?? [];
 
@@ -74,6 +78,8 @@ class SectionGController extends Controller
         $x=$form->data??[];
         $x['sectionG'] = $validated;
         $form->data=$x;
+        $form->submitted=true;
+        $form->submitted_at=now();
         //$form->status="pending";
         $form->save();
 

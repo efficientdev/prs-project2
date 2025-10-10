@@ -82,6 +82,10 @@ class BaseSectionController extends Controller
             //redirect to preview
             abort(403, 'Application is not eligible for resubmission.');
         }
+        if ($a->submitted) {
+            //redirect to preview
+            abort(403, 'You have already submitted this Application and not eligible for resubmission.');
+        }
          
         $cYear=$a->created_at->format('Y')??date('y');
         $uploadsList=[
@@ -163,10 +167,14 @@ class BaseSectionController extends Controller
  
         //$this->processFiles($request, $data); 
         if (in_array('owner_ward_id', array_keys($validated))) { 
-            $validated['owner_ward']=City::find($validated['owner_ward_id'])->ward_name??'n/a';
+            $validated['owner_ward']=Ward::find($validated['owner_ward_id'])->ward_name??'n/a';
+        }
+
+        if (in_array('school_sector_id', array_keys($validated))) { 
+            $validated['school_sector']=Ward::find($validated['school_sector_id'])->ward_name??'n/a';
         }
         if (in_array('school_ward_id', array_keys($validated))) { 
-            $validated['school_ward']=City::find($validated['school_ward_id'])->ward_name??'n/a';
+            $validated['school_ward']=Ward::find($validated['school_ward_id'])->ward_name??'n/a';
         }
         /*if (in_array('owner_address_city', array_keys($validated))) { 
             $validated['owner_city']=City::find($validated['owner_address_city'])->city_name??'n/a';

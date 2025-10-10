@@ -14,7 +14,12 @@ class ApplicationStatusUpdated extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct() {}
+    public $status;
+    public $application;
+    public function __construct($application,$stat='Current') {
+        $this->status=$stat;
+        $this->application=$application;
+    }
 
     /**
      * Get the notification's delivery channels.

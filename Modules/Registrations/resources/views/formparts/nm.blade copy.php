@@ -64,7 +64,18 @@ $yesNo = ['Yes' => 'Yes', 'No' => 'No'];
             value="{{ old('classrooms', $data['classrooms'] ?? '') }}" 
         >
     </div>
-    
+<!--
+    <div>
+        <label>Number of Offices <b class="text-danger">*</b></label>
+        <input 
+            autocomplete="off" 
+            class="form-input w-full border-gray-300 rounded-md" 
+            name="staff_offices" 
+            required 
+            type="number" 
+            value="{{ old('staff_offices', $data['staff_offices'] ?? '') }}" 
+        >
+    </div>-->
 
     <div>
         <label>Number of Toilets <b class="text-danger">*</b></label>
@@ -77,7 +88,42 @@ $yesNo = ['Yes' => 'Yes', 'No' => 'No'];
             value="{{ old('toilets', $data['toilets'] ?? '') }}" 
         >
     </div>
- 
+
+    <!--<div>
+        <label>Number of Stores <b class="text-danger">*</b></label>
+        <input 
+            autocomplete="off" 
+            class="form-input w-full border-gray-300 rounded-md" 
+            name="stores" 
+            required 
+            type="number" 
+            value="{{ old('stores', $data['stores'] ?? '') }}" 
+        >
+    </div>
+
+    <div>
+        <label>Number of Laboratories <b class="text-danger">*</b></label>
+        <input 
+            autocomplete="off" 
+            class="form-input w-full border-gray-300 rounded-md" 
+            name="labs" 
+            required 
+            type="number" 
+            value="{{ old('labs', $data['labs'] ?? '') }}" 
+        >
+    </div>
+
+    <div>
+        <label>Number of Workshops <b class="text-danger">*</b></label>
+        <input 
+            autocomplete="off" 
+            class="form-input w-full border-gray-300 rounded-md" 
+            name="workshops" 
+            required 
+            type="number" 
+            value="{{ old('workshops', $data['workshops'] ?? '') }}" 
+        >
+    </div>-->
 
     <div>
         <label>Sick Bay? <b class="text-danger">*</b></label>
@@ -87,7 +133,15 @@ $yesNo = ['Yes' => 'Yes', 'No' => 'No'];
             :selected="old('sickbay', $data['sickbay'] ?? 'No')" 
         />
     </div>
- 
+
+    <!--<div>
+        <label>Children's Restroom? <b class="text-danger">*</b></label>
+        <x-select-input 
+            name="childrentoilet" 
+            :options="$yesNo" 
+            :selected="old('childrentoilet', $data['childrentoilet'] ?? 'No')" 
+        />
+    </div>-->
 
 </div>
 
@@ -112,6 +166,57 @@ $yesNo = ['Yes' => 'Yes', 'No' => 'No'];
         @endforeach
     </div>
 
- 
+
+    <!--<input 
+        autocomplete="off" 
+        class="form-input w-full border-gray-300 rounded-md" 
+        name="other_facilities" 
+        value="{{ old('other_facilities', $data['other_facilities'] ?? '') }}" 
+    >-->
 </div>
- 
+
+<div class="col-md-12"><p><b>PLAYGROUND</b></p></div>
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-1">
+
+    <!--<div>
+        <label>Indoor Playground? <b class="text-danger">*</b></label>
+        <x-select-input 
+            name="play_indoor"
+            :options="$yesNo" 
+            :selected="old('play_indoor', $data['play_indoor'] ?? 'No')" 
+        />
+    </div>
+
+    <div>
+        <label>Playground Dimension</label>
+        <input 
+            autocomplete="off" 
+            class="form-input w-full border-gray-300 rounded-md" 
+            name="play_indoor_size" 
+            placeholder="Eg. 15 m2" 
+            value="{{ old('play_indoor_size', $data['play_indoor_size'] ?? '') }}" 
+        >
+    </div> 
+
+    <div>
+        <label>Outdoor Playground? <b class="text-danger">*</b></label>
+        <x-select-input 
+            name="play_outdoor"
+            :options="$yesNo" 
+            :selected="old('play_outdoor', $data['play_outdoor'] ?? 'No')" 
+        />
+    </div>
+
+     <div>
+        <label>Playground Dimension</label>
+        <input 
+            autocomplete="off" 
+            class="form-input w-full border-gray-300 rounded-md" 
+            name="play_outdoor_size" 
+            placeholder="Eg. 5 m2" 
+            value="{{ old('play_outdoor_size', $data['play_outdoor_size'] ?? '') }}" 
+        >
+    </div>-->
+
+</div>

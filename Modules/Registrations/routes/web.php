@@ -25,7 +25,8 @@ Route::middleware(['auth', 'verified'])->prefix('school/registration')->group(fu
     Route::get('/{id}/receipts', [ReceiptsController::class, 'show'])->name('registration.receipts');
     Route::post('/{id}/receipts', [ReceiptsController::class, 'update'])->name('registration.receipts.print');//update
 
-    Route::get('/{id}/firstletter', [FirstLetterController::class, 'show'])->name('registration.letter');
+    Route::get('/{id}/first-letter', [FirstLetterController::class, 'show'])->name('registration.fletter');
+    Route::post('/{id}/first-letter', [FirstLetterController::class, 'update'])->name('registration.fletter.print');//update
 });
 //
 

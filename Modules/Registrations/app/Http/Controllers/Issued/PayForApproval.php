@@ -2,7 +2,7 @@
 //PayForApproval.php 
 namespace Modules\Registrations\Http\Controllers\Issued;
 
-use Modules\Registrations\Models\Registration;
+use Modules\Registrations\Models\{Registration,RegistrationApproval};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Title,User};
@@ -65,6 +65,19 @@ class PayForApproval extends Controller
 	public function show(Request $request,$id){
 		//id - application is
 		$form = $a = Registration::findOrFail($id);
+
+
+            $r=RegistrationApproval::where([
+                'registration_id'=>$a->id,
+                'registration_approval_stage_id'=>ApprovalService::$firstLetter
+            ])->first();
+            if ($r==null) {
+                # code...
+                abort(403, 'Application is not eligible for Approval Payment yet.'); 
+         
+            }
+
+
 		$this->createApprovalPayment($a);
 
 		/*$a->currentApproval()->where('registration_approval_stage_id',ApprovalService::$firstLetter)->first();*/

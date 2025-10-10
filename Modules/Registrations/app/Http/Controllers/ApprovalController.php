@@ -24,6 +24,7 @@ class ApprovalController extends Controller
         $approvals = RegistrationApproval::with('application', 'stage')
             ->whereNotIn('registration_approval_stage_id',ApprovalService::$onlyForProprietors)
             ->where('status', 'pending')
+            ->whereHas('approvedRegistrationPayment')
             ->whereHas('stage', function ($q) {
                 if (!in_array('ADM', auth()->user()->roles->pluck('name')->toArray())) {
                 $q->where('role_name', auth()->user()->roles->pluck('name'));
@@ -103,8 +104,8 @@ class ApprovalController extends Controller
         
 
     (new ApprovalService)->approve($approval, auth()->user(), $request->comments);
-    return redirect()->route('srapprovals.my')
-            ->with('success', 'Application approved');
+    return redirect()->route('srapprovals.my')->with('success', 'Application approved');
+
     //return back()->with('success', 'Application approved');
 }
 

@@ -57,9 +57,9 @@
     <div>
         <label>Ward <b class="text-danger">*</b></label>
         <x-select-input 
-            name='owner_ward'
+            name='owner_ward_id'
             :options="$wards" 
-            :selected="old('owner_ward', $data['owner_ward'] ?? '')" 
+            :selected="old('owner_ward_id', $data['owner_ward_id'] ?? '')" 
         />
     </div>
     <!-- City 

@@ -22,7 +22,7 @@
     @foreach ($order as $key)
 
         @if (isset($groups[$key]) && !in_array($key, $renderedGroups))
-            </div><div class="grid  gap-3">
+            </div><div class="grid  gap-2">
             {{-- Render entire group table here --}}
             @php
                 $keys = $groups[$key];
@@ -52,7 +52,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for ($i = 0; $i < $maxRows; $i++)
+                        @for ($i = 1; $i < $maxRows+1; $i++)
                             <tr>
                                 @foreach ($keys as $k)
                                     @php
@@ -93,7 +93,7 @@
             )));
         @endphp
 
-        </div><div class="grid gap-3">
+        </div><div class="grid gap-2">
         <div class="mb-6 rounded">
             <table class="w-full border-collapse border border-gray-300">
                 <thead>
@@ -128,13 +128,14 @@
                     $val = $data[$key];
 
                     if (is_array($val)) {
-                        echo "<span class='uppercase'><strong >$label:</strong></span><ul class='list-disc ml-6'>";
+                        echo "<span class='uppercase'><strong >$label:</strong></span><ol class='list-disc ml-6'>";
                         foreach ($val as $k => $v) {
-                            echo "<li>" . e("$k : $v") . "</li>";
+                            //echo "<li>" . e("$k : $v") . "</li>";
+                            echo "<li>" . e("$v") . "</li>";
                         }
-                        echo "</ul>";
+                        echo "</ol>";
                     } else {
-                        echo "<p><strong>$label:</strong> " . e($val) . "</p>";
+                        echo "<p><span class='capitalize font-semibold'>$label:</span> " . e($val) . "</p>";
                     }
                 @endphp
             </div>
