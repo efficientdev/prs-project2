@@ -14,7 +14,11 @@ class ApplicationRejected extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct() {}
+    public $application;
+    public function __construct($application,$stat='Current') {
+        //$this->status=$stat;
+        $this->application=$application;
+    }
 
     /**
      * Get the notification's delivery channels.
@@ -30,9 +34,8 @@ class ApplicationRejected extends Notification
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', 'https://laravel.com')
-            ->line('Thank you for using our application!');
+           ->line("Your Application has been rejected") 
+        ->action('View Application', route('registration.portfolio',['id'=>$this->application->id]));
     }
 
     /**

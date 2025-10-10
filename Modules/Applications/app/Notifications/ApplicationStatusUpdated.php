@@ -35,9 +35,10 @@ class ApplicationStatusUpdated extends Notification
     public function toMail($notifiable)
 {
     return (new MailMessage)
-    ->line("Application  has been {$this->status}.")
+    ->line("Current Application Stage  has been {$this->status}.")
         //->line("Application '{$this->application->title}' has been {$this->status}.")
-        ->action('View Application', url("/applications/{$this->application->id}"));
+        //->action('View Application', url("/applications/{$this->application->id}"));
+        ->action('View Application', route('registration.portfolio',['id'=>$this->application->id]));
 }
 
     public function toMail2($notifiable): MailMessage

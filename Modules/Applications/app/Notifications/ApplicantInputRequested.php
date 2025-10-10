@@ -14,7 +14,11 @@ class ApplicantInputRequested extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct() {}
+    public $application;
+    public function __construct($application,$stat='Current') {
+        //$this->status=$stat;
+        $this->application=$application;
+    }
 
     /**
      * Get the notification's delivery channels.
@@ -29,10 +33,9 @@ class ApplicantInputRequested extends Notification
      */
     public function toMail($notifiable): MailMessage
     {
-        return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', 'https://laravel.com')
-            ->line('Thank you for using our application!');
+        return (new MailMessage) 
+           ->line("More information is required from you") 
+        ->action('View Application', route('registration.portfolio',['id'=>$this->application->id]));
     }
 
     /**

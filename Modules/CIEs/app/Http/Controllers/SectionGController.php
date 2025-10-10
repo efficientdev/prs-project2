@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Modules\Registrations\Models\{RegistrationApproval,RegistrationApprovalStage};
 use Modules\Registrations\Services\ApprovalService;
 
+use Modules\Applications\Notifications\{ApplicantInputRequested,ApplicationStatusUpdated,ApplicationRestarted,ApplicationRejected};
+
 class SectionGController extends CiesBaseController
 {
     public function show(int $reportId)
@@ -58,6 +60,16 @@ class SectionGController extends CiesBaseController
 
 
         (new ApprovalService)->approve($approval, auth()->user(), $request->observations??'n/a');
+
+        /*if(isset($application->owner)){
+            try {
+                
+        // Optionally notify applicant about restart
+        $application->owner->notify(new ApplicationStatusUpdated($application,'Pending'));
+            } catch (\Exception $e) {
+                
+            }
+        }*/
 
         //
 

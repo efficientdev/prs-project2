@@ -75,6 +75,7 @@ class ApprovalService
         ]);
 
         $application=$approval->application;
+        $stage=$approval->stage;
         
 
         // Get next stage
@@ -96,7 +97,7 @@ class ApprovalService
         if(isset($application->owner)){
             try {
                 
-                $application->owner->notify(new ApplicationStatusUpdated($application, 'approved'));
+                $application->owner->notify(new ApplicationStatusUpdated($application, ($stage->name??'').' - approved'));
             } catch (\Exception $e) {
                 //dd($e);
             }
@@ -127,6 +128,7 @@ class ApprovalService
     ]);
 
     $application = $approval->application;
+        $stage=$approval->stage;
 
     // Decide rollback or final rejection
     if ($this->shouldRollbackOnRejection($approval)) {
