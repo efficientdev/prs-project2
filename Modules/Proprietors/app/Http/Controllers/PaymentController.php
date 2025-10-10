@@ -168,6 +168,10 @@ class PaymentController extends Controller
             ]);
             $payment->save();
 
+            
+        $payable=$payment->payable;
+        $payable->status= 'approved';
+        $payable->save();
 
             /*if ($parts[0]=="ApplicationPayment") {
                 # code...

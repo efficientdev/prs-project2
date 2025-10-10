@@ -171,7 +171,7 @@ class BaseSectionController extends Controller
         }
 
         if (in_array('school_sector_id', array_keys($validated))) { 
-            $validated['school_sector']=Ward::find($validated['school_sector_id'])->ward_name??'n/a';
+            $validated['school_sector']=SchoolSector::find($validated['school_sector_id'])->school_sector_name??'n/a';
         }
         if (in_array('school_ward_id', array_keys($validated))) { 
             $validated['school_ward']=Ward::find($validated['school_ward_id'])->ward_name??'n/a';
