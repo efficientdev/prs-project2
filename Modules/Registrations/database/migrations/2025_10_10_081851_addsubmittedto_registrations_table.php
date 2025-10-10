@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('registrations', function (Blueprint $table) {
             
 
-            $table->boolean('submitted')->default('false')->nullable();
+            $table->boolean('submitted')->default(false)->nullable();
 
             $table->timestamp('submitted_at')->nullable();
 
