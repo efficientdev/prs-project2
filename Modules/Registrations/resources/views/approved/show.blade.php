@@ -10,11 +10,11 @@
 @endphp
 
      
-<div class="flex justify-between items-center"><div><h4 class="text-xl">Proprietor Data</h4></div>
+ <div><h4 class="text-xl">Proprietor Data</h4></div>
     @include('registrations::print')
 
 
-<div class="flex justify-between items-center"><div><h4 class="text-xl">CIE Inspection Report</h4></div>
+<div><h4 class="text-xl">CIE Inspection Report</h4></div>
     @php
     $report=$application; 
     @endphp 
@@ -26,7 +26,7 @@
 
   
 
-<div class="flex justify-between items-center"><div><h4 class="text-xl">Approval History</h4></div>
+<div><h4 class="text-xl">Approval History</h4></div>
 <div>
 <p>Status:  {{ ucwords(str_replace('_', ' ', $application->status)) }} </p>
 </div></div>
