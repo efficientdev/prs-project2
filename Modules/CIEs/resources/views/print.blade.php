@@ -13,7 +13,7 @@
         //'zonal_office',
         //'approval_number',
         //'reporting_period',
-        'lga'
+        'lga','ward'
         //,'category'
     ];
      

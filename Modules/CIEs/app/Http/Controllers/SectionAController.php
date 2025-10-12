@@ -5,7 +5,7 @@ namespace Modules\CIEs\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; 
 
-use App\Models\{Category,Lga};
+use App\Models\{Category,Lga,Ward};
 
 class SectionAController extends CiesBaseController
 {
@@ -38,6 +38,7 @@ class SectionAController extends CiesBaseController
             //'lga' => 'required|string|max:255',
             //'category_id' => 'nullable',
             'lga_id' => 'required',
+            'ward_id' => 'required',
             //'zonal_office' => 'required|string|max:255',
         ]);
 
@@ -47,6 +48,9 @@ class SectionAController extends CiesBaseController
         }*/
         if (in_array('lga_id', array_keys($validated))) { 
             $validated['lga']=Lga::find($validated['lga_id'])->lga_name??'n/a';
+        }
+        if (in_array('ward_id', array_keys($validated))) { 
+            $validated['ward']=Ward::find($validated['ward_id'])->ward_name??'n/a';
         }
 
         $this->saveSectionData($report, 'sectionA', $validated);
