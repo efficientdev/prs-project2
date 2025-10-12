@@ -2,7 +2,7 @@
 <div class="mb-3 text-xl font-bold">Approved Applications Pending Approval Fee Payment</div>
 
 
- @if(count($forms) == 0)
+ @if($approvals->count() == 0)
         <div class="text-center py-12">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
                 <i class="fas fa-inbox text-gray-400 text-2xl"></i>
