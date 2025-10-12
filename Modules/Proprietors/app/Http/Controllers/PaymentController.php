@@ -111,8 +111,7 @@ class PaymentController extends Controller
             //['data']
             return redirect($response['authorization_url']);
         } else {
-            $payment->reference=class_basename($owner).'-'.($ownerId??0).'-'.($payment->id??0);
-
+            $payment->reference=class_basename($owner).'-'.($ownerId??0).'-'.($payment->id??0); 
 
             try { 
                 //$owner->load('application');
@@ -123,7 +122,7 @@ class PaymentController extends Controller
                 if ($type === 'application') {
                     //dd($app1);
                     //$type
-                    $ndata['sectionF']=['reference'=>$payment->reference]; 
+                    $ndata['sectionF']=['reference'=>$payment->reference,'status'=>'Confirmation Pending','amount_paid'=>'#'.number_format($payment->meta['amount']??0,2)]; 
                 }else{
 
                     $ndata['sectionH']=['reference'=>$payment->reference,'approval payment'];
@@ -185,7 +184,7 @@ class PaymentController extends Controller
                 $app1=Registration::find($owner->registration_id);
                  
                 $ndata=$app1->data??[];
-                $ndata['sectionF']=['reference'=>$payment->reference];
+                $ndata['sectionF']=['reference'=>$payment->reference,'status'=>'Payment Approved','amount_paid'=>'#'.number_format($payment->meta['amount']??0,2)];
                 $app1->data=$ndata;//sectionA
                     $app1->save();
             }

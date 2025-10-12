@@ -171,7 +171,7 @@ public function export(Request $request): StreamedResponse
                 $app1=Registration::find($owner->registration_id);
                  
                 $ndata=$app1->data??[];
-                $ndata['sectionF']=['reference'=>$payment->reference];
+                $ndata['sectionF']=['reference'=>$payment->reference,'status'=>'Payment Approved','amount_paid'=>'#'.number_format($payment->meta['amount']??0,2)];
                 $app1->data=$ndata;//sectionA
                 $app1->save();
             }

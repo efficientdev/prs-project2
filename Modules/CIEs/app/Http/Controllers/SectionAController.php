@@ -14,13 +14,14 @@ class SectionAController extends CiesBaseController
         $report = $this->findReportOrFail($reportId);
         $sectionA = $report->getSection('sectionA') ?? [];
 
+        $proprietorSectionA = $report->getProprietorSection('sectionA') ?? [];
 
         $categories = collect(['' => 'Select Category'] + Category::pluck('category_name','id')->all()??[])->toArray();
         $lgas = collect(['' => 'Select Lga'] + Lga::pluck('lga_name','lga_id')->all()??[])->toArray();
 
         $formId = 'form-section-a';
 
-        return view('cies::report.section_a_form', compact('report', 'sectionA', 'formId','reportId','categories','lgas'));
+        return view('cies::report.section_a_form', compact('report', 'sectionA', 'formId','reportId','categories','lgas','proprietorSectionA'));
     }
 
     public function store(Request $request, int $reportId)
@@ -28,15 +29,16 @@ class SectionAController extends CiesBaseController
         $report = $this->findReportOrFail($reportId);
 
         $validated = $request->validate([
-            'report_title' => 'required|string|max:255',
-            'reporting_period' => 'required|string|max:100',
+            //'report_title' => 'required|string|max:255',
+            //'reporting_period' => 'required|string|max:100',
+            'date_of_inspection'=> 'required|string|max:100',
             'school_name' => 'required|string|max:255',
-            'approval_number' => 'nullable|string|max:100',
+            //'approval_number' => 'nullable|string|max:100',
             //'category' => 'required|in:Nursery,Primary,JSS,SSS,Combined',
             //'lga' => 'required|string|max:255',
-            'category_id' => 'required',
+            'category_id' => 'nullable',
             'lga_id' => 'required',
-            'zonal_office' => 'required|string|max:255',
+            //'zonal_office' => 'required|string|max:255',
         ]);
 
 

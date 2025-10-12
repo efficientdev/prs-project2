@@ -9,7 +9,6 @@
     @csrf
 
 
-
     
 @include('registrations::formparts.owner')
   

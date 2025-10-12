@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\CIEs\Http\Controllers\{ApplicationCtrl};
+use Modules\CIEs\Http\Controllers\{ApplicationCtrl,CieUploadsCtrl};
 
 
 // routes/web.php
@@ -16,6 +16,9 @@ use Modules\CIEs\Http\Controllers\{
 Route::middleware(['auth',
     'role:CIE,ADM'
 ])->group(function () {
+
+
+    Route::post('cie-doc-uploads', [CieUploadsCtrl::class,'upload'])->name('ciedoc.uploads');
 
 
 Route::get('/cies/{report}/summary', [SummaryController::class, 'show'])->name('cies.report.summary');

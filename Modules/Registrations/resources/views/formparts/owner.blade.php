@@ -43,7 +43,9 @@
         >{{ old('owner_qualifications', $data['owner_qualifications'] ?? '') }}</textarea>
     </div>
 
-    <!-- Local Government Area -->
+
+
+    <!-- Local Government Area 
     <div>
         <label>Local Government Area <b class="text-danger">*</b></label>
         <x-select-input 
@@ -51,9 +53,9 @@
             :options="$lgas" 
             :selected="old('owner_address_lga', $data['owner_address_lga'] ?? '')" 
         />
-    </div>
+    </div>-->
 
-    <!-- Ward -->
+    <!-- Ward 
     <div>
         <label>Ward <b class="text-danger">*</b></label>
         <x-select-input 
@@ -61,7 +63,8 @@
             :options="$wards" 
             :selected="old('owner_ward_id', $data['owner_ward_id'] ?? '')" 
         />
-    </div>
+    </div>-->
+
     <!-- City 
     <div>
         <label>City <b class="text-danger">*</b></label>
@@ -73,3 +76,4 @@
     </div>-->
 
 </div>
+<x-lga-ward-selector namePrefix="owner" :selectedLgaId="old('owner_lga_id', $data['owner_lga_id'] ?? '')" :selectedWardId="old('owner_ward_id', $data['owner_ward_id'] ?? '')"  />

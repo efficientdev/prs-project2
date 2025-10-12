@@ -3,7 +3,7 @@
 @extends('registrations::components.layouts.x')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-6">Section B: Infrastructure Data </h1>
+<h1 class="text-2xl font-bold mb-6">Section B: SCHOOL FACILITIES </h1>
 
 <form method="POST" action="{{ route('registration.sectionB.store', $form_id) }}" x-data class="space-y-6">
     @csrf

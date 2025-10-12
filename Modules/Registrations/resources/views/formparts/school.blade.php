@@ -66,7 +66,7 @@
     </div>
  
 
-    <!-- School LGA -->
+    <!-- School LGA 
     <div>
         <label>Local Government Area <b class="text-danger">*</b></label>
         <x-select-input 
@@ -74,9 +74,9 @@
             :options="$lgas" 
             :selected="old('school_address_lga', $data['school_address_lga'] ?? '')" 
         />
-    </div>
+    </div>-->
 
-    <!-- Ward -->
+    <!-- Ward 
     <div>
         <label>Ward <b class="text-danger">*</b></label>
         <x-select-input 
@@ -84,7 +84,14 @@
             :options="$wards" 
             :selected="old('school_ward_id', $data['school_ward_id'] ?? '')" 
         />
-    </div>
+    </div>-->
+</div>
+<x-lga-ward-selector namePrefix="school" :selectedLgaId="old('school_lga_id', $data['school_lga_id'] ?? '')" :selectedWardId="old('school_ward_id', $data['school_ward_id'] ?? '')"  />
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+
+
+
     <!-- School City 
     <div>
         <label>City <b class="text-danger">*</b></label>

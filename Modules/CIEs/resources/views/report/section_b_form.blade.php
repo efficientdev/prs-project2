@@ -50,13 +50,33 @@ $data=$sectionB;
 </form>
 
     @php
-    $defaultLevels = [
+    
+    /*$defaultLevels = [
         ['level' => 'Nursery', 'male' => '', 'female' => '', 'remarks' => ''],
         ['level' => 'Primary 1–3', 'male' => '', 'female' => '', 'remarks' => ''],
         ['level' => 'Primary 4–6', 'male' => '', 'female' => '', 'remarks' => ''],
         ['level' => 'JSS 1–3', 'male' => '', 'female' => '', 'remarks' => ''],
         ['level' => 'SSS 1–3', 'male' => '', 'female' => '', 'remarks' => ''],
+    ];*/
+
+    $defaultLevels = [
+        ['level' => 'Nursery 1', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Nursery 2', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Nursery 3', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Primary 1', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Primary 2', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Primary 3', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Primary 4', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Primary 5', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'Primary 6', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'JSS 1', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'JSS 2', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'JSS 3', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'SSS 1', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'SSS 2', 'male' => '', 'female' => '', 'remarks' => ''],
+        ['level' => 'SSS 3', 'male' => '', 'female' => '', 'remarks' => ''],
     ];
+
 
     $levels = old('levels', $data['levels'] ?? $defaultLevels);
 @endphp

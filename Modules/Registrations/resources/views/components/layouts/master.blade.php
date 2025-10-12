@@ -58,7 +58,7 @@
 @php
             $sections = [
                 'sectionA' => 'School Identity',
-                'sectionB' => 'Infrastructure Data',
+                'sectionB' => 'SCHOOL FACILITIES',
                 //'sectionC' => 'Staff Profile',
                 //'sectionD' => 'Infrastructure',
                 //'sectionE' => 'Fees ',

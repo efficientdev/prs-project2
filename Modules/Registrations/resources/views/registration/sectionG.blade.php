@@ -11,7 +11,8 @@
     <div>
         <label>
             <input type="checkbox" name="declaration" required>
-            I affirm that the information provided is true and accurate.
+            I, {{auth()->user()->name??'n/a'}}, hereby affirm that all information and documents provided in this school registration application are true, and accurate. I understand that any false or misleading information may result in the loss of my registration status.<!--
+            I affirm that the information provided is true and accurate.-->
         </label>
     </div>
 

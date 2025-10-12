@@ -1,10 +1,17 @@
-<div class="uppercase text-2xl font-bold">section A</div>
+<div class="border-b border-t my-2 py-2">
+<div class="uppercase my-4 text-2xl font-bold">section A: School Identity</div>
+
+<div class="shadow p-2 rounded">
 
  @php
     //$owner=\App\Models\User::find()
     $sectionA = $data['sectionA'] ?? [];
     // Define order you want keys to appear
+
+    /*'tin', 'nin', 'phone_number', 'title'*/
+
     $order = [
+    'surname','other_names','phone_number','','tin', 'nin',
         'owner_address',
         'owner_qualifications',
         //'owner_address_lga',
@@ -37,9 +44,12 @@
 @endphp
  
 @include('registrations::preview.render_section', ['data' => $data['sectionA'] ?? [], 'groups' => $groups, 'order' => $order])
+</div>
+
+<div class="uppercase  my-4 text-2xl font-bold">section b : SCHOOL FACILITIES</div>
 
 
-<div class="uppercase  my-4 text-2xl font-bold">section b</div>
+<div class="shadow p-2 rounded">
 @php
  $sectionB = $data['sectionB'] ?? [];
 
@@ -92,7 +102,7 @@
  //print_r(implode("','",array_keys( $xi)));
 @endphp
 @include('registrations::preview.render_section', ['data' => $xi ?? [], 'groups' => $groups, 'order' => $order])
-
+</div>
 
 <?php
 /*
@@ -168,23 +178,29 @@ also generate llaravel validations too
 ?>
 
 
+<div class="uppercase my-4 text-2xl font-bold">section c: Uploaded Documents</div>
 
-<div class="uppercase my-4 text-2xl font-bold">section c</div>
+
+<div class="shadow p-2 rounded">
 @php
 
 //for lightbox
  $data['docs']=array_values($data['uploads'] ?? []);
 
 @endphp
-
-<div class=" capitalize font-bold">uploaded documents</div>
+<!--
+<div class=" capitalize font-bold">uploaded documents</div>-->
     @include('cies::report.lightbox')
 <br/>
 
 @php
  $sectionF = $data['sectionF'] ?? [];
 
- $order =['reference'];
+ if(isset($sectionF['reference'])){
+     $sectionF['status']="Payment Approved";
+ } 
+
+ $order =['reference','amount_paid','status'];
 
 
     // Define groups (tables) of multiple keys to show side by side
@@ -200,3 +216,23 @@ also generate llaravel validations too
 
 @include('registrations::preview.render_section', ['data' => $sectionF ?? [], 'groups' => $groups, 'order' => $order])
 
+</div>
+
+
+<div class="uppercase my-4 text-2xl font-bold">section d: Declaration</div>
+
+<div class="shadow p-2 rounded">
+@php
+ $sectionG = $data['sectionG'] ?? [];
+
+    $sectionA = $data['sectionA'] ?? [];
+@endphp
+
+@if(isset($sectionG['declaration']))
+
+    I, {{$sectionA['surname']??''}} {{$sectionA['other_names']??''}} hereby affirm that all information and documents provided in this school registration application are true, and accurate. I understand that any false or misleading information may result in the loss of my registration status.
+
+@endif
+</div>
+
+</div>

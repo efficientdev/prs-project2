@@ -4,6 +4,7 @@
 
 @php
     $wardJson = $wards->toJson();
+    //print_r($wardJson);
     $selectedLgaId = $selectedLgaId ?? '';
     $selectedWardId = $selectedWardId ?? '';
 @endphp
@@ -35,7 +36,7 @@ git push -f origin main
 >
     <!-- LGA Dropdown -->
     <div>
-        <label class="block text-sm font-medium text-gray-700">Select LGA</label>
+        <label class="block capitalize text-sm font-medium text-gray-700">Select {{$namePrefix??''}} Local Government Area *</label>
         <!--name="{{ $namePrefix ? $namePrefix . '[lga_id]' : 'lga_id' }}"-->
         <select 
             x-model="selectedLga" 
@@ -55,7 +56,7 @@ git push -f origin main
     <!-- Ward Dropdown name="{{ $namePrefix ? $namePrefix . '[ward_id]' : 'ward_id' }}"
              -->
     <div>
-        <label class="block text-sm font-medium text-gray-700">Select Ward</label>
+        <label class="block capitalize text-sm font-medium text-gray-700">Select {{$namePrefix??''}} Ward</label>
         <select 
             x-model="selectedWard" 
             name="{{ $namePrefix ? $namePrefix . '_ward_id' : 'ward_id' }}"

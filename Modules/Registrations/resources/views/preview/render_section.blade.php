@@ -122,7 +122,7 @@
 
         @elseif (!in_array($key, $groupKeys) && isset($data[$key]))
             {{-- Render single key-value normally --}}
-            <div class="mb-3 ">
+            <div class="mb-1 ">
                 @php
                     $label = ucfirst(str_replace('_', ' ', $key));
                     $val = $data[$key];
@@ -135,7 +135,7 @@
                         }
                         echo "</ol>";
                     } else {
-                        echo "<p><span class='capitalize font-semibold'>$label:</span> " . e($val) . "</p>";
+                        echo "<div class='grid'><span class='capitalize font-semibold'>$label:</span> " . e($val) . "</div>";
                     }
                 @endphp
             </div>

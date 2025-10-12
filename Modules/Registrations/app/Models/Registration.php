@@ -33,6 +33,25 @@ class Registration extends Model
     /**
      * Get a section’s data (or default).
      */
+    public function getProprietorSection(string $section)
+    {
+        $data = $this->data ?? [];
+        return $data[$section] ?? null;
+    }
+
+    /**
+     * Set a section’s data.
+     */
+    public function setProprietorSection(string $section, array $data)
+    {
+        $all = $this->data ?? [];
+        $all[$section] = $data;
+        $this->data = $all;
+    }
+
+    /**
+     * Get a section’s data (or default).
+     */
     public function getSection(string $section)
     {
         $data = $this->cies_reports ?? [];

@@ -9,10 +9,16 @@
 
     <div x-data="{ rows: {{ json_encode(old('staffing', $data['staffing'] ?? [
         ['category' => 'Qualified (TRCN)', 'male' => '', 'female' => ''],
-        ['category' => 'Unqualified', 'male' => '', 'female' => ''],
+        ['category' => 'Unqualified (no TRCN)', 'male' => '', 'female' => ''],
         ['category' => 'Head Teachers/Principals', 'male' => '', 'female' => ''],
         ['category' => 'Teaching Staff', 'male' => '', 'female' => ''],
         ['category' => 'Non-Teaching Staff', 'male' => '', 'female' => ''],
+        ['category' => 'Phd', 'male' => '', 'female' => ''],
+        ['category' => 'PGDE/Masters', 'male' => '', 'female' => ''],
+        ['category' => 'DEGREE', 'male' => '', 'female' => ''],
+        ['category' => 'HND', 'male' => '', 'female' => ''],
+        ['category' => 'NCE', 'male' => '', 'female' => ''],
+        ['category' => 'OTHERS', 'male' => '', 'female' => ''],
     ])) }} }">
 
         <table class="table-auto w-full border mb-4">

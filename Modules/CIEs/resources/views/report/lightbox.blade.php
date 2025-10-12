@@ -51,7 +51,7 @@
     >
         <div class="relative">
             <button 
-                class="absolute top-2 right-2 text-white text-2xl font-bold"
+                class="absolute top-2 right-2 bg-black rounded text-white text-2xl font-bold"
                 @click="lightboxOpen = false"
             >&times;</button>
 

@@ -51,7 +51,7 @@
                                     <p><strong>Payment ID:</strong> {{ $payment1['id'] }}</p>-->
                                     <p><strong>Reference:</strong> {{ $payment1['reference'] ?? 'N/A' }}</p>
                                     <p><strong>Type:</strong> {{ ucfirst($payment1['payment_type']) }}</p>
-                                    <p><strong>Status:</strong> {{ ucfirst($payment1['status']) }}</p>
+                                    <p class="capitalize"><strong>Status:</strong> Payment {{ ucfirst($payment1['status']) }}</p>
                                     <p><strong>Amount Paid:</strong> ₦{{ number_format($payment1['meta']['amount'],2) }}</p>
                                 </div>
                                 <div>
@@ -76,7 +76,7 @@
 
 @if($application->status!="approved")
 @php
-$tabslist=['Payment Method: Bank Transfer','Payment Method: Online (Paystack)'];
+$tabslist=['Previous Registration Payment Mode','New Registration Payment: Online (Paystack)'];
 @endphp
 
 <x-tabs :labels="$tabslist">

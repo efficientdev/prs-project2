@@ -7,7 +7,13 @@
  //print_r(implode("','",array_keys( $sectionA)));
     // Define order you want keys to appear
     $order = [
-        'report_title','school_name','zonal_office','approval_number','reporting_period','lga','category'
+        //'report_title',
+        'date_of_inspection',
+        'school_name',
+        //'zonal_office',
+        //'approval_number',
+        //'reporting_period',
+        'lga','category'
     ];
      
     // Define groups (tables) of multiple keys to show side by side
@@ -18,7 +24,7 @@
         $data=$report->cies_reports;
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionA'], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $data['sectionA']??[], 'groups' => $groups, 'order' => $order])
 
 
 
@@ -46,7 +52,7 @@
         $data=$report->cies_reports;
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionB'], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $data['sectionB']??[], 'groups' => $groups, 'order' => $order])
 
 
 
@@ -74,7 +80,7 @@
         $data=$report->cies_reports;
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionC'], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $data['sectionC']??[], 'groups' => $groups, 'order' => $order])
 
 
 <div class="text-xl mb-2">Section D</div>
@@ -101,7 +107,7 @@
         $data=$report->cies_reports;
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionD'], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $data['sectionD']??[], 'groups' => $groups, 'order' => $order])
 
 <div class="text-xl mb-2">Section E</div>
 <hr/>
@@ -126,11 +132,35 @@
         $data=$report->cies_reports;
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionG'], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $data['sectionG']??[], 'groups' => $groups, 'order' => $order])
 
 
 @php
-$data=$report->cies_reports['sectionG'];
+$data=$report->cies_reports['sectionH']??[];
+
+$photos= \Modules\CIEs\Services\CieKonstants::getPhotoList()??[];
+
 @endphp
 
+@foreach($photos as $uploadItem)
+     
+    <div class="text-xl font-bold capitalize mt-5 mb-2 border-b">{{$uploadItem}}</div>
+
+    @php
+    $data['docs']=$data['uploads'][$uploadItem]??[];
+
+    //print_r($data);
+    @endphp
+    @if(empty($data['docs']))
+    <div>No photos found</div>
+    @else
     @include('cies::report.lightbox')
+    @endif
+@endforeach
+
+
+<?php
+/*
+@include('cies::report.lightbox')
+*/
+?>

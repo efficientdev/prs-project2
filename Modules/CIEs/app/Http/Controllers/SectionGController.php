@@ -10,6 +10,7 @@ use Modules\Registrations\Models\{RegistrationApproval,RegistrationApprovalStage
 use Modules\Registrations\Services\ApprovalService;
 
 use Modules\Applications\Notifications\{ApplicantInputRequested,ApplicationStatusUpdated,ApplicationRestarted,ApplicationRejected};
+use Modules\CIEs\Services\CieKonstants;//getPhotoList
 
 class SectionGController extends CiesBaseController
 {
@@ -17,8 +18,12 @@ class SectionGController extends CiesBaseController
     {
         $report = $this->findReportOrFail($reportId);
         $data = $report->getSection('sectionG') ?? [];
+        $data2 = $report->getSection('sectionH') ?? [];
 
-        return view('cies::report.section_g_form', compact('report', 'data','reportId'));
+
+        $photos=CieKonstants::getPhotoList();
+
+        return view('cies::report.section_g_form', compact('report', 'data','reportId','photos','data2'));
     }
 
     public function store(Request $request, int $reportId)
@@ -33,7 +38,7 @@ class SectionGController extends CiesBaseController
 
         $report = $this->findReportOrFail($reportId);
 
-        if ($request->has('docs')) {
+        /*if ($request->has('docs')) {
             # code...
             foreach ($request->file('docs') as $file) {
                 $path = $file->store('attachments', 'public'); // saves to storage/app/public/attachments
@@ -48,18 +53,30 @@ class SectionGController extends CiesBaseController
             $docs=array_merge($idocs,$storedFiles);
             $validated['docs']=$docs;
         
-        }
+        }*/
 
         $this->saveSection($report, 'sectionG', $validated);
 
         $stage_id=RegistrationApprovalStage::where('role_name','CIE')->first()->id;
-        $approval=RegistrationApproval::where([
+
+        $pendingapprovals=RegistrationApproval::where([
             'registration_id'=>$reportId,
-            'registration_approval_stage_id'=>$stage_id
-        ])->first();
+            'registration_approval_stage_id'=>$stage_id,
+            'status'=>'pending'
+        ])->get(); 
+        if ($pendingapprovals->count()>0) {
+            # code...
+        }else{
+            
+            $approval=RegistrationApproval::where([
+                'registration_id'=>$reportId,
+                'registration_approval_stage_id'=>$stage_id
+            ])->first();
+
+            (new ApprovalService)->approve($approval, auth()->user(), $request->observations??'n/a');
+        }
 
 
-        (new ApprovalService)->approve($approval, auth()->user(), $request->observations??'n/a');
 
         /*if(isset($application->owner)){
             try {

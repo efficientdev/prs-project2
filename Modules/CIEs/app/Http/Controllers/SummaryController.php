@@ -10,6 +10,13 @@ class SummaryController extends Controller
 {
     public function show(int $reportId)
     {
+    	$photos=[
+    		'Front view of the School with school gate',
+			'classroom showing seating arrangement and white board',
+			'Toilet facilities',
+			'Laboratory (if available)'
+    	];
+
         $report = Registration::findOrFail($reportId);
         return view('cies::summary', compact('report'));
     }

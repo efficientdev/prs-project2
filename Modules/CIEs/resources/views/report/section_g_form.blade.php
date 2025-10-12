@@ -2,16 +2,19 @@
 @php
 //$data=$sectionG;
 @endphp
-<form method="POST" action="{{ route('cies.sectionG.store', $report->id) }}" enctype="multipart/form-data">
-    @csrf
-
     <h2 class="text-lg font-bold mb-4">Section E: Observations & Recommendations</h2>
 
     
-
+    <?php
+    /*
     @include('cies::report.lightbox')
-    @include('cies::report.uploadbox')
+    */
+    ?>
+    @include('cies::report.uploadbox2')
 
+
+<form method="POST" action="{{ route('cies.sectionG.store', $report->id) }}" enctype="multipart/form-data">
+    @csrf
 
 
 
