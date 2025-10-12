@@ -45,7 +45,7 @@
             <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Payment Details</h3>
 
             <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-                <li><strong>Amount:</strong> {{ data_get($payment->meta, 'amount') ?? '—' }}</li>
+                <li><strong>Amount:</strong>  ₦{{ number_format(data_get($payment->meta, 'amount') ?? '0' ,2) }}  </li>
 
                 @if ($payment->payment_type === 'bank')
                     <li><strong>SB:</strong> {{ data_get($payment->meta, 'sb') ?? '—' }}</li>

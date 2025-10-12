@@ -1,5 +1,5 @@
  <x-app-layout>
-<div class="mb-3 text-xl font-bold">Pending Approvals</div>
+<div class="mb-3 text-xl font-bold">Approved Applications Pending Approval Fee Payment</div>
 
 
  @if(count($forms) == 0)
@@ -7,8 +7,8 @@
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
                 <i class="fas fa-inbox text-gray-400 text-2xl"></i>
             </div>
-            <h3 class="text-lg font-medium text-gray-900 capitalize my-1">No registrations pending yet</h3>
-            <p class="text-gray-500 max-w-md mx-auto">When there are pending registrations they will appear here.</p> 
+            <h3 class="text-lg font-medium text-gray-900 capitalize my-1">No Approved Applications Pending Approval Fee Payment yet</h3>
+            <p class="text-gray-500 max-w-md mx-auto">When there are Approved Applications Pending Approval Fee Payment, they will appear here.</p> 
         </div>
         @else
 
