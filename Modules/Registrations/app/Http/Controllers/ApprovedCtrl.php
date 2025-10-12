@@ -22,7 +22,8 @@ class ApprovedCtrl extends Controller
 
 
         $approvals = RegistrationApproval::with('application', 'stage')
-            ->whereNotIn('registration_approval_stage_id',$lastStage->id)
+            //->whereNotIn('registration_approval_stage_id',$lastStage->id)
+            ->where('registration_approval_stage_id',$lastStage->id)
             ->with('approvedApprovalPayment')
             ->where('status', 'approved')
             ->paginate(10); 
