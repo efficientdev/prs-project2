@@ -38,15 +38,18 @@
         <label>Laboratories</label>
         @php
             $labs = old('laboratories', $data['laboratories'] ?? []);
+            //, 'Others'
         @endphp
         <div class="space-y-2">
-            @foreach(['Science', 'ICT', 'Home Economics', 'Others'] as $lab)
+            @foreach(['Science', 'ICT', 'Home Economics'] as $lab)
                 <label>
                     <input type="checkbox" name="laboratories[]" value="{{ $lab }}" {{ in_array($lab, $labs) ? 'checked' : '' }}> {{ $lab }}
                 </label>
             @endforeach
         </div>
     </div>
+    
+    @include('cies::components.other-labs')
 
     <div class="mb-4">
         <label>Electricity</label>

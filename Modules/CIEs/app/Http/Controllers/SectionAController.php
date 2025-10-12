@@ -36,15 +36,15 @@ class SectionAController extends CiesBaseController
             //'approval_number' => 'nullable|string|max:100',
             //'category' => 'required|in:Nursery,Primary,JSS,SSS,Combined',
             //'lga' => 'required|string|max:255',
-            'category_id' => 'nullable',
+            //'category_id' => 'nullable',
             'lga_id' => 'required',
             //'zonal_office' => 'required|string|max:255',
         ]);
 
 
-        if (in_array('category_id', array_keys($validated))) { 
+        /*if (in_array('category_id', array_keys($validated))) { 
             $validated['category']=Category::find($validated['category_id'])->category_name??'n/a';
-        }
+        }*/
         if (in_array('lga_id', array_keys($validated))) { 
             $validated['lga']=Lga::find($validated['lga_id'])->lga_name??'n/a';
         }

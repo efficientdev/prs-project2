@@ -23,6 +23,8 @@ class SectionDController extends CiesBaseController
             'library' => 'required|in:Yes,No',
             'laboratories' => 'nullable|array',
             'laboratories.*' => 'string|max:255',
+            'other_labs' => ['nullable', 'array'],
+        'other_labs.*' => ['string', 'max:255'],
             'electricity' => 'required|in:Yes,No',
             'water_supply' => 'required|in:Borehole,Well,None',
             'security' => 'nullable|array',

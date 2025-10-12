@@ -12,8 +12,8 @@
                 Type: <span class="font-medium capitalize">{{ $payment->payment_type }}</span>
             </p>
             <p class="text-sm text-gray-600">
-                Status: <span class="inline-block px-2 py-1 text-xs rounded 
-                    {{ $payment->status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                Status:  <span class="inline-block px-2 py-1 text-xs rounded 
+                    {{ $payment->status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">Payment 
                     {{ ucfirst($payment->status) }}
                 </span>
             </p>
@@ -44,7 +44,7 @@
     //$url = route($redirect['route'], $redirect['params']);
 @endphp
 
-<a href="{{ $redirect['route'] }}" class="inline-flex items-center text-sm text-blue-600 hover:underline">
+<a href="{{ $redirect['route'] }}" class="inline-flex mt-5 items-center text-sm text-blue-600 hover:underline">
                 <x-heroicon-o-arrow-left class="w-4 h-4 mr-1" />
                 Back to list</a>
 

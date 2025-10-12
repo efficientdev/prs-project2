@@ -59,6 +59,18 @@
                                         <li><strong>CMP:</strong> {{ $payment1['meta']['cmp'] }}</li>
                                         <li><strong>Phone:</strong> {{ $payment1['meta']['phone'] }}</li>
                                     </ul>@endif
+
+                                                                
+                                    @if($application->status=="approved")
+                                    <form method="post" action="{{route('registration.receipts.print',['id'=>$a->id])}}">
+                                        @csrf
+                                        <input type="hidden" name="type" value="application" />
+                                        
+                                        <x-primary-button class="ms-0 mt-2">
+                                            Download Receipt
+                                        </x-primary-button> 
+                                    </form> 
+                                    @endif
                                 </div>
                             </div>
                         </div>

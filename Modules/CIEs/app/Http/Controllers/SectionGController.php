@@ -64,8 +64,9 @@ class SectionGController extends CiesBaseController
             'registration_approval_stage_id'=>$stage_id,
             'status'=>'pending'
         ])->get(); 
-        if ($pendingapprovals->count()>0) {
+        if ($pendingapprovals->count()>1) {
             # code...
+            
         }else{
             
             $approval=RegistrationApproval::where([

@@ -42,7 +42,7 @@ $data=$sectionA;
                 <option value="{{ $option }}" @if(($data['category'] ?? '') == $option) selected @endif>{{ $option }}</option>
             @endforeach
         </select>
-    </div>-->
+    </div>
     <div>
         <label>Category <b class="text-danger">*</b></label>
         <x-select-input 
@@ -50,7 +50,7 @@ $data=$sectionA;
             :options="$categories" 
             :selected="old('category_id', $data['category_id'] ?? '')" 
         />
-    </div>
+    </div>-->
 
     <!--<div class="mb-4">
         <label>LGA</label>

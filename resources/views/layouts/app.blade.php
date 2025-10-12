@@ -105,8 +105,28 @@
 
                     <main class="flex-1 overflow-y-auto  px-0 pt-[50px] mb-1 mr-1 px-2 md:pr-5">
 
+<!-- Display all form errors -->
+@if ($errors->any())
+    <div class="mt-5 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+        <ul class="list-disc list-inside">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-            <!-- Display all form errors -->
+@if (session('success'))
+    <div class="mt-5 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+        <ul class="list-disc list-inside">
+            @foreach ((array) session('success') as $message)
+                <li>{{ $message }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+            <!-- Display all form errors 
 @if ($errors->any())
     <div class="alert alert-danger mt-5">
         <ul>
@@ -126,6 +146,8 @@
         </ul>
     </div>
 @endif
+-->
+
             <!-- Page Content 
             <main class="md:max-w-7xl pr-10" >-->
                  
