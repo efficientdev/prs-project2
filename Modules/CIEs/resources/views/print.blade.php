@@ -13,7 +13,8 @@
         //'zonal_office',
         //'approval_number',
         //'reporting_period',
-        'lga','category'
+        'lga'
+        //,'category'
     ];
      
     // Define groups (tables) of multiple keys to show side by side
