@@ -67,6 +67,15 @@
 <a href="{{route('srapprovals.my')}}">Pending School Approvals</a> 
 @endif
 
+
+@if(!auth()->user()->hasAnyRole(['proprietor']) )
+<div>Approved Applications </div>
+<a href="{{route('srapproved.index')}}"> - Fully Approved Schools</a> 
+<a href="{{route('afp.index')}}"> - pending Approval Fee </a> 
+@endif
+
+
+
 <!--
 @if(auth()->user()->hasAnyRole(['ADM','CIE']) )
 <a href="{{route('cie.applications.index')}}">Applications (CIE)</a>
@@ -107,7 +116,7 @@
 
 <!-- Display all form errors -->
 @if ($errors->any())
-    <div class="mt-5 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+    <div class="mt-5 p-4 bg-red-100 border border-red-400 text-red-700 rounded capitalize mb-5">
         <ul class="list-disc list-inside">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -117,7 +126,7 @@
 @endif
 
 @if (session('success'))
-    <div class="mt-5 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+    <div class="mt-5 p-4 bg-green-100 border border-green-400 text-green-700 rounded capitalize mb-5">
         <ul class="list-disc list-inside">
             @foreach ((array) session('success') as $message)
                 <li>{{ $message }}</li>

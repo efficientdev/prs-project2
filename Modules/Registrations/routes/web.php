@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Registrations\Http\Controllers\RegistrationsController;
 
 
-use Modules\Registrations\Http\Controllers\ApprovalController;
+use Modules\Registrations\Http\Controllers\{ApprovalController,ApprovedCtrl,ApprovalFeePending};
 
 use Modules\Registrations\Http\Controllers\{
     SectionAController, SectionBController, SectionCController,
@@ -32,6 +32,16 @@ Route::middleware(['auth', 'verified'])->prefix('school/registration')->group(fu
 
 //role:ADM
 Route::middleware(['auth', 'verified','role:ADM'])->prefix('school/registration')->group(function () {
+
+    //
+    Route::prefix('approved')->name('srapproved.')->group(function () {
+        Route::get('/list', [ApprovedCtrl::class, 'index'])->name('index');
+        Route::get('/{approval}', [ApprovedCtrl::class, 'show'])->name('show');
+    });
+    Route::prefix('approval/fee/pending')->name('afp.')->group(function () {
+        Route::get('/list', [ApprovalFeePending::class, 'index'])->name('index');
+        Route::get('/{approval}', [ApprovalFeePending::class, 'show'])->name('show');
+    });
 
 	Route::prefix('approvals')->name('srapprovals.')->group(function () {
 	    Route::get('/my', [ApprovalController::class, 'myApprovals'])->name('my');

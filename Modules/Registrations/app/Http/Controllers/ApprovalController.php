@@ -10,6 +10,7 @@ use Modules\Registrations\Models\RegistrationApproval;
 use Modules\Registrations\Models\RegistrationApprovalStage;
 use Modules\Registrations\Services\ApprovalService;
  
+use App\Models\{Category,Lga,Ward};
 
 class ApprovalController extends Controller
 {
@@ -39,12 +40,15 @@ class ApprovalController extends Controller
 
     public function show(RegistrationApproval $approval)
     {
+
+        $categories = collect(['' => 'Select Category'] + Category::pluck('category_name','id')->all()??[])->toArray();
+
         $approval->load('application.approvals');
         //Registrations::where('')->with('approvals')->first();
         $application=$approval->application;
-        return view('registrations::approvals.show', compact('approval','application'));
+        return view('registrations::approvals.show', compact('approval','application','categories'));
     }
-/*
+/* 
     public function approve(Request $request, RegistrationApproval $approval)
     {
         (new ApprovalService)->approve($approval, auth()->user(), $request->input('comments'));
@@ -80,7 +84,7 @@ class ApprovalController extends Controller
 
     //return back()->with('success', 'Application approved');
     return redirect()->route('srapprovals.my')
-            ->with('success', 'Application Queried');
+            ->with('success', $approval->stage->name.' Queried');
 }
 
     public function approve(Request $request, $approvalId)
@@ -88,6 +92,29 @@ class ApprovalController extends Controller
 
 
     $approval = RegistrationApproval::findOrFail($approvalId);
+
+    $application=$approval->application;
+
+    if ($request->has('category_id')) { 
+        $validated = $request->validate([  
+            'category_id' => 'required|exists:categories,id', 
+        ]);
+        if (in_array('category_id', array_keys($validated))) { 
+            $validated['category']=Category::find($validated['category_id'])->category_name??'n/a';
+        }
+        try { 
+            $sectionA=$application->cies_reports??[];
+            $sectionA['DPRS']=$sectionA['DPRS']??[];//$DPRS=$sectionA['DPRS']??[];
+            foreach ($validated as $key => $value) {
+                $sectionA['DPRS'][$key]=$value;
+            }
+            $application->cies_reports=$sectionA;
+            $application->save();
+        } catch (\Exception $e) {
+            
+        }
+    }
+
     if (!auth()->user()->hasRole($approval->stage->role_name) && !auth()->user()->hasRole('ADM')) {
         abort(403, 'You are not allowed to approve this stage.');
     }
@@ -104,7 +131,7 @@ class ApprovalController extends Controller
         
 
     (new ApprovalService)->approve($approval, auth()->user(), $request->comments);
-    return redirect()->route('srapprovals.my')->with('success', 'Application approved');
+    return redirect()->route('srapprovals.my')->with('success', $approval->stage->name.' approved');
 
     //return back()->with('success', 'Application approved');
 }
@@ -126,7 +153,7 @@ public function reject(Request $request, $approvalId)
     (new ApprovalService)->reject($approval, auth()->user(), $request->comments);
 
     return redirect()->route('srapprovals.my')
-            ->with('error', 'Application rejected');
+            ->with('error', $approval->stage->name.' rejected');
     //return back()->with('success', 'Application rejected');
 }
 

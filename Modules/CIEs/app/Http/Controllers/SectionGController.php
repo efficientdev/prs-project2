@@ -59,7 +59,7 @@ class SectionGController extends CiesBaseController
 
         $stage_id=RegistrationApprovalStage::where('role_name','CIE')->first()->id;
 
-        $pendingapprovals=RegistrationApproval::where([
+        /*$pendingapprovals=RegistrationApproval::where([
             'registration_id'=>$reportId,
             'registration_approval_stage_id'=>$stage_id,
             'status'=>'pending'
@@ -67,7 +67,7 @@ class SectionGController extends CiesBaseController
         if ($pendingapprovals->count()>1) {
             # code...
             
-        }else{
+        }else{*/
             
             $approval=RegistrationApproval::where([
                 'registration_id'=>$reportId,
@@ -75,7 +75,7 @@ class SectionGController extends CiesBaseController
             ])->first();
 
             (new ApprovalService)->approve($approval, auth()->user(), $request->observations??'n/a');
-        }
+        //}
 
 
 

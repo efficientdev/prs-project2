@@ -38,6 +38,7 @@ $approval->stage->name.' Report',
     <div class="py-5">
     <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('cies.sectionA.show',['report'=>$form->id])}}">Fill CIE Report</a>
 </div>
+    
     @else
 <x-tabs :labels="$tabslist">
 
@@ -45,6 +46,18 @@ $approval->stage->name.' Report',
     <x-slot name="tab0"> 
     <form method="POST" action="{{ route('srapprovals.approve', $approval) }}">
         @csrf
+        @if($approval->stage->role_name=="DPRS")
+        
+        <div>
+            <label>Category <b class="text-danger">*</b></label>
+            <x-select-input 
+                name='category_id'
+                :options="$categories" 
+                :selected="old('category_id', $data['category_id'] ?? '')" 
+            />
+        </div>
+
+        @endif
         <div class="mb-3">
             <label>Comments (optional)</label>
             <textarea name="comments" class="form-control"></textarea>

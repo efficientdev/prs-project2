@@ -17,16 +17,30 @@
         <tr>
             <th>Application</th>
             <th>Stage</th>
-            <th>Actions</th>
+            <th>Status<!--Actions--></th>
         </tr>
     </thead>
     <tbody>
         @foreach ($approvals as $approval)
         <tr>
             <td>{{ $approval->application->data['sectionA']['proposed_name']??'' }}<br/> {{ $approval->application->category->category_name??'' }}</td>
-            <td>{{ $approval->stage->name }}</td>
+            <td>{{ $approval->stage->name }}
+
+
+            </td>
             <td>
-                <a href="{{ route('srapprovals.show', $approval) }}" class="btn btn-sm btn-primary">Review</a>
+
+                @if($approval->approvedApprovalPayment==null)
+                    <div>No approval fee payment yet</div>
+                @else
+                    @if($approval->approvedApprovalPayment->status=="approved")
+                        <div>Fully Approved</div>
+                    @else
+                        <div>Pending Approval Fee Payment Confirmation</div>
+                    @endif
+                @endif
+                
+                <a href="{{ route('afp.show', $approval) }}" class="btn btn-sm btn-primary">Review</a>
             </td>
         </tr>
         @endforeach
