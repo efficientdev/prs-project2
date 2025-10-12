@@ -69,7 +69,7 @@
 
 
 @if(!auth()->user()->hasAnyRole(['proprietor']) )
-<div>Approved Applications </div>
+<div class="mt-5 border-b pb-1">Approved Applications </div>
 <a href="{{route('srapproved.index')}}"> - Fully Approved Schools</a> 
 <a href="{{route('afp.index')}}"> - pending Approval Fee </a> 
 @endif
