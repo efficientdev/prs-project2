@@ -24,4 +24,11 @@ class CieKonstants
             'Laboratory (if available)'
         ];
 	}
+	public static function getCompulsoryPhotoList(){
+		return [
+            'Front view of the School with school gate',
+            'classroom showing seating arrangement and white board',
+            'Toilet facilities',
+        ];
+	}
 }

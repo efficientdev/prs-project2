@@ -12,13 +12,7 @@
         ['category' => 'Unqualified (no TRCN)', 'male' => '', 'female' => ''],
         ['category' => 'Head Teachers/Principals', 'male' => '', 'female' => ''],
         ['category' => 'Teaching Staff', 'male' => '', 'female' => ''],
-        ['category' => 'Non-Teaching Staff', 'male' => '', 'female' => ''],
-        ['category' => 'Phd', 'male' => '', 'female' => ''],
-        ['category' => 'PGDE/Masters', 'male' => '', 'female' => ''],
-        ['category' => 'DEGREE', 'male' => '', 'female' => ''],
-        ['category' => 'HND', 'male' => '', 'female' => ''],
-        ['category' => 'NCE', 'male' => '', 'female' => ''],
-        ['category' => 'OTHERS', 'male' => '', 'female' => ''],
+        ['category' => 'Non-Teaching Staff', 'male' => '', 'female' => ''], 
     ])) }} }">
 
         <table class="table-auto w-full border mb-4">
@@ -41,6 +35,44 @@
                         </td>
                         <td class="border p-1">
                             <input type="number" :name="`staffing[${i}][female]`" x-model.number="row.female" class="w-full">
+                        </td>
+                        <td class="border p-1 text-center" x-text="(row.male || 0) + (row.female || 0)"></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+
+    <div>Qualifications Data</div>
+    <div x-data="{ rows: {{ json_encode(old('teacher_qualifications', $data['teacher_qualifications'] ?? [
+        ['category' => 'Phd', 'male' => '', 'female' => ''],
+        ['category' => 'PGDE/Masters', 'male' => '', 'female' => ''],
+        ['category' => 'DEGREE', 'male' => '', 'female' => ''],
+        ['category' => 'HND', 'male' => '', 'female' => ''],
+        ['category' => 'NCE', 'male' => '', 'female' => ''],
+        ['category' => 'OTHERS', 'male' => '', 'female' => ''],
+    ])) }} }">
+
+        <table class="table-auto w-full border mb-4">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="p-2 border">Category</th>
+                    <th class="p-2 border">Male</th>
+                    <th class="p-2 border">Female</th>
+                    <th class="p-2 border">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="(row, i) in rows" :key="i">
+                    <tr>
+                        <td class="border p-1">
+                            <input type="text" :name="`teacher_qualifications[${i}][category]`" x-model="row.category" class="w-full" readonly >
+                        </td>
+                        <td class="border p-1">
+                            <input type="number" :name="`teacher_qualifications[${i}][male]`" x-model.number="row.male" class="w-full">
+                        </td>
+                        <td class="border p-1">
+                            <input type="number" :name="`teacher_qualifications[${i}][female]`" x-model.number="row.female" class="w-full">
                         </td>
                         <td class="border p-1 text-center" x-text="(row.male || 0) + (row.female || 0)"></td>
                     </tr>

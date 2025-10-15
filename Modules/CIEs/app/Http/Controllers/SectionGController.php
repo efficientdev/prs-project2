@@ -25,6 +25,18 @@ class SectionGController extends CiesBaseController
 
         return view('cies::report.section_g_form', compact('report', 'data','reportId','photos','data2'));
     }
+    protected function findMissingKeys(array $keysToCheck, array $arrayToCheckAgainst): array {
+        $missingKeys = [];
+
+        foreach ($keysToCheck as $key) {
+            if (!array_key_exists($key, $arrayToCheckAgainst)) {
+                $missingKeys[] = $key;
+            }
+        }
+
+        return $missingKeys;
+    }
+
 
     public function store(Request $request, int $reportId)
     {
@@ -34,6 +46,7 @@ class SectionGController extends CiesBaseController
         ]);
 
         $storedFiles = [];
+
 
 
         $report = $this->findReportOrFail($reportId);
@@ -54,6 +67,18 @@ class SectionGController extends CiesBaseController
             $validated['docs']=$docs;
         
         }*/
+
+        $photos=CieKonstants::getCompulsoryPhotoList();
+        $data2 = $report->getSection('sectionH') ?? [];
+        //$data3 = array_keys($data2['uploads']??[]);
+        $missing = $this->findMissingKeys($photos, $data2['uploads']??[]);
+        if (count($missing) !== 0) {
+            $message = implode(', ', $missing) . (count($missing) === 1 ? " upload is required" : " uploads are required");
+            return back()->with('errors', $message);
+        }
+
+
+
 
         $this->saveSection($report, 'sectionG', $validated);
 

@@ -64,10 +64,15 @@ class BaseSectionController extends Controller
         return view("registrations::list", compact('forms'));
     }
     public function create(Request $request,$cat_id){
+
+
+        $category=PrvInsCategory::find($cat_id); 
+
         $form=Registration::create([
             'owner_id'=>$request->user()->id,
             'data'=>[
                 'category_id'=>$cat_id,
+                'category'=>$category->category_name??'',
                 'type_id'=>$cat_id,
             ]
         ]);

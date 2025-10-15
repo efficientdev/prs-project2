@@ -12,8 +12,8 @@
         <input type="number" name="classrooms_in_use" value="{{ old('classrooms_in_use', $data['classrooms_in_use'] ?? '') }}" class="w-full border p-2">
     </div>
     <div class="mb-4">
-        <label>Class Dimension in feet</label>
-        <input type="number" name="class_dimension_in_feet" value="{{ old('class_dimension_in_feet', $data['class_dimension_in_feet'] ?? '') }}" class="w-full border p-2">
+        <label>Class Dimension by feet</label>
+        <input type="number" name="class_dimension_by_feet" value="{{ old('class_dimension_by_feet', $data['class_dimension_by_feet'] ?? '') }}" class="w-full border p-2">
     </div>
 
     <div class="mb-4 capitalize">

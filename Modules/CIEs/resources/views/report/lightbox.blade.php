@@ -32,7 +32,7 @@
                         </div>-->
                     @else
                         <div class="mb-1">
-                            <a href="{{ $url }}" target="_blank" class="text-blue-600 underline">
+                            <a href="{{ $url }}" target="_blank" class="text-blue-600 line-clamp-1 underline">
                                 {{ basename($doc) }}
                             </a>
                         </div>

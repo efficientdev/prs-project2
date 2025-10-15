@@ -22,6 +22,10 @@ class SectionCController extends CiesBaseController
             'staffing.*.category' => 'required|string',
             'staffing.*.male' => 'nullable|integer|min:0',
             'staffing.*.female' => 'nullable|integer|min:0',
+            'teacher_qualifications' => 'required|array',
+            'teacher_qualifications.*.category' => 'required|string',
+            'teacher_qualifications.*.male' => 'nullable|integer|min:0',
+            'teacher_qualifications.*.female' => 'nullable|integer|min:0',
         ]);
 
         $report = $this->findReportOrFail($reportId);

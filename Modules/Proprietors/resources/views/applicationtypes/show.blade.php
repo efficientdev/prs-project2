@@ -10,7 +10,7 @@
     <div><span class="text-2xl font-bold capitalize">Dimension of land (min ft) </span><br/>{{$v3->category_min_breadth}} X {{$v3->category_min_length}}</div>
 
     <div>
-        <div class="flex justify-between"><div><span class="text-2xl font-bold capitalize">Approval Fee</span> <br/># {{number_format($v3->category_app_fee)}} </div>
+        <div class="flex justify-between"><div><span class="text-2xl font-bold capitalize">Registration Fee</span> <br/># {{number_format($v3->category_app_fee)}} </div>
         <form method="get" action="{{route('registration.create',['cat_id'=>$v3->id])}}">
 
                 <x-primary-button class="ms-0 mt-5">

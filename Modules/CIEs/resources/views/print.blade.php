@@ -67,7 +67,8 @@
  //print_r(implode("','",array_keys( $sectionC)));
     // Define order you want keys to appear
     $order = [
-        'staffing'
+        'staffing',
+        'teacher_qualifications'
     ];
      
     // Define groups (tables) of multiple keys to show side by side
@@ -77,6 +78,7 @@
     ];
     $arrayTableColumns =[ 
         'staffing' =>['category','male', 'female'],
+        'teacher_qualifications' =>['category','male', 'female'],
      ];
         $data=$report->cies_reports;
 @endphp
@@ -94,7 +96,7 @@
  //print_r(implode("','",array_keys( $sectionD)));
     // Define order you want keys to appear
     $order = [
-        'library','security','electricity','laboratories','other_labs','water_supply','classrooms_in_use','average_class_size','functional_toilets'
+        'library','security','electricity','laboratories','other_labs','water_supply','classrooms_in_use','class_dimension_by_feet','average_class_size','functional_toilets'
     ];
      
     // Define groups (tables) of multiple keys to show side by side
@@ -110,7 +112,7 @@
  
 @include('registrations::preview.render_section', ['data' => $data['sectionD']??[], 'groups' => $groups, 'order' => $order])
 
-<div class="text-xl mb-2">Section E</div>
+<div class="text-xl mb-2">Section D</div>
 <hr/>
 
  @php

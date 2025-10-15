@@ -21,13 +21,14 @@ class Registration extends Model
     /**
      * The attributes that are mass assignable. 'emis_code', 
      */
-    protected $fillable = ['owner_id','data','status','cies_reports','submitted','submitted_at'];
+    protected $fillable = ['owner_id','data','status','cies_reports','submitted','submitted_at','prs_4_report'];
  
 
     protected $casts = [
         'data' => 'array',
         'cies_reports'=>'array',
-        'submitted'=>'boolean'
+        'submitted'=>'boolean',
+        'prs_4_report'=>'array',
     ];
 
     /**

@@ -43,7 +43,7 @@
                     {{ implode(' / ', array_map(fn($k) => ucfirst(str_replace('_', ' ', $k)), $keys)) }}
                 </h3>-->
 
-                <table class="w-full border-collapse border border-gray-300">
+                <table class="w-full my-3 border-collapse border border-gray-300">
                     <thead>
                         <tr class="bg-gray-100">
                             @foreach ($keys as $k)
@@ -94,7 +94,9 @@
         @endphp
 
         </div><div class="grid gap-2">
-        <div class="mb-6 rounded">
+        <div class="my-3 rounded">
+            <h3 class="font-semibold capitalize my-2">{{  ucfirst(str_replace('_', ' ', $key) ) }}</h3>
+                
             <table class="w-full border-collapse border border-gray-300">
                 <thead>
                     <tr class="bg-gray-100">
@@ -128,7 +130,7 @@
                     $val = $data[$key];
 
                     if (is_array($val)) {
-                        echo "<span class='uppercase'><strong >$label:</strong></span><ol class='list-disc ml-6'>";
+                        echo "<span class='uppercase'><strong >$label:</strong></span><ol class='list-disc ml-6 '>";
                         foreach ($val as $k => $v) {
                             //echo "<li>" . e("$k : $v") . "</li>";
                             echo "<li>" . e("$v") . "</li>";
@@ -140,7 +142,7 @@
                 @endphp
             </div>
         @elseif ($key=="")
-        <div></div>
+        <div class="h-10"></div>
         @endif
     @endforeach
 </div></div>
