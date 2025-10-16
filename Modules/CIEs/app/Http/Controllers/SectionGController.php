@@ -74,7 +74,8 @@ class SectionGController extends CiesBaseController
         $missing = $this->findMissingKeys($photos, $data2['uploads']??[]);
         if (count($missing) !== 0) {
             $message = implode(', ', $missing) . (count($missing) === 1 ? " upload is required" : " uploads are required");
-            return back()->with('errors', $message);
+            //return back()->with('errors', $message);
+            return back()->withErrors(['uploads' => $message]);
         }
 
 
