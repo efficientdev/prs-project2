@@ -8,6 +8,7 @@
             ['category' => 'DEGREE', 'male' => '', 'female' => '', 'remarks' => ''],
             ['category' => 'HND', 'male' => '', 'female' => '', 'remarks' => ''],
             ['category' => 'NCE', 'male' => '', 'female' => '', 'remarks' => ''],
+            ['category' => 'Non Teaching Staff', 'male' => '', 'female' => '', 'remarks' => ''],
             ['category' => 'OTHERS', 'male' => '', 'female' => '', 'remarks' => ''],
         ])) }} 
     }"

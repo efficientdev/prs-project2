@@ -6,7 +6,7 @@
   /**/
     // Define order you want keys to appear
     $order = ['name_of_school','type_of_school','location_of_school',
-    'year_founded','','date_of_inspection','name_of_inspector','','','philosophy','motto','school_fees','salary_of_teachers','physical_facilities','learning_facilities','games_facilities','',
+    'year_founded','','date_of_inspection','name_of_inspectors','','','philosophy','motto','school_fees','salary_of_teachers','physical_facilities','learning_facilities','games_facilities','',
     'school_record',
     'other_record',
         'levels',

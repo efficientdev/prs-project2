@@ -17,7 +17,8 @@ class SectionDController extends CiesBaseController
     {
         $validated = $request->validate([
             'classrooms_in_use' => 'nullable|integer|min:0',
-            'class_dimension_by_feet'=> 'nullable|integer|min:0',
+            //'class_dimension_by_feet'=> 'nullable|integer|min:0',
+            'class_dimension'=> 'required|array|min:2'
             'average_class_size' => 'nullable|integer|min:0',
             'functional_toilets' => 'nullable|integer|min:0',
             'library' => 'required|in:Yes,No',

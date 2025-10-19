@@ -96,7 +96,7 @@
  //print_r(implode("','",array_keys( $sectionD)));
     // Define order you want keys to appear
     $order = [
-        'library','security','electricity','laboratories','other_labs','water_supply','classrooms_in_use','class_dimension_by_feet','average_class_size','functional_toilets'
+        'library','security','electricity','laboratories','other_labs','water_supply','classrooms_in_use','class_dimension','average_class_size','functional_toilets'
     ];
      
     // Define groups (tables) of multiple keys to show side by side

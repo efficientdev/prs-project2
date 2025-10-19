@@ -30,8 +30,15 @@
 
     <div>
         <label class="block text-sm font-medium text-gray-700">
-           NAME OF INSPECTOR : 
-        </label><div class="mt-1 block w-full rounded-md p-2  border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200  focus:ring-opacity-50">{{auth()->user()->name??''}}</div>
+           NAME OF INSPECTORS : 
+        </label>
+        <input 
+            type="text"
+            name="name_of_inspectors"
+            required
+            value="{{ old('name_of_inspectors', $data['name_of_inspectors'] ?? '') }}"
+            class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+        /><!--<div class="mt-1 block w-full rounded-md p-2  border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200  focus:ring-opacity-50">{{auth()->user()->name??''}}</div>-->
     </div>
 
     <!-- Philosophy -->

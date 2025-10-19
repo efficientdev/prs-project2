@@ -42,6 +42,7 @@ class PRSsController extends Controller
             'other_record' => ['nullable', 'array'],
             'other_record.*' => ['string', 'max:255'],
             'year_founded'         => ['required', 'integer', 'digits:4', 'min:1800', 'max:' . now()->year],
+            'name_of_inspectors'   => ['required', 'string'],
             'date_of_inspection'   => ['required', 'date', 'before_or_equal:today'],
             'philosophy'           => ['required', 'string', 'max:2000'],
             'motto'                => ['required', 'string', 'max:255'],

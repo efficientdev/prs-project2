@@ -7,14 +7,7 @@
 
     <h2 class="text-lg font-bold mb-4">Section C: Staffing Data</h2>
 
-    <div x-data="{ rows: {{ json_encode(old('staffing', $data['staffing'] ?? [
-        ['category' => 'Qualified (TRCN)', 'male' => '', 'female' => ''],
-        ['category' => 'Unqualified (no TRCN)', 'male' => '', 'female' => ''],
-        ['category' => 'Head Teachers/Principals', 'male' => '', 'female' => ''],
-        ['category' => 'Teaching Staff', 'male' => '', 'female' => ''],
-        ['category' => 'Non-Teaching Staff', 'male' => '', 'female' => ''], 
-    ])) }} }">
-
+    <div x-data="staffingTable()" class="mb-4">
         <table class="table-auto w-full border mb-4">
             <thead>
                 <tr class="bg-gray-100">
@@ -28,20 +21,87 @@
                 <template x-for="(row, i) in rows" :key="i">
                     <tr>
                         <td class="border p-1">
-                            <input type="text" :name="`staffing[${i}][category]`" x-model="row.category" class="w-full" readonly >
+                            <input type="text" :name="`staffing[${i}][category]`" x-model="row.category" class="w-full bg-gray-100" readonly>
                         </td>
                         <td class="border p-1">
-                            <input type="number" :name="`staffing[${i}][male]`" x-model.number="row.male" class="w-full">
+                            <input 
+                                type="number" 
+                                :name="`staffing[${i}][male]`" 
+                                x-model.number="row.male" 
+                                class="w-full"
+                                :readonly="isCalculatedRow(i)"
+                            >
                         </td>
                         <td class="border p-1">
-                            <input type="number" :name="`staffing[${i}][female]`" x-model.number="row.female" class="w-full">
+                            <input 
+                                type="number" 
+                                :name="`staffing[${i}][female]`" 
+                                x-model.number="row.female" 
+                                class="w-full"
+                                :readonly="isCalculatedRow(i)"
+                            >
                         </td>
-                        <td class="border p-1 text-center" x-text="(row.male || 0) + (row.female || 0)"></td>
+                        <td class="border p-1 text-center" x-text="totalForRow(row)"></td>
                     </tr>
                 </template>
+
+                <!-- Final Total Row -->
+                <tr class="bg-gray-100 font-bold">
+                    <td class="border p-2 text-right" colspan="3">Final Total</td>
+                    <td class="border p-2 text-center" x-text="finalTotal()"></td>
+                </tr>
             </tbody>
         </table>
     </div>
+    <script>
+    function staffingTable() {
+        return {
+            rows: {{ json_encode(old('staffing', $data['staffing'] ?? [
+                { category: 'Qualified (TRCN)', male: '', female: '' },
+                { category: 'Unqualified (no TRCN)', male: '', female: '' },
+                { category: 'Head Teachers/Principals', male: '', female: '' },
+                { category: 'Teaching Staff', male: '', female: '' },
+                { category: 'Non-Teaching Staff', male: '', female: '' },
+            ])) }},
+
+            isCalculatedRow(index) {
+                // Index 3 = Teaching Staff (calculated)
+                // Index 5 = Final Total row is outside the template
+                return index === 3;
+            },
+
+            totalForRow(row) {
+                const male = parseInt(row.male) || 0;
+                const female = parseInt(row.female) || 0;
+                return male + female;
+            },
+
+            updateTeachingStaff() {
+                const qualified = this.rows[0];
+                const unqualified = this.rows[1];
+                const head = this.rows[2];
+                const teaching = this.rows[3];
+
+                teaching.male = (parseInt(qualified.male) || 0) + (parseInt(unqualified.male) || 0) + (parseInt(head.male) || 0);
+                teaching.female = (parseInt(qualified.female) || 0) + (parseInt(unqualified.female) || 0) + (parseInt(head.female) || 0);
+            },
+
+            finalTotal() {
+                this.updateTeachingStaff();
+
+                const teaching = this.rows[3];
+                const nonTeaching = this.rows[4];
+
+                const total = 
+                    (parseInt(teaching.male) || 0) + (parseInt(teaching.female) || 0) +
+                    (parseInt(nonTeaching.male) || 0) + (parseInt(nonTeaching.female) || 0);
+
+                return total;
+            }
+        }
+    }
+    </script>
+
 
     <div>Qualifications Data</div>
     <div x-data="{ rows: {{ json_encode(old('teacher_qualifications', $data['teacher_qualifications'] ?? [
@@ -74,7 +134,7 @@
                         <td class="border p-1">
                             <input type="number" :name="`teacher_qualifications[${i}][female]`" x-model.number="row.female" class="w-full">
                         </td>
-                        <td class="border p-1 text-center" x-text="(row.male || 0) + (row.female || 0)"></td>
+                        <td class="border p-1 text-center" x-text="(parseInt(row.male) || 0) + (parseInt(row.female) || 0)"></td>
                     </tr>
                 </template>
             </tbody>

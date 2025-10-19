@@ -11,10 +11,31 @@
         <label>Number of classrooms in use</label>
         <input type="number" name="classrooms_in_use" value="{{ old('classrooms_in_use', $data['classrooms_in_use'] ?? '') }}" class="w-full border p-2">
     </div>
-    <div class="mb-4">
+
         <label>Class Dimension by feet</label>
-        <input type="number" name="class_dimension_by_feet" value="{{ old('class_dimension_by_feet', $data['class_dimension_by_feet'] ?? '') }}" class="w-full border p-2">
+    <div class="grid grid-cols-2 gap-4">
+    <div class="mb-4">
+        <label for="class_dimension_width" class="block mb-1">Width</label>
+        <input 
+            type="text" 
+            id="class_dimension_width"
+            name="class_dimension[width]" 
+            value="{{ old('class_dimension.width', $data['class_dimension']['width'] ?? '') }}" 
+            class="w-full border p-2"
+        >
     </div>
+    <div class="mb-4">
+        <label for="class_dimension_length" class="block mb-1">Length</label>
+        <input 
+            type="text" 
+            id="class_dimension_length"
+            name="class_dimension[length]" 
+            value="{{ old('class_dimension.length', $data['class_dimension']['length'] ?? '') }}" 
+            class="w-full border p-2"
+        >
+    </div>
+</div>
+
 
     <div class="mb-4 capitalize">
         <label>Average class size (number of students)</label>
