@@ -53,20 +53,20 @@
             </tbody>
         </table>
     </div>
-    
     <script>
     function staffingTable() {
         return {
-            rows: @json(old('staffing', $data['staffing'] ?? [
+            rows: {{ json_encode(old('staffing', $data['staffing'] ?? [
                 { category: 'Qualified (TRCN)', male: '', female: '' },
                 { category: 'Unqualified (no TRCN)', male: '', female: '' },
                 { category: 'Head Teachers/Principals', male: '', female: '' },
                 { category: 'Teaching Staff', male: '', female: '' },
                 { category: 'Non-Teaching Staff', male: '', female: '' },
-            ])),
+            ])) }},
 
             isCalculatedRow(index) {
-                // Teaching Staff is calculated
+                // Index 3 = Teaching Staff (calculated)
+                // Index 5 = Final Total row is outside the template
                 return index === 3;
             },
 
@@ -82,15 +82,8 @@
                 const head = this.rows[2];
                 const teaching = this.rows[3];
 
-                teaching.male =
-                    (parseInt(qualified.male) || 0) +
-                    (parseInt(unqualified.male) || 0) +
-                    (parseInt(head.male) || 0);
-
-                teaching.female =
-                    (parseInt(qualified.female) || 0) +
-                    (parseInt(unqualified.female) || 0) +
-                    (parseInt(head.female) || 0);
+                teaching.male = (parseInt(qualified.male) || 0) + (parseInt(unqualified.male) || 0) + (parseInt(head.male) || 0);
+                teaching.female = (parseInt(qualified.female) || 0) + (parseInt(unqualified.female) || 0) + (parseInt(head.female) || 0);
             },
 
             finalTotal() {
@@ -99,20 +92,15 @@
                 const teaching = this.rows[3];
                 const nonTeaching = this.rows[4];
 
-                const totalMale =
-                    (parseInt(teaching.male) || 0) +
-                    (parseInt(nonTeaching.male) || 0);
+                const total = 
+                    (parseInt(teaching.male) || 0) + (parseInt(teaching.female) || 0) +
+                    (parseInt(nonTeaching.male) || 0) + (parseInt(nonTeaching.female) || 0);
 
-                const totalFemale =
-                    (parseInt(teaching.female) || 0) +
-                    (parseInt(nonTeaching.female) || 0);
-
-                return totalMale + totalFemale;
+                return total;
             }
         }
     }
-</script>
-
+    </script>
 
 
     <div>Qualifications Data</div>
