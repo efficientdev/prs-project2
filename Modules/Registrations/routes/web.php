@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])->prefix('school/registration')->group(fu
 //
 
 //role:ADM
-Route::middleware(['auth', 'verified','role:ADM'])->prefix('school/registration')->group(function () {
+Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS'])->prefix('school/registration')->group(function () {
 
     //
     Route::prefix('approved')->name('srapproved.')->group(function () {
@@ -43,6 +43,7 @@ Route::middleware(['auth', 'verified','role:ADM'])->prefix('school/registration'
         Route::get('/{approval}', [ApprovalFeePending::class, 'show'])->name('show');
     });
 
+    //middleware([])->
 	Route::prefix('approvals')->name('srapprovals.')->group(function () {
 	    Route::get('/my', [ApprovalController::class, 'myApprovals'])->name('my');
 	    Route::get('/{approval}', [ApprovalController::class, 'show'])->name('show');

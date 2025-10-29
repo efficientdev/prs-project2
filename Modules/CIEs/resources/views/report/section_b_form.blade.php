@@ -32,7 +32,7 @@ $data=$sectionB;
                         <td class="border p-1">
                             <input type="number" :name="`levels[${i}][female]`" x-model.number="row.female" class="w-full">
                         </td>
-                        <td class="border p-1 text-center" x-text="(row.male || 0) + (row.female || 0)"></td>
+                        <td class="border p-1 text-center" x-text="parseInt(row.male || 0) + parseInt(row.female || 0)"></td>
                         <td class="border p-1">
                             <input type="text" :name="`levels[${i}][remarks]`" x-model="row.remarks" class="w-full">
                         </td>

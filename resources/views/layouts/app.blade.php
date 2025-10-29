@@ -59,7 +59,7 @@
 <a href="{{route('admin.users.index')}}">Users</a>
                 @endif
 
-                @if(auth()->user()->hasAnyRole(['ADM','DFA']) )
+                @if(auth()->user()->hasAnyRole(['ADM','DFA','PRS']) )
 
 <a href="{{route('admin.payments.index')}}">Payments</a>
                 @endif
