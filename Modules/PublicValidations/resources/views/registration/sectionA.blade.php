@@ -14,13 +14,29 @@
         @error('school_name') <p class="text-red-600">{{ $message }}</p> @enderror
     </div>
 
+
+    <div>
+        <label class="block font-medium">School ID</label>
+        <input type="text" name="school_id" value="{{ old('school_id', $data['school_id'] ?? '') }}" required class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
+        @error('school_id') <p class="text-red-600">{{ $message }}</p> @enderror
+    </div>
+
+    <div>
+        <label class="block font-medium">School Username</label>
+        <input type="text" name="user_name" value="{{ old('user_name', $data['user_name'] ?? '') }}" required class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
+        @error('user_name') <p class="text-red-600">{{ $message }}</p> @enderror
+    </div>
+
     <div>
         <label class="block font-medium">EMIS Code</label>
         <input type="text" name="emis_code" value="{{ old('emis_code', $data['emis_code'] ?? '') }}" class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
         @error('emis_code') <p class="text-red-600">{{ $message }}</p> @enderror
     </div>
 
-    <div>
+
+<x-lga-ward-selector  :selectedLgaId="old('lga_id', $data['lga_id'] ?? '')" :selectedWardId="old('ward_id', $data['ward_id'] ?? '')"  />
+
+    <!--<div>
         <label class="block font-medium">LGA</label>
         
         <select name="lga" class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
@@ -28,8 +44,7 @@
             @foreach($lgas as $lga)
             <option value="{{$lga->lga_id.':'.$lga->lga_name}}"  {{ old('lga', $data['lga'] ?? '') === $lga->lga_id.':'.$lga->lga_name ? 'selected' : '' }}>{{$lga->lga_name}}</option>
             @endforeach
-        </select>
-        <!--<input type="text" name="lga" value="{{ old('lga', $data['lga'] ?? '') }}" class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>-->
+        </select> 
         @error('lga') <p class="text-red-600">{{ $message }}</p> @enderror
     </div>
 
@@ -37,7 +52,7 @@
         <label class="block font-medium">Ward</label>
         <input type="text" name="ward" value="{{ old('ward', $data['ward'] ?? '') }}" class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
         @error('ward') <p class="text-red-600">{{ $message }}</p> @enderror
-    </div>
+    </div>-->
 
 
     <div>

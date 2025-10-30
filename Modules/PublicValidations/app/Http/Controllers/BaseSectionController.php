@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Session;
 use Modules\PublicValidations\Models\PublicValidation;
 
 use App\Models\{PrvInsCategory,TRequirement};
-
-use App\Models\{City,Lga,SchoolSector};
+ 
+use App\Models\{City,Lga,SchoolSector,Ward};
 
 class BaseSectionController extends Controller
 {
@@ -57,6 +57,15 @@ class BaseSectionController extends Controller
         $validated = $request->validate($this->validationRules);
 
         //$this->processFiles($request, $data);
+
+
+
+        if (in_array('ward_id', array_keys($validated))) { 
+            $validated['ward']=Ward::find($validated['ward_id'])->ward_name??'n/a';
+        }
+        if (in_array('lga_id', array_keys($validated))) { 
+            $validated['lga']=Lga::find($validated['lga_id'])->lga_name??'n/a';
+        }
 
 
         $form->data = array_merge($form->data ?? [], [
