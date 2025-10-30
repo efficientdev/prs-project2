@@ -54,6 +54,8 @@ public function store(Request $request, $form_id)
 {
     $validated = $request->validate($this->validationRules);
 
+    try {
+        
     // Handle file uploads
     foreach ($request->files as $key => $file) {
         if ($file) {
@@ -61,6 +63,9 @@ public function store(Request $request, $form_id)
         }
     }
 
+    } catch (\Exception $e) {
+        
+    }
 
     if (in_array('ward_id', array_keys($validated))) { 
         $validated['ward']=Ward::find($validated['ward_id'])->ward_name??'n/a';
