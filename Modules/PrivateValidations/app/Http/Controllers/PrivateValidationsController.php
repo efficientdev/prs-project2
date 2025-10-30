@@ -54,15 +54,17 @@ public function store(Request $request, $form_id)
 {
     $validated = $request->validate($this->validationRules);
 
-    try {
-        
-    // Handle file uploads
-    foreach ($request->files as $key => $file) {
-        if ($file) {
-            $validated[$key] = $file->store('uploads');
-        }
-    }
-
+    try { 
+        // Handle file uploads
+        foreach ($request->files as $key => $file) {
+            if ($file) {
+                try {
+                    $validated[$key] = $file->store('uploads'); 
+                } catch (\Exception $e1) {
+                    
+                }
+            }
+        } 
     } catch (\Exception $e) {
         
     }
