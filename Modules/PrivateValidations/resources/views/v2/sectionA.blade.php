@@ -15,6 +15,18 @@
     </div>
 
     <div>
+        <label class="block font-medium">School ID</label>
+        <input type="text" name="school_id" value="{{ old('school_id', $data['school_id'] ?? '') }}" required class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
+        @error('school_id') <p class="text-red-600">{{ $message }}</p> @enderror
+    </div>
+
+    <div>
+        <label class="block font-medium">School Username</label>
+        <input type="text" name="user_name" value="{{ old('user_name', $data['user_name'] ?? '') }}" required class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
+        @error('user_name') <p class="text-red-600">{{ $message }}</p> @enderror
+    </div>
+
+    <div>
         <label class="block font-medium">Approval Number</label>
         <input type="text" name="approval_number" value="{{ old('approval_number', $data['approval_number'] ?? '') }}" required class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
         @error('approval_number') <p class="text-red-600">{{ $message }}</p> @enderror
@@ -70,6 +82,10 @@
         @error('certificate_file') <p class="text-red-600">{{ $message }}</p> @enderror
     </div>
 
+
+<x-lga-ward-selector  :selectedLgaId="old('lga_id', $data['lga_id'] ?? '')" :selectedWardId="old('ward_id', $data['ward_id'] ?? '')"  />
+
+<!--namePrefix="owner"
     <div>
         <label class="block font-medium">LGA</label>
         <input type="text" name="lga" value="{{ old('lga', $data['lga'] ?? '') }}" required class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
@@ -80,7 +96,7 @@
         <label class="block font-medium">Ward</label>
         <input type="text" name="ward" value="{{ old('ward', $data['ward'] ?? '') }}" required class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
         @error('ward') <p class="text-red-600">{{ $message }}</p> @enderror
-    </div>
+    </div>-->
 <div>
     <button type="submit" class="btn bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Next</button></div>
 </form>

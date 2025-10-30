@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
  
 use Modules\PrivateValidations\Models\PrivateValidation; // Assume this is your model that holds the whole form data 
 use Illuminate\Support\Facades\Session;
+
+use App\Models\{City,Lga,SchoolSector,Ward};
  
 abstract class PrivateValidationsController extends Controller
 {
@@ -57,6 +59,14 @@ public function store(Request $request, $form_id)
         if ($file) {
             $validated[$key] = $file->store('uploads');
         }
+    }
+
+
+    if (in_array('ward_id', array_keys($validated))) { 
+        $validated['ward']=Ward::find($validated['ward_id'])->ward_name??'n/a';
+    }
+    if (in_array('lga_id', array_keys($validated))) { 
+        $validated['lga']=Lga::find($validated['lga_id'])->lga_name??'n/a';
     }
 
     Session::put("private.validation.{$form_id}.{$this->sectionKey}", $validated);

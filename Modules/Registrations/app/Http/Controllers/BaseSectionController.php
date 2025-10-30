@@ -197,7 +197,7 @@ class BaseSectionController extends Controller
         }*/
         if (in_array('owner_address_lga', array_keys($validated))) { 
             $validated['owner_lga']=Lga::find($validated['owner_address_lga'])->lga_name??'n/a';
-        }
+        } 
         if (in_array('owner_lga_id', array_keys($validated))) { 
             $validated['owner_lga']=Lga::find($validated['owner_lga_id'])->lga_name??'n/a';
         }

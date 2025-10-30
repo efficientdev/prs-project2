@@ -53,54 +53,69 @@
             </tbody>
         </table>
     </div>
-    <script>
-    function staffingTable() {
-        return {
-            rows: {{ json_encode(old('staffing', $data['staffing'] ?? [
-                { category: 'Qualified (TRCN)', male: '', female: '' },
-                { category: 'Unqualified (no TRCN)', male: '', female: '' },
-                { category: 'Head Teachers/Principals', male: '', female: '' },
-                { category: 'Teaching Staff', male: '', female: '' },
-                { category: 'Non-Teaching Staff', male: '', female: '' },
-            ])) }},
+    
+    <!-- JSON data block -->
+<script id="staffing-data" type="application/json">
+    {!! json_encode(old('staffing', $data['staffing'] ?? [
+        ['category' => 'Qualified (TRCN)', 'male' => '', 'female' => ''],
+        ['category' => 'Unqualified (no TRCN)', 'male' => '', 'female' => ''],
+        ['category' => 'Head Teachers/Principals', 'male' => '', 'female' => ''],
+        ['category' => 'Teaching Staff', 'male' => '', 'female' => ''],
+        ['category' => 'Non-Teaching Staff', 'male' => '', 'female' => ''],
+    ])) !!}
+</script>
 
-            isCalculatedRow(index) {
-                // Index 3 = Teaching Staff (calculated)
-                // Index 5 = Final Total row is outside the template
-                return index === 3;
-            },
+<!-- Alpine component -->
+<script>
+function staffingTable() {
+    return {
+        rows: JSON.parse(document.getElementById('staffing-data').textContent),
 
-            totalForRow(row) {
-                const male = parseInt(row.male) || 0;
-                const female = parseInt(row.female) || 0;
-                return male + female;
-            },
+        isCalculatedRow(index) {
+            // Index 3 = Teaching Staff (calculated)
+            return index === 3;
+        },
 
-            updateTeachingStaff() {
-                const qualified = this.rows[0];
-                const unqualified = this.rows[1];
-                const head = this.rows[2];
-                const teaching = this.rows[3];
+        totalForRow(row) {
+            const male = parseInt(row.male) || 0;
+            const female = parseInt(row.female) || 0;
+            return male + female;
+        },
 
-                teaching.male = (parseInt(qualified.male) || 0) + (parseInt(unqualified.male) || 0) + (parseInt(head.male) || 0);
-                teaching.female = (parseInt(qualified.female) || 0) + (parseInt(unqualified.female) || 0) + (parseInt(head.female) || 0);
-            },
+        updateTeachingStaff() {
+            const qualified = this.rows[0];
+            const unqualified = this.rows[1];
+            const head = this.rows[2];
+            const teaching = this.rows[3];
 
-            finalTotal() {
-                this.updateTeachingStaff();
+            teaching.male =
+                (parseInt(qualified.male) || 0) +
+                (parseInt(unqualified.male) || 0) +
+                (parseInt(head.male) || 0);
 
-                const teaching = this.rows[3];
-                const nonTeaching = this.rows[4];
+            teaching.female =
+                (parseInt(qualified.female) || 0) +
+                (parseInt(unqualified.female) || 0) +
+                (parseInt(head.female) || 0);
+        },
 
-                const total = 
-                    (parseInt(teaching.male) || 0) + (parseInt(teaching.female) || 0) +
-                    (parseInt(nonTeaching.male) || 0) + (parseInt(nonTeaching.female) || 0);
+        finalTotal() {
+            this.updateTeachingStaff();
 
-                return total;
-            }
+            const teaching = this.rows[3];
+            const nonTeaching = this.rows[4];
+
+            return (
+                (parseInt(teaching.male) || 0) +
+                (parseInt(teaching.female) || 0) +
+                (parseInt(nonTeaching.male) || 0) +
+                (parseInt(nonTeaching.female) || 0)
+            );
         }
-    }
-    </script>
+    };
+}
+</script>
+
 
 
     <div>Qualifications Data</div>
