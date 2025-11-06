@@ -68,6 +68,9 @@ public function store(Request $request, $form_id)
     } catch (\Exception $e) {
         
     }*/
+    if (in_array('staff_list_file', array_keys($validated))) { 
+        $validated['staff_list_file']=$request->file('staff_list_file')->store('staff_lists');
+    }
 
     if (in_array('ward_id', array_keys($validated))) { 
         $validated['ward']=Ward::find($validated['ward_id'])->ward_name??'n/a';

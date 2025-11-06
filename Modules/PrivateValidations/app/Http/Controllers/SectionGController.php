@@ -53,9 +53,11 @@ class SectionGController  extends PrivateValidationsController
         $form->data = array_merge($form->data ?? [], ['sectionG' => $validated]);
         $form->save();
 
-        // Final step: maybe mark form as completed or redirect somewhere
-        return redirect()->route('private.validation.complete', ['form_id' => $form_id])
+        // Final step: maybe mark form as completed or redirect somewhere .list
+        return redirect()->route('private.validation.list')
             ->with('success', 'Declaration submitted successfully.');
+        /*return redirect()->route('private.validation.complete', ['form_id' => $form_id])
+            ->with('success', 'Declaration submitted successfully.');*/
     }
 
     /**

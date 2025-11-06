@@ -70,7 +70,9 @@ class SectionGController extends Controller
         $form->save();
 
 
-        return back()->with('success', 'Section saved successfully.');
+        return redirect()->route('public.validation.list')
+            ->with('success', 'Declaration submitted successfully.');
+        //return back()->with('success', 'Section saved successfully.');
 
         /*return redirect()->route('public.validation.preview', $form_id)
             ->with('success', 'Form completed successfully!');*/
