@@ -15,7 +15,7 @@ class PrivateValidation extends Model
      */ 
     protected $fillable = [
         'owner_id',
-        'data', 
+        'data', 'submitted'
     ];
 
     // Cast 'meta' JSON column to array automatically

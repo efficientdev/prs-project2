@@ -33,6 +33,29 @@ class SectionGController  extends PrivateValidationsController
         ]);
     }
 
+
+    public function preview($form_id)
+    {
+        $form = PrivateValidation::findOrFail($form_id);
+
+        /*$requiredSections = ['sectionA','sectionB','sectionC','sectionD','sectionE','sectionF'];
+
+        $data = $form->data[$this->sectionKey] ?? [];
+
+        foreach ($requiredSections as $section) {
+            if (empty($form->data[$section])) {
+                return redirect()->route("public.validation.{$section}.show", $form_id)
+                    ->with('error', 'Please complete all previous sections first.');
+            }
+        }*/
+
+        return view('privatevalidations::preview', [
+            'form' => $form,
+            'form_id' => $form_id,
+            'data'=>$data
+        ]);
+    }
+
     public function store(Request $request, $form_id)
     {
         $form = PrivateValidation::findOrFail($form_id);
@@ -51,6 +74,7 @@ class SectionGController  extends PrivateValidationsController
 
         // Save Section G data
         $form->data = array_merge($form->data ?? [], ['sectionG' => $validated]);
+        $form->submitted=true;
         $form->save();
 
         // Final step: maybe mark form as completed or redirect somewhere .list

@@ -33,16 +33,21 @@ abstract class PrivateValidationsController extends Controller
     }
 
     public function show($form_id)
-{
-    //dd($form_id);
+    {
+        //dd($form_id); 
 
-    Session::put("fid", $form_id);
+        Session::put("fid", $form_id);
 
-    $form = PrivateValidation::findOrFail($form_id);
-    // Use $form_id to fetch session data or DB data
-    $data = Session::get("private.validation.{$form_id}.{$this->sectionKey}", []);
-    return view("privatevalidations::v2.{$this->sectionKey}", compact('data', 'form_id'));
-}
+        $form = PrivateValidation::findOrFail($form_id);
+
+        if ($form->submitted) {
+            abort(403, 'You can no longer edit this form, it has been submitted by you.');
+        }
+
+        // Use $form_id to fetch session data or DB data
+        $data = Session::get("private.validation.{$form_id}.{$this->sectionKey}", []);
+        return view("privatevalidations::v2.{$this->sectionKey}", compact('data', 'form_id'));
+    }
 
 
     /*public function show1()
