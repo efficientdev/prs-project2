@@ -96,7 +96,8 @@
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Your Public Validations</h1>
             <p class="text-gray-600">Review and manage your validation requests</p>
         </div>
-        <div class="space-y-6">
+        <div class="space-y-6"> 
+
             @foreach($forms as $form)
             <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover border border-gray-100">
                 <div class="p-6">
@@ -134,11 +135,13 @@
                                 <i class="far fa-eye"></i>
                                 <span>Summary</span>
                             </a>
+                            @if(!$form->submitted)
                             <a href="{{ route('public.validation.sectionA.show', ['form_id' => $form->id ?? 'default']) }}" 
                                class="btn-primary flex items-center space-x-2">
                                 <i class="fas fa-edit"></i>
                                 <span>Review</span>
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>

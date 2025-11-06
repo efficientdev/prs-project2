@@ -13,7 +13,7 @@ class PublicValidation extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = ['owner_id','emis_code', 'data','status'];
+    protected $fillable = ['owner_id','emis_code', 'data','status','submitted'];
 
     protected $casts = [
         'data' => 'array',

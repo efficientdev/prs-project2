@@ -35,6 +35,11 @@ class BaseSectionController extends Controller
     {
         $form = PublicValidation::findOrFail($form_id);
 
+        if ($form->submitted) {
+            abort(403, 'You can no longer edit this form, it has been submitted by you.');
+        }
+
+
 
         $cats=PrvInsCategory::all();
         $lgas=Lga::all();

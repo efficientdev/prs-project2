@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Modules\PrivateValidations\Models\PrivateValidation; // Assume this is your model that holds the whole form data 
 use Illuminate\Support\Facades\Session;
 
+    use Illuminate\Support\Facades\Storage;
+
 use App\Models\{City,Lga,SchoolSector,Ward};
  
 abstract class PrivateValidationsController extends Controller
@@ -69,9 +71,34 @@ public function store(Request $request, $form_id)
         
     }*/
     if (in_array('staff_list_file', array_keys($validated))) { 
-        $validated['staff_list_file']=$request->file('staff_list_file')->store('staff_lists');
+        if ($request->has('staff_list_file')) {
+            # code...
+            $validated['staff_list_file']=$request->file('staff_list_file')->store('staff_lists'); 
+        }else{
+            unset($validated['staff_list_file']);
+        }
+    }else{
+
     }
 
+    if (in_array('facility_photos', array_keys($validated))) {
+        if ($request->hasFile('facility_photos')) {
+            $photos = [];
+
+            foreach ($request->file('facility_photos') as $photo) {
+                // Store file in 'facility' folder
+                $path = $photo->store('facility', 'public'); // 'public' disk ensures it's web-accessible
+                // Get fully resolved URL
+                $photos[] = Storage::url($path);
+            }
+
+            // Store URLs as JSON or array depending on your DB column type
+            $validated['facility_photos'] = json_encode($photos);
+        } else {
+            unset($validated['facility_photos']);
+        }
+    }
+ 
     if (in_array('ward_id', array_keys($validated))) { 
         $validated['ward']=Ward::find($validated['ward_id'])->ward_name??'n/a';
     }

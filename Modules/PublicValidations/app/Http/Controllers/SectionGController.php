@@ -67,6 +67,7 @@ class SectionGController extends Controller
         $x['sectionG'] = $validated;
         $form->data=$x;
         $form->status="in_progress";
+        $form->submitted=true;
         $form->save();
 
 
