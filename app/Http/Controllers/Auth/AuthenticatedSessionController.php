@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
          
-        $user = auth()->user();
+        /*$user = auth()->user();
         if ($user->hasRole('ADM')) {
             return redirect()->route('admin.users.index');
         } elseif ($user->hasRole('CIE')) {
@@ -54,7 +54,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('dashboard');
         } elseif ($user->hasRole('SSA')) {
             return redirect()->route('dashboard');
-        } 
+        } */
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

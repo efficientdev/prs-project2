@@ -27,9 +27,9 @@ Route::get('/dashboard', function () {
         if ($user->hasRole('ADM')) {
             return redirect()->route('admin.users.index');
         } elseif ($user->hasRole('CIE')) {
-            return redirect()->route('cie.applications.index');
+            return redirect()->route('srapprovals.my');
         } elseif ($user->hasRole('COMM')) {
-            return redirect()->route('commissioner.applications.index');
+            return redirect()->route('srapprovals.my');
         } elseif ($user->hasRole('DED')) {
             return redirect()->route('dashboard');
         } elseif ($user->hasRole('DFA')) {
@@ -44,9 +44,9 @@ Route::get('/dashboard', function () {
             //return redirect()->route('application.types.index');
             return redirect()->route('registration.list');
         } elseif ($user->hasRole('PRS')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');
         }elseif ($user->hasRole('PS')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');
         } elseif ($user->hasRole('SSA')) {
             return redirect()->route('dashboard');
         } 
