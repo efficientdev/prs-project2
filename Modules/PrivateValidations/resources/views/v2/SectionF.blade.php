@@ -47,8 +47,8 @@
             name="expiry_date"
             id="expiry_date"
             value="{{ old('expiry_date', $data['expiry_date'] ?? '') }}" 
-            class="input w-full border-gray-300 focus:border-indigo-500 bg-gray-100 cursor-not-allowed"
-        /><!--
+            class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+        /><!-- bg-gray-100 cursor-not-allowed
             placeholder="Auto-validated from database"-->
         @error('expiry_date') <p class="text-red-600">{{ $message }}</p> @enderror
     </div>
