@@ -20,7 +20,7 @@ class AssignLga extends Controller
 	 	$lgas=Ward::select('lga_id', 'lga_name')->distinct()->get();
  
 	} 
-	
+
     public function index()
     {
         // Get all users that have the "CIE" role
@@ -42,14 +42,24 @@ class AssignLga extends Controller
             'lga_id'  => 'required|integer',
         ]);
 
+
         LgaAssignment::updateOrCreate(
+        	[
+                'user_id' => $validated['user_id'],
+            ],
+            [
+                'lga_id'  => $validated['lga_id'],
+            ]
+        );
+
+        /*LgaAssignment::updateOrCreate(
             [
                 'lga_id'  => $validated['lga_id'],
             ],
             [
                 'user_id' => $validated['user_id'],
             ]
-        );
+        );*/
 
         return back()->with('success', 'LGA assigned successfully.');
     }
