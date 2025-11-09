@@ -5,7 +5,8 @@ namespace Modules\ADMs\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\ADMs\Database\Factories\LgaAssignmentFactory;
- 
+use App\Models\User;
+
 class LgaAssignment extends Model
 {
     use HasFactory;
@@ -21,7 +22,7 @@ class LgaAssignment extends Model
     {
         return $this->belongsTo(Ward::class, 'lga_id', 'lga_id');
     }
-    
+
     // protected static function newFactory(): LgaAssignmentFactory
     // {
     //     // return LgaAssignmentFactory::new();
