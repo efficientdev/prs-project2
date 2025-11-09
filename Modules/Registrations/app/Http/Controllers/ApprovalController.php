@@ -36,7 +36,7 @@ class ApprovalController extends Controller
         $approvals = RegistrationApproval::with('application', 'stage')->query();
         if ($lga_id!=0) { 
             $approvals->whereHas('application', function ($q) use($lga_id) {
-                if (!in_array('ADM', auth()->user()->roles->pluck('name')->toArray())) {
+                if (in_array('CIE', auth()->user()->roles->pluck('name')->toArray())) {
                     $q->where('data->sectionA->school_lga_id',$lga_id);
                 }
 
