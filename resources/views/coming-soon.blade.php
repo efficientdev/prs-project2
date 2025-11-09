@@ -24,6 +24,17 @@
         <a href="{{ url('/') }}" class="text-sm text-gray-500 hover:text-gray-700 underline">
             Back to Home
         </a>
+
+        <!-- Authentication -->
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <x-dropdown-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                {{ __('Log Out') }}
+            </x-dropdown-link>
+        </form>
     </div>
 
 </div>
