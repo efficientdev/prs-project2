@@ -5,7 +5,7 @@ namespace Modules\ADMs\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\ADMs\Database\Factories\LgaAssignmentFactory;
-use App\Models\User;
+use App\Models\{User,Ward};
 
 class LgaAssignment extends Model
 {
