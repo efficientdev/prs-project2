@@ -42,14 +42,14 @@
 						<input autocomplete="off" class="form-control" name="email" placeholder="Eg. john.doe@gmail.com" required="required" value="" type="email">
 					</div>
 					
-					<div class="form-group col-md-6">
+					<!--<div class="form-group col-md-6">
 						<label>Tax Identification Number (TIN)</label>
 						<input autocomplete="off" class="form-control" name="tin" required="required" value="">
 					</div>
 					<div class="form-group col-md-6">
 						<label>National Identification Number (NIN)</label>
 						<input autocomplete="off" class="form-control" name="nin" value="">
-					</div>
+					</div>-->
 
 					<!--<div class="form-group col-md-6">
 						<label>Password</label>

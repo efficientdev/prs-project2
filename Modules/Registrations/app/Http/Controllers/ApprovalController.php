@@ -12,6 +12,8 @@ use Modules\Registrations\Services\ApprovalService;
  
 use App\Models\{Category,Lga,Ward};
 
+use Modules\ADMs\Models\LgaAssignment;
+
 class ApprovalController extends Controller
 {
     public function myApprovals()
@@ -22,8 +24,26 @@ class ApprovalController extends Controller
             ->where('status', 'pending')
             ->paginate(10);*/
 
-        $approvals = RegistrationApproval::with('application', 'stage')
-            ->whereNotIn('registration_approval_stage_id',ApprovalService::$onlyForProprietors)
+            $lga_id=0;
+            if (auth()->user()->hasRole('CIE')) { 
+                try { 
+                    $lga_id=LgaAssignment::where('user_id',auth()->user()->id)->first()->lga_id;
+                } catch (\Exception $e) {
+                    
+                }
+            }
+
+        $approvals = RegistrationApproval::with('application', 'stage')->query();
+        if ($lga_id!=0) { 
+            $approvals->whereHas('application', function ($q) use($lga_id) {
+                if (!in_array('ADM', auth()->user()->roles->pluck('name')->toArray())) {
+                    $q->where('data->sectionA->school_lga_id',$lga_id);
+                }
+
+            }); 
+        }
+        
+            $approvals->whereNotIn('registration_approval_stage_id',ApprovalService::$onlyForProprietors)
             ->where('status', 'pending')
             ->whereHas('approvedRegistrationPayment')
             ->whereHas('stage', function ($q) {

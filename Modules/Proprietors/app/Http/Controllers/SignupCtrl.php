@@ -1,4 +1,4 @@
-<?php
+//<?php
 
 namespace Modules\Proprietors\Http\Controllers;
 
@@ -65,8 +65,8 @@ class SignupCtrl extends Controller
             'password' => 'required|string|min:8|confirmed',
             'surname' => 'required|string|max:255',
             'other_names' => 'required|string|max:255',
-            'tin' => 'nullable|string|max:20',
-            'nin' => 'nullable|string|max:20',
+            //'tin' => 'nullable|string|max:20',
+            //'nin' => 'nullable|string|max:20',
             'phone_number' => 'nullable|string|max:20',
             'title' => 'nullable|string|max:20',
         ]);

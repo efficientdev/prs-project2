@@ -57,6 +57,9 @@
      @if(auth()->user()->hasAnyRole(['ADM','DFA']) )
 
 <a href="{{route('admin.users.index')}}">Users</a>
+<a href="{{route('admin.assign-lga.index')}}">LGA assignment</a>
+
+
                 @endif
 
                 @if(auth()->user()->hasAnyRole(['ADM','DFA','PRS']) )

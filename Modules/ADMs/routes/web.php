@@ -1,11 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\ADMs\Http\Controllers\{ADMsController,UserRoleController};
+use Modules\ADMs\Http\Controllers\{ADMsController,UserRoleController,AssignLga};
 // use App\Http\Controllers\UserRoleController;
 
 
 Route::middleware(['auth', 'verified','role:ADM'])->prefix('admin')->name('admin.')->group(function () {
+
+
+
+Route::get('/assign-lga', [AssignLga::class, 'index'])->name('assign-lga.index');
+Route::post('/assign-lga', [AssignLga::class, 'store'])->name('assign-lga.store');
 
  
 Route::get('/users', [UserRoleController::class, 'index'])->name('users.index');
