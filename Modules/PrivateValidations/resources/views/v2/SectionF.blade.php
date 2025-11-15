@@ -24,6 +24,30 @@
     <fieldset>
         <legend class="block font-medium mb-2">Upload Renewal Receipt for the Years</legend>
 
+        @php
+            $currentYear = now()->year;
+            $years = range($currentYear - 3, $currentYear);
+        @endphp
+
+        @foreach ($years as $year)
+            <div class="mb-4">
+                <label for="renewal_receipt_{{ $year }}" class="block font-semibold">Year {{ $year }}</label>
+                <input
+                    type="file"
+                    name="renewal_receipts[{{ $year }}]"
+                    id="renewal_receipt_{{ $year }}"
+                    accept="image/*,application/pdf"
+                    required
+                    class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                >
+                @error("renewal_receipts.$year")
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+        @endforeach
+
+        <?php
+        /*
         @foreach ([2022, 2023, 2024, 2025] as $year)
             <div class="mb-4">
                 <label for="renewal_receipt_{{ $year }}" class="block font-semibold">Year {{ $year }}</label>
@@ -38,17 +62,19 @@
                 @error("renewal_receipts.$year") <p class="text-red-600">{{ $message }}</p> @enderror
             </div>
         @endforeach
+        */
+        ?>
     </fieldset>
 
     <div>
         <label for="expiry_date" class="block font-medium">Expiry Date</label>
         <input
-            type="date"
             name="expiry_date"
             id="expiry_date"
             value="{{ old('expiry_date', $data['expiry_date'] ?? '') }}" 
             class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-        /><!-- bg-gray-100 cursor-not-allowed
+        /><!-- 
+            type="date" bg-gray-100 cursor-not-allowed
             placeholder="Auto-validated from database"-->
         @error('expiry_date') <p class="text-red-600">{{ $message }}</p> @enderror
     </div>

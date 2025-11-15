@@ -31,8 +31,9 @@
         </tr>
         @endforeach
     </tbody>
-</table> @endif
-
-
+</table> 
 {{ $approvals->links() }}
+@endif
+
+
 </x-app-layout>

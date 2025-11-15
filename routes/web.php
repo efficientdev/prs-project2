@@ -31,15 +31,15 @@ Route::get('/dashboard', function () {
         } elseif ($user->hasRole('COMM')) {
             return redirect()->route('srapprovals.my');
         } elseif ($user->hasRole('DED')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');//->route('dashboard');
         } elseif ($user->hasRole('DFA')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');//->route('dashboard');
         } elseif ($user->hasRole('DG')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');//->route('dashboard');
         } elseif ($user->hasRole('DPRS')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');//->route('dashboard');
         }elseif ($user->hasRole('OFF')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');//->route('dashboard');
         } elseif ($user->hasRole('proprietor')) {
             //return redirect()->route('application.types.index');
             return redirect()->route('registration.list');
@@ -48,7 +48,7 @@ Route::get('/dashboard', function () {
         }elseif ($user->hasRole('PS')) {
             return redirect()->route('srapprovals.my');
         } elseif ($user->hasRole('SSA')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('srapprovals.my');//->route('dashboard');
         } 
     //return view('dashboard');
     return view('coming-soon');
