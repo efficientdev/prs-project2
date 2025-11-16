@@ -75,16 +75,35 @@ public function store(Request $request, $form_id)
     } catch (\Exception $e) {
         
     }*/
-    if (in_array('staff_list_file', array_keys($validated))) { 
-        if ($request->has('staff_list_file')) {
-            # code...
-            $validated['staff_list_file']=$request->file('staff_list_file')->store('staff_lists'); 
-        }else{
-            unset($validated['staff_list_file']);
-        }
-    }else{
 
+    $currentYear = now()->year;
+    $years = range($currentYear - 3, $currentYear); 
+
+    foreach ($validated['renewal_receipts'] ?? [] as $year => $file) {
+        if ($request->hasFile("renewal_receipts.$year")) {
+            $validated['renewal_receipts'][$year] =
+                $file->store('renewal_receipts');
+        } else {
+            unset($validated['renewal_receipts'][$year]);
+        }
     }
+
+    /*foreach ($years as $year) {
+        $filename="renewal_receipts.$year";  
+
+        if (in_array($filename, array_keys($validated))) { 
+            if ($request->has($filename)) { 
+
+                $validated[$filename]=$request->file($filename)->store('renewal_receipts'); 
+            }else{
+                unset($validated[$filename]);
+            }
+        }else{
+
+        }
+
+    }*/
+
 
     if (in_array('facility_photos', array_keys($validated))) {
         if ($request->hasFile('facility_photos')) {

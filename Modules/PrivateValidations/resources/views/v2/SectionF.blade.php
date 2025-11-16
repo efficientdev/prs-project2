@@ -29,6 +29,8 @@
             $years = range($currentYear - 3, $currentYear);
         @endphp
 
+        
+
         @foreach ($years as $year)
             <div class="mb-4">
                 <label for="renewal_receipt_{{ $year }}" class="block font-semibold">Year {{ $year }}</label>
