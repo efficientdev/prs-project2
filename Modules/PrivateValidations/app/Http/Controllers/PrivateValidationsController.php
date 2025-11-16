@@ -81,8 +81,8 @@ public function store(Request $request, $form_id)
 
     foreach ($validated['renewal_receipts'] ?? [] as $year => $file) {
         if ($request->hasFile("renewal_receipts.$year")) {
-            $validated['renewal_receipts'][$year] =
-                $file->store('renewal_receipts');
+                $path=$file->store('renewal_receipts');
+            $validated['renewal_receipts'][$year] =Storage::url($path);
         } else {
             unset($validated['renewal_receipts'][$year]);
         }
