@@ -33,7 +33,7 @@ Route::get('/dashboard', function () {
         } elseif ($user->hasRole('DED')) {
             return redirect()->route('srapprovals.my');//->route('dashboard');
         } elseif ($user->hasRole('DFA')) {
-            return redirect()->route('srapprovals.my');//->route('dashboard');
+            return redirect()->route('admin.payments.index');//->route('dashboard');
         } elseif ($user->hasRole('DG')) {
             return redirect()->route('srapprovals.my');//->route('dashboard');
         } elseif ($user->hasRole('DPRS')) {
