@@ -24,7 +24,7 @@
         @foreach ($approvals as $approval)
         <tr>
             <td>{{ $approval->application->data['sectionA']['proposed_name']??'' }}<br/> {{ $approval->application->category->category_name??'' }}</td>
-            <td>{{ $approval->stage->name }}</td>
+            <td>{{ $approval->stage->name??'n/a' }}</td>
             <td>
                 <a href="{{ route('srapprovals.show', $approval) }}" class="btn btn-sm btn-primary">Review</a>
             </td>

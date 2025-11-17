@@ -54,7 +54,7 @@
 
 <div class="flex flex-col gap-3 font-bold capitalize ">
 
-     @if(auth()->user()->hasAnyRole(['ADM','DFA']) )
+     @if(auth()->user()->hasAnyRole(['ADM']) )
 
 <a href="{{route('admin.users.index')}}">Users</a>
 <a href="{{route('admin.assign-lga.index')}}">LGA assignment</a>
@@ -72,7 +72,7 @@
 @endif
 
 
-@if(!auth()->user()->hasAnyRole(['proprietor']) )
+@if(!auth()->user()->hasAnyRole(['proprietor','DFA']) )
 <div class="mt-5 border-b pb-1">Approved Applications </div>
 <a href="{{route('srapproved.index')}}"> - Fully Approved Schools</a> 
 <a href="{{route('afp.index')}}"> - pending Approval Fee </a> 

@@ -21,7 +21,7 @@ class UserRoleController extends Controller
         $users = User::when($query, function ($q) use ($query) {
             $q->where('name', 'like', "%$query%")
               ->orWhere('email', 'like', "%$query%");
-        })->get();
+        })->paginate(10);
 
         $roles = Role::pluck('name');
 

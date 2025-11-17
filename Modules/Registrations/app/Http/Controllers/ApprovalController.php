@@ -18,7 +18,7 @@ class ApprovalController extends Controller
 {
     public function myApprovals()
     {
-
+ 
         /*$approvals = RegistrationApproval::with('application', 'stage')
             ->whereHas('stage.users', fn($q) => $q->where('user_id', auth()->id()))
             ->where('status', 'pending')
