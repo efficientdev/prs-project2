@@ -129,13 +129,11 @@
                         </div>
                         
                         <div class="flex space-x-3">
-                            <?php
-                            /*<!--<a href="{{ route('private.validation.preview', ['form_id' => $form->id ?? 'default']) }}" 
+                            <a href="{{ route('private.validation.preview', ['form_id' => $form->id ?? 'default']) }}" 
                                class="btn-outline flex items-center space-x-2">
                                 <i class="far fa-eye"></i>
                                 <span>Summary</span>
-                            </a>-->*/
-                            ?>
+                            </a> 
                             <a href="{{ route('private.validation.sectionA.show', ['form_id' => $form->id ?? 'default']) }}" 
                                class="btn-primary flex items-center space-x-2">
                                 <i class="fas fa-edit"></i>

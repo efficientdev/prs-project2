@@ -40,6 +40,10 @@ Route::middleware(['auth', 'verified'])->prefix('private-school/validation')->gr
 	Route::get('section-g/{form_id}', [SectionGController::class, 'show'])->name('private.validation.sectionG.show');
 	Route::post('section-g/{form_id}', [SectionGController::class, 'store'])->name('private.validation.sectionG.store');
 
+
+	Route::get('preview/{form_id}', [SectionGController::class, 'preview'])->name('private.validation.preview');
+	//
+
     // ... and so on for sections C to G
 });
 

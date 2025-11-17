@@ -29,7 +29,7 @@
             $years = range($currentYear - 3, $currentYear);
         @endphp
 
-        
+
 
         @foreach ($years as $year)
             <div class="mb-4">
@@ -72,6 +72,7 @@
         <label for="expiry_date" class="block font-medium">Expiry Date</label>
         <input
             name="expiry_date"
+            type="date"
             id="expiry_date"
             value="{{ old('expiry_date', $data['expiry_date'] ?? '') }}" 
             class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"

@@ -13,6 +13,34 @@
         'levels' => ['level', 'male', 'female', 'remarks'],
         // Add more if needed later
     ];*/
+
+    if (!function_exists('e_or_link')) {
+        /**
+         * Escape string or convert to a link if it's a URL.
+         *
+         * @param string $value
+         * @return string
+         */
+        function e_or_link(string $value): string
+        {
+            $value = trim($value);
+
+            // Simple URL regex check
+            if (preg_match('#^(https?://[^\s]+|/storage/[^\s]+)$#i', $value)) {
+            //if (preg_match('/^(https?:\/\/[^\s]+)$/i', $value)) {
+                // Escape the URL itself
+                $escapedUrl = e($value);
+                $linkText = strlen($escapedUrl) > 45
+                ? substr($escapedUrl, -45)
+                : $escapedUrl;
+                return "<a class='line-clamp-1' href=\"{$escapedUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">view - {$linkText}</a>";
+            }
+
+            // Otherwise, just escape normally
+            return e($value);
+        }
+    }
+
 @endphp
  
 
@@ -58,9 +86,9 @@
                                     @php
                                         $val = $data[$k] ?? null;
                                         if (is_array($val)) {
-                                            echo "<td class='border border-gray-300 px-3 py-1'>" . e($val[$i] ?? '') . "</td>";
+                                            echo "<td class='border border-gray-300 px-3 py-1'>" . e_or_link($val[$i] ?? '') . "</td>";
                                         } else {
-                                            echo "<td class='border border-gray-300 px-3 py-1'>" . ($i === 0 && $val !== null ? e($val) : '') . "</td>";
+                                            echo "<td class='border border-gray-300 px-3 py-1'>" . ($i === 0 && $val !== null ? e_or_link($val) : '') . "</td>";
                                         }
                                     @endphp
                                 @endforeach
@@ -112,7 +140,7 @@
                         <tr>
                             @foreach ($orderedKeys as $col)
                                 <td class="border border-gray-300 px-3 py-1">
-                                    {{ e($row[$col] ?? '') }}
+                                    {{ e_or_link($row[$col] ?? '') }}
                                 </td>
                             @endforeach
                         </tr>
@@ -132,12 +160,12 @@
                     if (is_array($val)) {
                         echo "<span class='uppercase'><strong >$label:</strong></span><ol class='list-disc ml-6 '>";
                         foreach ($val as $k => $v) {
-                            //echo "<li>" . e("$k : $v") . "</li>";
-                            echo "<li>" . e("$v") . "</li>";
+                            //echo "<li>" . e_or_link("$k : $v") . "</li>";
+                            echo "<li>" . e_or_link("$v") . "</li>";
                         }
                         echo "</ol>";
                     } else {
-                        echo "<div class='grid'><span class='capitalize font-semibold'>$label:</span> " . e($val) . "</div>";
+                        echo "<div class='grid'><span class='capitalize font-semibold'>$label:</span> " . e_or_link($val) . "</div>";
                     }
                 @endphp
             </div>

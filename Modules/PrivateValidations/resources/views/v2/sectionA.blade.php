@@ -5,7 +5,7 @@
 @section('content')
 <h1 class="text-2xl font-bold mb-6">Section A: School Identity</h1>
 
-<form method="POST" class="grid gap-2" action="{{ route('private.validation.sectionA.store', ['form_id' => $form_id]) }}" enctype="multipart/form-data" x-data="{ certificateAvailable: '{{ old('certificate_available', $data['certificate_available'] ?? '') }}' }">
+<form method="POST" class="grid gap-2" action="{{ route('private.validation.sectionA.store', ['form_id' => $form_id]) }}" enctype="multipart/form-data"  x-data="{ certificateAvailable: '{{ old('certificate_available', $data['certificate_available'] ?? '') }}' }">
     @csrf  
 
     <div>

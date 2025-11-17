@@ -45,7 +45,11 @@ abstract class PrivateValidationsController extends Controller
         }
 
         // Use $form_id to fetch session data or DB data
-        $data = Session::get("private.validation.{$form_id}.{$this->sectionKey}", []);
+        //$data = Session::get("private.validation.{$form_id}.{$this->sectionKey}", []);
+        $data1=$form->data??[];
+        $data = $data1[$this->sectionKey] ?? Session::get("private.validation.{$form_id}.{$this->sectionKey}", []);
+    
+
         return view("privatevalidations::v2.{$this->sectionKey}", compact('data', 'form_id'));
     }
 
@@ -76,6 +80,34 @@ public function store(Request $request, $form_id)
         
     }*/
 
+    if ($request->hasFile("certificate_file")) {
+        $file = $request->file('certificate_file');  // <-- get the uploaded file
+        $path=$file->store('certificate_files');
+        $validated['certificate_file'] =Storage::url($path);
+    } else {
+        unset($validated['certificate_file']);
+    }
+
+    if ($request->hasFile("staff_list_file")) {
+        $file = $request->file('staff_list_file');  // <-- get the uploaded file
+        $path=$file->store('staff_list_files');
+        $validated['staff_list_file'] =Storage::url($path);
+    } else {
+        unset($validated['staff_list_file']);
+    }
+
+    //
+
+    if ($request->hasFile('approval_letter')) {
+        $file = $request->file('approval_letter');  // <-- get the uploaded file
+        $path = $file->store('approval_letters');    // store in storage/app/approval_letter
+        $validated['approval_letter'] = Storage::url($path);  // get URL to file
+    } else {
+        unset($validated['approval_letter']);
+    }
+ 
+
+
     $currentYear = now()->year;
     $years = range($currentYear - 3, $currentYear); 
 
@@ -87,6 +119,7 @@ public function store(Request $request, $form_id)
             unset($validated['renewal_receipts'][$year]);
         }
     }
+ 
 
     /*foreach ($years as $year) {
         $filename="renewal_receipts.$year";  
@@ -101,6 +134,8 @@ public function store(Request $request, $form_id)
         }else{
 
         }
+
+        
 
     }*/
 
@@ -117,7 +152,7 @@ public function store(Request $request, $form_id)
             }
 
             // Store URLs as JSON or array depending on your DB column type
-            $validated['facility_photos'] = json_encode($photos);
+            $validated['facility_photos'] = $photos;
         } else {
             unset($validated['facility_photos']);
         }
@@ -129,6 +164,13 @@ public function store(Request $request, $form_id)
     if (in_array('lga_id', array_keys($validated))) { 
         $validated['lga']=Lga::find($validated['lga_id'])->lga_name??'n/a';
     }
+
+    $form = PrivateValidation::findOrFail($form_id);
+    $data=$form->data??[];
+    $data[$this->sectionKey] = $validated;
+    $form->data=$data;
+    $form->save();
+    //$data[$this->sectionKey] 
 
     Session::put("private.validation.{$form_id}.{$this->sectionKey}", $validated);
 

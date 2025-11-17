@@ -34,11 +34,12 @@ class SectionGController  extends PrivateValidationsController
     }
 
 
+
     public function preview($form_id)
     {
         $form = PrivateValidation::findOrFail($form_id);
 
-        /*$requiredSections = ['sectionA','sectionB','sectionC','sectionD','sectionE','sectionF'];
+        $requiredSections = ['sectionA','sectionB','sectionC','sectionD','sectionE','sectionF'];
 
         $data = $form->data[$this->sectionKey] ?? [];
 
@@ -47,7 +48,7 @@ class SectionGController  extends PrivateValidationsController
                 return redirect()->route("public.validation.{$section}.show", $form_id)
                     ->with('error', 'Please complete all previous sections first.');
             }
-        }*/
+        }
 
         return view('privatevalidations::preview', [
             'form' => $form,
@@ -61,13 +62,13 @@ class SectionGController  extends PrivateValidationsController
         $form = PrivateValidation::findOrFail($form_id);
 
         // Check if all previous sections A to F are complete
-        $missingSections = $this->checkIncompleteSections($form);
+        /*$missingSections = $this->checkIncompleteSections($form);
 
         if (!empty($missingSections)) {
             return redirect()->back()
                 ->withErrors(['incomplete_sections' => 'Please complete all previous sections before submitting the declaration: '.implode(', ', $missingSections)])
                 ->withInput();
-        }
+        }*/
 
         // Validate Section G inputs
         $validated = $request->validate($this->validationRules);
