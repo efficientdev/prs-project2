@@ -41,9 +41,12 @@ class ApprovalController extends Controller
                 }
 
             }); 
+        }else{
+            //$approvals->whereHas( 'stage');
+            $approvals->whereHas('application' );
         }
         
-            $approvals->whereNotIn('registration_approval_stage_id',ApprovalService::$onlyForProprietors)
+            $approvals = $approvals->whereNotIn('registration_approval_stage_id',ApprovalService::$onlyForProprietors)
             ->where('status', 'pending')
             ->whereHas('approvedRegistrationPayment')
             ->whereHas('stage', function ($q) {
@@ -53,6 +56,13 @@ class ApprovalController extends Controller
 
             })
             ->paginate(10);
+
+
+            /*
+<a href="{{ route('srapprovals.show', $approval??0) }}" class="btn btn-sm btn-primary">Review</a>
+
+{{ $approvals->links() }}
+            */
 
 
         return view('registrations::approvals.index', compact('approvals'));

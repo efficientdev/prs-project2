@@ -22,17 +22,22 @@
     </thead>
     <tbody>
         @foreach ($approvals as $approval)
+        @if(!empty($approval))
         <tr>
             <td>{{ $approval->application->data['sectionA']['proposed_name']??'' }}<br/> {{ $approval->application->category->category_name??'' }}</td>
             <td>{{ $approval->stage->name??'n/a' }}</td>
             <td>
-                <a href="{{ route('srapprovals.show', $approval) }}" class="btn btn-sm btn-primary">Review</a>
+                
+<a href="{{ route('srapprovals.show', $approval??0) }}" class="btn btn-sm btn-primary">Review</a>
+
             </td>
         </tr>
+        @endif
         @endforeach
     </tbody>
-</table> 
+</table> @if(!empty($approvals))
 {{ $approvals->links() }}
+@endif
 @endif
 
 
