@@ -21,7 +21,8 @@ class PRScontroller extends Controller
         $lgas  = Ward::select('lga_id', 'lga_name')->distinct()->get();
         $wards = Ward::select('ward_id', 'ward_name', 'lga_id')->get();
 
-        $schools = PrivateValidation::where('submitted',true)->query()
+        //->query()
+        $schools = PrivateValidation::where('submitted',true)
             ->when($filters['school_name'] ?? null, function ($q, $v) {
                 $q->where('details->sectionA->school_name', 'LIKE', "%$v%");
             })
