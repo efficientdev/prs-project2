@@ -23,6 +23,8 @@
 
     <form method="GET" action="{{ route('prvschvalidlist.index') }}" class="space-y-4 mb-6">
 
+
+        <div class="grid grid-cols-3 gap-2 w-2/3">
         <!-- Row 1: Name Search -->
         <div>
             <label class="block font-semibold">School Name</label>
@@ -31,7 +33,6 @@
                    placeholder="Search by school name...">
         </div>
  
-        <div class="grid grid-cols-2 gap-4 w-2/3">
 	        <!-- Row 2: LGA Dropdown -->
 	        <div>
 	            <label class="block font-semibold">Local Government</label>
