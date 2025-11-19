@@ -65,6 +65,14 @@
                 @if(auth()->user()->hasAnyRole(['ADM','DFA','PRS']) )
 
 <a href="{{route('admin.payments.index')}}">Payments</a>
+
+
+<div class="mt-5 border-b pb-1">Validation List </div>
+<a href="{{route('prvschvalidlist.index')}}">Private Schools</a>
+
+
+
+
                 @endif
 
 @if(auth()->user()->hasAnyRole(['ADM','CIE']) )

@@ -47,6 +47,17 @@ Route::middleware(['auth', 'verified'])->prefix('private-school/validation')->gr
     // ... and so on for sections C to G
 });
 
+//PRScontroller
+
+//role:ADM
+Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS'])->prefix('prv/sch')->group(function () {
+ 
+	Route::prefix('validlist')->name('prvschvalidlist.')->group(function () {
+	    Route::get('/list', [PRScontroller::class, 'index'])->name('index');
+	});
+	 
+});
+
 /*
 Route::middleware(['auth', 'verified'])->group(function () {
 
