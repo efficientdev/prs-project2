@@ -3,8 +3,8 @@
 <div class="bg-gray-50">
     <div class="container mx-auto   ">
         <div class="mb-10  ">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Your Private Validations</h1>
-            <p class="text-gray-600">Review and manage your validation requests</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">All Private Validations</h1>
+            <p class="text-gray-600">Review and manage validation requests</p>
         </div>
         
  
