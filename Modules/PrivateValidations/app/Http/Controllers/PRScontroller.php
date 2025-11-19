@@ -24,19 +24,19 @@ class PRScontroller extends Controller
         //->query()
         $forms = PrivateValidation::where('submitted',true)
             ->when($filters['school_name'] ?? null, function ($q, $v) {
-                $q->where('details->sectionA->school_name', 'LIKE', "%$v%");
+                $q->where('data->sectionA->school_name', 'LIKE', "%$v%");
             })
             ->when($filters['lga_id'] ?? null, function ($q, $v) {
-                $q->where('details->sectionA->lga_id', $v);
+                $q->where('data->sectionA->lga_id', $v);
             })
             ->when($filters['ward_id'] ?? null, function ($q, $v) {
-                $q->where('details->sectionA->ward_id', $v);
+                $q->where('data->sectionA->ward_id', $v);
             })
             ->when($filters['school_level'] ?? null, function ($q, $v) {
-                $q->where('details->sectionA->school_level', $v);
+                $q->where('data->sectionA->school_level', $v);
             })
             ->when($filters['school_category'] ?? null, function ($q, $v) {
-                $q->where('details->sectionA->school_category', $v);
+                $q->where('data->sectionA->school_category', $v);
             })
             ->latest()
             ->paginate(10)

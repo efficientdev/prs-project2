@@ -30,37 +30,39 @@
                    class="border p-2 rounded w-1/3"
                    placeholder="Search by school name...">
         </div>
+ 
+        <div class="grid grid-cols-2 gap-4 w-2/3">
+	        <!-- Row 2: LGA Dropdown -->
+	        <div>
+	            <label class="block font-semibold">Local Government</label>
+	            <select name="lga_id" x-model="filters.lga_id"
+	                    class="border p-2 rounded w-1/3">
+	                <option value="">-- All LGAs --</option>
+	                @foreach ($lgas as $lga)
+	                    <option value="{{ $lga->lga_id }}">
+	                        {{ $lga->lga_name }}
+	                    </option>
+	                @endforeach
+	            </select>
+	        </div>
 
-        <!-- Row 2: LGA Dropdown -->
-        <div>
-            <label class="block font-semibold">Local Government</label>
-            <select name="lga_id" x-model="filters.lga_id"
-                    class="border p-2 rounded w-1/3">
-                <option value="">-- All LGAs --</option>
-                @foreach ($lgas as $lga)
-                    <option value="{{ $lga->lga_id }}">
-                        {{ $lga->lga_name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
+	        <!-- Row 3: Ward filtered by LGA -->
+	        <div>
+	            <label class="block font-semibold">Ward</label>
+	            <select name="ward_id" x-model="filters.ward_id"
+	                    class="border p-2 rounded w-1/3">
+	                <option value="">-- All Wards --</option>
 
-        <!-- Row 3: Ward filtered by LGA -->
-        <div>
-            <label class="block font-semibold">Ward</label>
-            <select name="ward_id" x-model="filters.ward_id"
-                    class="border p-2 rounded w-1/3">
-                <option value="">-- All Wards --</option>
-
-                @foreach ($wards as $ward)
-                    <template x-if="filters.lga_id == '{{ $ward->lga_id }}'">
-                        <option value="{{ $ward->ward_id }}">
-                            {{ $ward->ward_name }}
-                        </option>
-                    </template>
-                @endforeach
-            </select>
-        </div>
+	                @foreach ($wards as $ward)
+	                    <template x-if="filters.lga_id == '{{ $ward->lga_id }}'">
+	                        <option value="{{ $ward->ward_id }}">
+	                            {{ $ward->ward_name }}
+	                        </option>
+	                    </template>
+	                @endforeach
+	            </select>
+	        </div>
+	    </div>
 
         <!-- Row 4: Level + Category -->
         <div class="grid grid-cols-2 gap-4 w-2/3">
