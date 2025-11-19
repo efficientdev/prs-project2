@@ -21,7 +21,7 @@
     class="p-6"
 >
 
-    <form method="GET" action="{{ route('forms.index') }}" class="space-y-4 mb-6">
+    <form method="GET" action="{{ route('prvschvalidlist.index') }}" class="space-y-4 mb-6">
 
         <!-- Row 1: Name Search -->
         <div>
