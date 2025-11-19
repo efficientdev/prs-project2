@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\PrivateValidations\Http\Controllers\MyPrivateValidations;
+use Modules\PrivateValidations\Http\Controllers\{MyPrivateValidations,PRScontroller};
 
 use Modules\PrivateValidations\Http\Controllers\SectionAController;
 use Modules\PrivateValidations\Http\Controllers\SectionBController;

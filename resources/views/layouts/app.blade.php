@@ -70,7 +70,7 @@
 <div class="mt-5 border-b pb-1">Validation List </div>
 <a href="{{route('prvschvalidlist.index')}}">Private Schools</a>
 
-
+<br/>
 
 
                 @endif
