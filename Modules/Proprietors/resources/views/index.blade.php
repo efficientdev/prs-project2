@@ -120,6 +120,10 @@
 
 			</form>
 
+			<div class="flex justify-center items-center gap-2">
+				Already have an account? <a href="{{route('login')}}">Sign in here.</a>
+			</div>
+
 
 </div>
 </x-guest-layout-2>

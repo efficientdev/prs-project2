@@ -39,8 +39,8 @@
                                     <div>
                                         <h6 class="mt-2">Payment Meta</h6>
                                         @if($payment['payment_type']=="bank")<ul>
-                                            <li><strong>SB:</strong> {{ $payment['meta']['sb'] }}</li>
-                                            <li><strong>CMP:</strong> {{ $payment['meta']['cmp'] }}</li>
+                                            <li><strong>SB code:</strong> {{ $payment['meta']['sb'] }}</li>
+                                            <li><strong>CMP code:</strong> {{ $payment['meta']['cmp'] }}</li>
                                             <li><strong>Phone:</strong> {{ $payment['meta']['phone'] }}</li>
                                         </ul>@endif
                                     </div>

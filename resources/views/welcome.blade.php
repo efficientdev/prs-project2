@@ -246,10 +246,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 pb-5">
-                    <h1 class="display-4 fw-bold mb-4">Edo State<br/> Ministry of Education Validation Platform</h1>
+                    <h1 class="display-4 fw-bold mb-4">Edo State<br/> Ministry of Education Schools Platform</h1>
                     <p class="lead mb-4">Streamline your validation processes with our secure, efficient platform. Register, validate publicly or privately, and manage all your documents in one place.</p>
+                    <!--
                     <a href="{{route('signup.index')}}" class="btn btn-light btn-lg me-3">Get Started</a>
-                    <a href="#features" class="btn btn-outline-light btn-lg">Learn More</a>
+                    <a href="#features" class="btn btn-outline-light btn-lg">Learn More</a>-->
                 </div>
                 <div class="col-lg-6 flex justify-center items-center text-center">
                     <img src="{{asset('img/logo2.jpg')}}" alt="Validation Platform" class="img-fluid rounded shadow" style="max-height: 400px;">

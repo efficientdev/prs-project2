@@ -44,4 +44,10 @@
             </x-primary-button>
         </div>
     </form>
+
+
+            <div class="flex justify-center items-center gap-2">
+                Need an account? <a href="{{route('signup.index')}}">Sign up here.</a>
+            </div>
+
 </x-guest-layout>

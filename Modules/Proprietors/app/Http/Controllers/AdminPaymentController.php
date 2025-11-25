@@ -143,17 +143,39 @@ public function export(Request $request): StreamedResponse
      */
     public function approve(Request $request, $id)
     {
+        $request->validate([
+            'attachment' => 'required|file'
+        ]);
+
         $payment = Payment::findOrFail($id);
         // only allow bank payments to be approved manually
         if ($payment->payment_type !== 'bank') {
             return back()->with('error', 'Only bank payments can be approved manually.');
         }
+        $request->validate([
+            'attachment' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+        ]);
+
+        //$path = $request->file('attachment')->store('payment_attachments');
+        $path = $request->file('attachment')->store('payment_attachments', 'public');
+        $url = asset('storage/' . $path);
+
+
+        $meta=$payment->meta??[];
+        $meta['evidence']=$meta['evidence']??[];
+        $meta['evidence'][]=$url;
+        $payment->meta=$meta;
+
+
         $payment->status = 'approved';
         $payment->save();
 
         $payable=$payment->payable;
         $payable->status= 'approved';
         $payable->save();
+
+        //
+
 
         $application=$payable->application; 
         

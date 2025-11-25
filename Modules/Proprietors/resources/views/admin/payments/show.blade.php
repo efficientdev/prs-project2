@@ -48,8 +48,8 @@
                 <li><strong>Amount:</strong>  ₦{{ number_format(data_get($payment->meta, 'amount') ?? '0' ,2) }}  </li>
 
                 @if ($payment->payment_type === 'bank')
-                    <li><strong>SB:</strong> {{ data_get($payment->meta, 'sb') ?? '—' }}</li>
-                    <li><strong>CMP:</strong> {{ data_get($payment->meta, 'cmp') ?? '—' }}</li>
+                    <li><strong>SB code:</strong> {{ data_get($payment->meta, 'sb') ?? '—' }}</li>
+                    <li><strong>CMP code:</strong> {{ data_get($payment->meta, 'cmp') ?? '—' }}</li>
                     <li><strong>Phone:</strong> {{ data_get($payment->meta, 'phone') ?? '—' }}</li>
                 @else
                     <li><strong>Email:</strong> {{ data_get($payment->meta, 'email') ?? '—' }}</li>
@@ -57,10 +57,48 @@
             </ul>
         </div>
 
+        <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
+            <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Payment Evidence</h3> 
+            @php
+
+                $meta=$payment->meta??[];
+                $ev=$meta['evidence']??[];
+
+            @endphp
+
+            @forelse($ev as $evItem)
+                <a href="{{ $evItem }}">{{ $evItem }}</a>
+            @empty
+                <p>No Evidence</p>
+            @endforelse
+
+
+        </div>
+
         <!-- Action Buttons -->
         @if ($payment->payment_type === 'bank' && $payment->status === 'pending')
             <div class="flex space-x-4">
                 <!-- Approve -->
+                <form action="{{ route('admin.payments.approve', $payment->id) }}"
+                  method="POST"
+                  enctype="multipart/form-data">
+                @csrf
+
+                <label class="block mb-2 text-sm font-medium text-gray-700">Upload Bank Payment Receipt</label>
+                <input type="file"
+                       name="attachment"
+                       required
+       accept=".pdf,image/*"
+                       class="mb-4 block w-full text-sm text-gray-800 border border-gray-300 rounded p-2" />
+
+                <button type="submit"
+                    class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    <x-heroicon-o-check class="w-5 h-5 mr-2" />
+                    Approve
+                </button>
+            </form>
+
+                <!--
                 <form action="{{ route('admin.payments.approve', $payment->id) }}" method="POST">
                     @csrf
                     <button type="submit"
@@ -68,7 +106,7 @@
                         <x-heroicon-o-check class="w-5 h-5 mr-2" />
                         Approve
                     </button>
-                </form>
+                </form>-->
 
                 <!-- Decline -->
                 <form action="{{ route('admin.payments.decline', $payment->id) }}" method="POST">

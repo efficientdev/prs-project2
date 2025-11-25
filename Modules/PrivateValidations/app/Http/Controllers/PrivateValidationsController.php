@@ -81,17 +81,29 @@ public function store(Request $request, $form_id)
     }*/
 
     if ($request->hasFile("certificate_file")) {
-        $file = $request->file('certificate_file');  // <-- get the uploaded file
+        /*$file = $request->file('certificate_file');  // <-- get the uploaded file
         $path=$file->store('certificate_files');
-        $validated['certificate_file'] =Storage::url($path);
+        $validated['certificate_file'] =Storage::url($path);*/
+
+        $path = $request->file('certificate_file')->store('certificate_files', 'public');
+        $url = asset('storage/' . $path);
+        $validated['certificate_file'] =$url;
+ 
     } else {
         unset($validated['certificate_file']);
     }
 
     if ($request->hasFile("staff_list_file")) {
+        /*
         $file = $request->file('staff_list_file');  // <-- get the uploaded file
         $path=$file->store('staff_list_files');
-        $validated['staff_list_file'] =Storage::url($path);
+        $validated['staff_list_file'] =Storage::url($path);*/
+
+
+        $path = $request->file('staff_list_file')->store('staff_list_files', 'public');
+        $url = asset('storage/' . $path);
+        $validated['staff_list_file'] =$url;
+
     } else {
         unset($validated['staff_list_file']);
     }
@@ -99,9 +111,16 @@ public function store(Request $request, $form_id)
     //
 
     if ($request->hasFile('approval_letter')) {
+        /*
         $file = $request->file('approval_letter');  // <-- get the uploaded file
         $path = $file->store('approval_letters');    // store in storage/app/approval_letter
         $validated['approval_letter'] = Storage::url($path);  // get URL to file
+        */ 
+
+        $path = $request->file('approval_letter')->store('approval_letters', 'public');
+        $url = asset('storage/' . $path);
+        $validated['approval_letter'] =$url;
+
     } else {
         unset($validated['approval_letter']);
     }
@@ -113,8 +132,14 @@ public function store(Request $request, $form_id)
 
     foreach ($validated['renewal_receipts'] ?? [] as $year => $file) {
         if ($request->hasFile("renewal_receipts.$year")) {
-                $path=$file->store('renewal_receipts');
-            $validated['renewal_receipts'][$year] =Storage::url($path);
+            //$path=$file->store('renewal_receipts');
+            //$validated['renewal_receipts'][$year] =Storage::url($path);
+
+
+            $path = $file->store('renewal_receipts', 'public');
+            $url = asset('storage/' . $path);
+            $validated['renewal_receipts'][$year]  =$url;
+
         } else {
             unset($validated['renewal_receipts'][$year]);
         }
@@ -149,6 +174,12 @@ public function store(Request $request, $form_id)
                 $path = $photo->store('facility', 'public'); // 'public' disk ensures it's web-accessible
                 // Get fully resolved URL
                 $photos[] = Storage::url($path);
+
+
+                //$path = $file->store('renewal_receipts', 'public');
+                //$url = asset('storage/' . $path);
+                //$validated['renewal_receipts'][$year]  =$url;
+
             }
 
             // Store URLs as JSON or array depending on your DB column type

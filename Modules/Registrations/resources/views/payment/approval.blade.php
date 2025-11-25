@@ -57,8 +57,8 @@
                                 <div>
                                     @if($payment1['payment_type']=="bank")<h6 class="mt-2">Payment Meta</h6>
                                     <ul>
-                                        <li><strong>SB:</strong> {{ $payment1['meta']['sb'] }}</li>
-                                        <li><strong>CMP:</strong> {{ $payment1['meta']['cmp'] }}</li>
+                                        <li><strong>SB code:</strong> {{ $payment1['meta']['sb'] }}</li>
+                                        <li><strong>CMP code:</strong> {{ $payment1['meta']['cmp'] }}</li>
                                         <li><strong>Phone:</strong> {{ $payment1['meta']['phone'] }}</li>
                                     </ul>
                                     @endif
@@ -76,7 +76,7 @@
 
 @if($application->status!="approved")
 @php
-$tabslist=['Previous Registration Payment Mode','New Registration Payment: Online (Paystack)'];
+$tabslist=['Previous Registration Payment Made','New Registration Payment: Online (Paystack)'];
 @endphp
 
 <x-tabs :labels="$tabslist">

@@ -27,8 +27,8 @@
                 </li>
 
                 @if ($payment->payment_type === 'bank')
-                    <li><strong>SB:</strong> {{ data_get($payment->meta, 'sb') }}</li>
-                    <li><strong>CMP:</strong> {{ data_get($payment->meta, 'cmp') }}</li>
+                    <li><strong>SB code:</strong> {{ data_get($payment->meta, 'sb') }}</li>
+                    <li><strong>CMP code:</strong> {{ data_get($payment->meta, 'cmp') }}</li>
                     <li><strong>Phone:</strong> {{ data_get($payment->meta, 'phone') }}</li>
                 @else
                     <li><strong>Email:</strong> {{ data_get($payment->meta, 'email') }}</li>

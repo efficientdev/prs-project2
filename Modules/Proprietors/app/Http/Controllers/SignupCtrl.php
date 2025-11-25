@@ -27,7 +27,7 @@ class SignupCtrl extends Controller
         return view('proprietors::index');
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      */
     public function create()
