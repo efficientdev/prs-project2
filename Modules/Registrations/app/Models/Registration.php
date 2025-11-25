@@ -17,7 +17,7 @@ class Registration extends Model
 {
     use HasFactory;
 
-
+ 
     /**
      * The attributes that are mass assignable. 'emis_code', 
      */
@@ -103,6 +103,7 @@ class Registration extends Model
 	    return $this->approvals()->whereNull('decision_at')->orderBy('stage_order')->first();
 	}
 
+    
     public function registrationPayment()
     {
         return $this->hasOne(ApplicationPayment::class,'registration_id', 'id');

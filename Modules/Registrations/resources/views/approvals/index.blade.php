@@ -28,6 +28,9 @@
             <td>{{ $approval->stage->name??'n/a' }}</td>
             <td>
                 
+
+<a href="{{ route('registration.timeline', $approval->application->id??0) }}" class="btn btn-sm btn-primary">Summary</a>
+
 <a href="{{ route('srapprovals.show', $approval??0) }}" class="btn btn-sm btn-primary">Review</a>
 
             </td>
