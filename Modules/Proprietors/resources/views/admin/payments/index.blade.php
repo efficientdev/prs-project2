@@ -21,8 +21,8 @@
                 <select name="status" class="select select-bordered">
                     <option value="">All Statuses</option>
                     <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                    <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Completed</option>
-                    <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Failed</option>
+                    <option value="approved" {{ request('status') == 'approved' ? 'selected' : '' }}>Completed</option>
+                    <option value="declined" {{ request('status') == 'declined' ? 'selected' : '' }}>Failed</option>
                 </select>
 
                 <button type="submit" class="btn btn-primary">Filter</button>
@@ -73,7 +73,21 @@
                             <td class="text-center">{{ $p->id }}</td>
                             <td>{{ class_basename($p->payable_type) }} #{{ $p->payable_id }}</td>
                             <td class="text-center">{{ optional($p->payable)->user_id ?? '-' }}</td>-->
-                            <td class="text-center">{{$p->owner->name??'-'}}</td>
+                            <td >
+                                <div class="line-clamp-1">{{$p->owner->name??'-'}}</div>
+
+
+@php
+$sn='';
+try{
+//'payable.application'
+$a=$p->payable->application->data??[];
+$sn=$a['sectionA']['school_name']??'';
+//application
+}catch(\Exception $e){}
+@endphp
+ <br/><div class="line-clamp-1">{{$sn}}</div>
+                            </td>
                             <td class="text-center">{{ $p->payment_type }}</td>
                             <td class="text-right">{{ number_format(data_get($p->meta, 'amount'),2) }}</td>
                             <td class="text-center">{{ $p->status }}</td>

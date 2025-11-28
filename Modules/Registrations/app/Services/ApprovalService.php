@@ -10,7 +10,7 @@ use Modules\Registrations\Models\RegistrationApprovalStage;
 use Carbon\Carbon;
 use App\Notifications\ApplicationApproved;
 use App\Models\User;
-use Modules\Applications\Notifications\{ApplicantInputRequested,ApplicationStatusUpdated,ApplicationRestarted,ApplicationRejected};
+use Modules\Applications\Notifications\{ApplicantInputRequested,ApplicationStatusUpdated,ApplicationRestarted,ApplicationRejected,PendingAction};
 
 class ApprovalService
 {
@@ -89,6 +89,24 @@ class ApprovalService
                 'registration_approval_stage_id' => $nextStage->id,
                 'status' => 'pending',
             ]);
+
+            $neednotif=['DPRS', 'PS', 'COMM'];
+             
+            if(in_array($nextStage->role_name, $neednotif)){
+                $userstonotify=User::role($nextStage->role_name)->get();
+                foreach ($userstonotify as $key => $usertonotify) {
+                    # code...
+                    try {
+                    
+                        $usertonotify->notify(new PendingAction($application, ($stage->name??'').' - pending'));
+                        
+                    } catch (\Exception $e) {
+                        //dd($e);
+                    }
+
+                } 
+            }
+
         } else {
             // Final approval
             $approval->application->update(['status' => 'approved']);

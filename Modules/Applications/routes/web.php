@@ -15,7 +15,7 @@ Route::resource('applications', ApplicationController::class);
 Route::post('applications/{application}/respond', [ApplicationController::class, 'respondToRequest'])->name('applications.respond');
 Route::post('applications/{application}/resubmit', [ApplicationController::class, 'resubmit'])->name('applications.resubmit');
 
-
+//approvals.show
 Route::prefix('approvals')->name('approvals.')->group(function () {
     Route::get('/my', [ApprovalController::class, 'myApprovals'])->name('my');
     Route::get('/{approval}', [ApprovalController::class, 'show'])->name('show');

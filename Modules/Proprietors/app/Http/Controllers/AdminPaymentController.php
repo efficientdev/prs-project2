@@ -84,7 +84,7 @@ public function export(Request $request): StreamedResponse
      */
     public function index(Request $request)
 {
-    $query = Payment::with('payable');
+    $query = Payment::with('payable.application');
 
     // Handle Search
     if ($search = $request->input('search')) {
