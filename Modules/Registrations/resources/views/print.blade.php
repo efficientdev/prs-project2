@@ -1,6 +1,6 @@
 <div class="border-b border-t my-2 py-2">
 <div class="uppercase my-4 text-2xl font-bold">section A: School Identity</div>
-
+ 
 <div class="shadow p-2 rounded">
 
  @php

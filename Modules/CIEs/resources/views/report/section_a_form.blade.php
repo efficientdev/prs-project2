@@ -6,6 +6,14 @@
 $data=$sectionA;
 @endphp
 
+<div class="grid grid-cols-2 gap-3 capitalize">
+<div><label>proprietor phone number</label><br/>
+{{$proprietorSectionA['phone_number']}}
+</div>
+<div><label>school address</label><br/>
+{{$proprietorSectionA['school_address']}}
+</div></div>
+
 <form method="POST" action="{{ route('cies.sectionA.store', $report->id) }}">
     @csrf
 

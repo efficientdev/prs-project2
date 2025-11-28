@@ -38,6 +38,8 @@ Route::prefix('admin')->middleware(['auth', 'role:ADM,DFA'
 
     Route::get('/admin/payments/export', [AdminPaymentController::class, 'export'])->name('admin.payments.export');
     Route::get('payments', [AdminPaymentController::class, 'index'])->name('admin.payments.index');
+    Route::get('payments/{status1?}', [AdminPaymentController::class, 'index'])->name('admin.payments.sindex');
+
     Route::get('payments/{id}', [AdminPaymentController::class, 'show'])->name('admin.payments.show');
     Route::post('payments/{id}/approve', [AdminPaymentController::class, 'approve'])->name('admin.payments.approve');
     Route::post('payments/{id}/decline', [AdminPaymentController::class, 'decline'])->name('admin.payments.decline');

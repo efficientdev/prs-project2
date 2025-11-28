@@ -64,7 +64,10 @@
 
                 @if(auth()->user()->hasAnyRole(['ADM','DFA','PRS']) )
 
-<a href="{{route('admin.payments.index')}}">Payments</a>
+<a href="{{route('admin.payments.sindex',['status1'=>'pending'])}}">Pending Payments</a>
+<a href="{{route('admin.payments.sindex',['status1'=>'approved'])}}">Approved Payments</a>
+<a href="{{route('admin.payments.sindex',['status1'=>'declined'])}}">Failed Payments</a>
+<a href="{{route('admin.payments.index')}}">All Payments</a>
 
 
 <div class="mt-5 border-b pb-1">Validation List </div>

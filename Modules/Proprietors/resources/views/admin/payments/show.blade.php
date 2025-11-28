@@ -15,10 +15,32 @@
         <div class="flex justify-center items-center space-x-4">
             <x-application-logo class="w-8 h-8 text-gray-600" />
         </div>
-        
+
 
 
         @include('proprietors::admin.payments.partialreceipt')
+
+                       
+        @if ($payment->status === 'approved') 
+            @php 
+            try{
+
+                $a=$payment->payable()->with('application')->first()->registration_id;
+                //$r=Modules\Registrations\Models\Registration::find($x);
+             
+            }catch(\Exception $e){}
+            @endphp 
+
+            <form method="post" action="{{route('registration.receipts.print',['id'=>$a??0])}}">
+                @csrf
+                <input type="hidden" name="type" value="application" />
+                
+                <x-primary-button class="ms-0 mt-2">
+                    Download Receipt
+                </x-primary-button> 
+            </form>
+
+        @endif
 
         <!-- Action Buttons -->
         @if ($payment->payment_type === 'bank' && $payment->status === 'pending')

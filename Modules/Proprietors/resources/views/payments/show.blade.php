@@ -37,6 +37,28 @@
             </ul>
         </section>
 
+
+        @if ($payment->payment_type === 'online' &&  $payment->status === 'approved') 
+            @php 
+            try{
+
+                $a=$payment->payable()->with('application')->first()->registration_id;
+                //$r=Modules\Registrations\Models\Registration::find($x);
+             
+            }catch(\Exception $e){}
+            @endphp 
+
+            <form method="post" action="{{route('registration.receipts.print',['id'=>$a??0])}}">
+                @csrf
+                <input type="hidden" name="type" value="application" />
+                
+                <x-primary-button class="ms-0 mt-2">
+                    Download Receipt
+                </x-primary-button> 
+            </form>
+
+        @endif
+
         <!-- Back Button -->
         <div>
             @php

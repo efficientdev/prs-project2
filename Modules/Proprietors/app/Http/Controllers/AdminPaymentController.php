@@ -46,7 +46,8 @@ public function export(Request $request): StreamedResponse
         $query->whereDate('created_at', '<=', $to);
     }
 
-    $payments = $query->orderBy('created_at', 'desc')->get();
+    //$payments = $query->orderBy('created_at', 'desc')->get();
+    $payments = $query->orderBy('created_at', 'asc')->get();
 
     $headers = [
         'Content-Type' => 'text/csv',
@@ -82,7 +83,7 @@ public function export(Request $request): StreamedResponse
     /**
      * List all payments
      */
-    public function index(Request $request)
+    public function index(Request $request,$status1=null)
 {
     $query = Payment::with('payable.application');
 
@@ -103,13 +104,18 @@ public function export(Request $request): StreamedResponse
         $query->where('payment_type', $paymentType);
     }
 
-    if ($status = $request->input('status')) {
-        $query->where('status', $status);
+    if ($status1!=null) {
+        # code...
+        $query->where('status', $status1);
+    }else{
+        if ($status = $request->input('status')) {
+            $query->where('status', $status);
+        }
     }
 
     // Handle Sorting
     $sortField = $request->input('sort', 'created_at');
-    $sortDirection = $request->input('direction', 'desc');
+    $sortDirection = $request->input('direction', 'asc');
 
     $allowedSorts = ['id', 'payable_type', 'payment_type', 'status', 'reference', 'created_at'];
     if (!in_array($sortField, $allowedSorts)) {

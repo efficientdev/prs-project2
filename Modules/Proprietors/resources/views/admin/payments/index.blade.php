@@ -47,6 +47,7 @@
                             //'id' => 'ID',
                             //'payable_type' => 'Parent',
                             'user_id' => 'User',
+                            'user_id2' => 'School',
                             'payment_type' => 'Type',
                             'amount' => 'Amount',
                             'status' => 'Status',
@@ -73,10 +74,14 @@
                             <td class="text-center">{{ $p->id }}</td>
                             <td>{{ class_basename($p->payable_type) }} #{{ $p->payable_id }}</td>
                             <td class="text-center">{{ optional($p->payable)->user_id ?? '-' }}</td>-->
-                            <td >
+                            <td  >
                                 <div class="line-clamp-1">{{$p->owner->name??'-'}}</div>
 
 
+                            </td>
+
+                            <td  >
+                                
 @php
 $sn='';
 try{
@@ -91,11 +96,13 @@ $sn=$a['sectionA']['proposed_name']??'';
 //application
 }catch(\Exception $e){}
 @endphp 
+
 <!--
     {!!$p->payable->application!!}
     -->
- <br/><div class="line-clamp-1">{{$sn}}</div>
+ <div class="line-clamp-1">{{$sn}}</div> 
                             </td>
+
                             <td class="text-center">{{ $p->payment_type }}</td>
                             <td class="text-right">{{ number_format(data_get($p->meta, 'amount'),2) }}</td>
                             <td class="text-center">{{ $p->status }}</td>
