@@ -86,6 +86,9 @@ $sn=$a['sectionA']['school_name']??'';
 //application
 }catch(\Exception $e){}
 @endphp
+<script type="text/javascript">
+    console.log({!!$p->payable->application!!});
+</script>
 <!--
     {{$p}}
     -->
