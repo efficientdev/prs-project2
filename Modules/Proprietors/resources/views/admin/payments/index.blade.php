@@ -80,17 +80,19 @@
 @php
 $sn='';
 try{
+
+$x=$p->payable()->with('application')->first()->registration_id;
+$p2=Modules\Registrations\Models\Registration::find($x);
+
 //'payable.application'
-$a=$p->payable->application->data??[];
-$sn=$a['sectionA']['school_name']??'';
+$a=$p2->data??[];
+$sn=$a['sectionA']['proposed_name']??'';
+//dd($sn);
 //application
 }catch(\Exception $e){}
-@endphp
-<script type="text/javascript">
-    console.log({!!$p->payable->application!!});
-</script>
+@endphp 
 <!--
-    {{$p}}
+    {!!$p->payable->application!!}
     -->
  <br/><div class="line-clamp-1">{{$sn}}</div>
                             </td>
