@@ -86,6 +86,9 @@ $sn=$a['sectionA']['school_name']??'';
 //application
 }catch(\Exception $e){}
 @endphp
+<!--
+    {{$p}}
+    -->
  <br/><div class="line-clamp-1">{{$sn}}</div>
                             </td>
                             <td class="text-center">{{ $p->payment_type }}</td>
