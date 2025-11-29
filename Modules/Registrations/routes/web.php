@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])->prefix('school/registration')->group(fu
 //
 
 //role:ADM
-Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS'])->prefix('school/registration')->group(function () {
+Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS,PAYCONF'])->prefix('school/registration')->group(function () {
 
     //
     Route::prefix('approved')->name('srapproved.')->group(function () {
