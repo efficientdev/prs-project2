@@ -49,6 +49,8 @@ Route::get('/dashboard', function () {
             return redirect()->route('srapprovals.my');
         } elseif ($user->hasRole('SSA')) {
             return redirect()->route('srapprovals.my');//->route('dashboard');
+        } elseif ($user->hasRole('PAYCONF')) {
+            return redirect()->route('srapprovals.my');//->route('dashboard');
         } 
     //return view('dashboard');
     return view('coming-soon');
