@@ -66,9 +66,14 @@
     //$url = route($redirect['route'], $redirect['params']);
 @endphp
 
+<div class="flex items-center gap-4">
 <a href="{{ $redirect['route'] }}" class="inline-flex mt-5 items-center text-sm text-blue-600 hover:underline">
                 <x-heroicon-o-arrow-left class="w-4 h-4 mr-1" />
                 Back to list</a>
+<a href="{{ $redirect['route'] }}" class="inline-flex mt-5 items-center text-sm text-blue-600 hover:underline">
+                <x-heroicon-o-arrow-left class="w-4 h-4 mr-1" />
+                Next</a>
+</div>
 
             <!--<a href="{{ route('registration.sectionG.show', ['form_id' => $payment->payable->registration_id ?? 'default']) }}"
                 class="inline-flex items-center text-sm text-blue-600 hover:underline">

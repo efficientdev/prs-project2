@@ -67,11 +67,16 @@
         @endif
 
         <!-- Back Button -->
-        <div>
+        <div class="flex items-center gap-2">
             <a href="{{ route('admin.payments.index') }}"
                 class="inline-flex items-center text-sm text-blue-600 hover:underline">
                 <x-heroicon-o-arrow-left class="w-4 h-4 mr-1" />
                 Back to list
+            </a>
+            <a href="{{ route('admin.payments.index') }}"
+                class="inline-flex items-center text-sm text-blue-600 hover:underline">
+                <x-heroicon-o-arrow-left class="w-4 h-4 mr-1" />
+                Next
             </a>
         </div>
     </div>

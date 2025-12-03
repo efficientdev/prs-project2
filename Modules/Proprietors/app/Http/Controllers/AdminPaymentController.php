@@ -111,7 +111,7 @@ public function export(Request $request): StreamedResponse
         if ($status = $request->input('status')) {
             $query->where('status', $status);
         }
-    }
+    } 
 
     // Handle Sorting
     $sortField = $request->input('sort', 'created_at');
@@ -120,7 +120,7 @@ public function export(Request $request): StreamedResponse
     $allowedSorts = ['id', 'payable_type', 'payment_type', 'status', 'reference', 'created_at'];
     if (!in_array($sortField, $allowedSorts)) {
         $sortField = 'created_at';
-    }
+    } 
 
     $query->orderBy($sortField, $sortDirection);
 
