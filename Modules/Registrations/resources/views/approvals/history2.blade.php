@@ -8,6 +8,7 @@
      
 @php
     $data=$application->data??[];
+    $form=$application??null;
 @endphp
 @include('registrations::print')
 
