@@ -19,9 +19,7 @@ use Modules\Registrations\Models\Registration;
 
 class ApplicationPaymentCtrl extends Controller
 {
-
-	
-
+ 
 
 	public function edit(Request $request,$id){
 
@@ -46,12 +44,10 @@ class ApplicationPaymentCtrl extends Controller
 				$charge=2500;
 			}
 
-
 			$apps=Registration::where(['owner_id'=>$request->user()->id])->count();
 			if ($apps>0) { 
 
-			    return back()->with('error', 'Only 1 Application is allowed per account.');
-
+			    return back()->with('error', 'Only 1 Application is allowed per account.'); 
 			}
 
 			$data=$a->data??[];

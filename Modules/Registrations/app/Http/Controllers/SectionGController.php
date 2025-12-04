@@ -86,11 +86,22 @@ class SectionGController extends Controller
 
         $initialStage = RegistrationApprovalStage::orderBy('order')->first();
 
-        RegistrationApproval::create([
+        RegistrationApproval::firstOrCreate([
             'registration_id' => $form->id,
             'registration_approval_stage_id' => $initialStage->id,
         ]);
-
+/*
+        $vx=RegistrationApproval::where([
+            'registration_id' => $form->id,
+            'registration_approval_stage_id' => $initialStage->id,
+        ])->exists();
+        if(!$vx){
+            RegistrationApproval::create([
+                'registration_id' => $form->id,
+                'registration_approval_stage_id' => $initialStage->id,
+            ]);
+        }
+*/
 
         //return back()->with('success', 'Section saved successfully.');
 

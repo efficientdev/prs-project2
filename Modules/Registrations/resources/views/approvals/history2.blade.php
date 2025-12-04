@@ -5,6 +5,11 @@
 <p>Status:  {{ ucwords(str_replace('_', ' ', $application->status)) }} </p>
 </div></div>
 
+     
+@php
+    $data=$application->data??[];
+@endphp
+@include('registrations::print')
 
 {{--
 {{$application->registrationPayment}}

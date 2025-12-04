@@ -77,7 +77,7 @@ class ApprovalController extends Controller
         //Registrations::where('')->with('approvals')->first();
         $application=$approval->application;
 
-        if ($approval->stage->role_name=="CIE") {
+        /*if ($approval->stage->role_name=="CIE") {
             # code... 
 
             return redirect()->route('cies.sectionA.show',['report'=>$application->id]);
@@ -85,7 +85,7 @@ class ApprovalController extends Controller
         }else if ($approval->stage->role_name=="PRS" && $approval->stage->id==3) {
 
             return redirect()->route('prss.show',['prss'=>$application->id]);
-        }
+        }*/
 
         return view('registrations::approvals.show', compact('approval','application','categories'));
     }
