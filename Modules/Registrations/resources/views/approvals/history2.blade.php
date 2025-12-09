@@ -14,11 +14,12 @@
 
 
 @php
+/*
+'CIE Report',
+'Proprietor Form'*/
 $tabslist=[
 'Proprietor Form',
-'History',
-'CIE Report',
-'Proprietor Form'
+'Application Payment',
 ];
     
     foreach ($application->approvals as $approval){
