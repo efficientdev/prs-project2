@@ -20,7 +20,9 @@
                 @php
                 $r='tab'.$index; 
                 @endphp
-                {{$$r}}
+
+    {{ $component->slots[$r] ?? '' }}
+                {{--$$r--}}
 
             </div>
         @endforeach
