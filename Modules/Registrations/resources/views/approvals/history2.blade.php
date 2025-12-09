@@ -70,7 +70,7 @@ $tabslist=[
     $ss=$i+2;
     $xzz='tab'.$ss;
     @endphp
-<x-slot name="{{$xzz}}">
+<x-slot :name="$xzz">
         <!--
         <li class="mt-2 pb-2 border-b">-->
             <strong>{{ $approval->stage->name }}</strong> - {{ $approval->status }}
