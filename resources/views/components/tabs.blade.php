@@ -21,8 +21,10 @@
                 $r='tab'.$index; 
                 @endphp
 
-    {{ $component->slots[$r] ?? '' }}
+    {{-- $component->slots[$r] ?? '' --}}
                 {{--$$r--}}
+
+{!! $__laravel_slots[$r] ?? '' !!}
 
             </div>
         @endforeach
