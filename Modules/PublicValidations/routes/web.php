@@ -9,6 +9,16 @@ use Modules\PublicValidations\Http\Controllers\{
     SectionGController
 };
 
+
+//role:ADM
+Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS'])->prefix('prv/sch')->group(function () {
+ 
+    Route::prefix('validlist')->name('pubschvalidlist.')->group(function () {
+        Route::get('/list', [PRScontroller::class, 'index'])->name('index');
+    });
+     
+});
+
 Route::middleware(['auth', 'verified'])->prefix('public-school/validation')->group(function () {
 
     Route::get('/my-list', [PublicValidationsController::class, 'index'])->name('public.validation.list'); 
