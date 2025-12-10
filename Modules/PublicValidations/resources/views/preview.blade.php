@@ -19,7 +19,7 @@
 @if(ucwords(str_replace('_', ' ', $key))=='Staff')
 @include('publicvalidations::preview.staff')
 @endif
-
+ 
                         <!--<pre class="bg-white p-2 rounded border mt-1">{{ json_encode($value, JSON_PRETTY_PRINT) }}</pre>-->
                     @else
                         {{ $value }}

@@ -4,7 +4,8 @@ namespace Modules\Registrations\Services;
 
 //namespace App\Services;
 use Modules\Proprietors\Models\ApprovalPayment;
-use Modules\Registrations\Models\Application;
+//use Modules\Registrations\Models\Application;
+use Modules\Registrations\Models\Registration;
 use Modules\Registrations\Models\RegistrationApproval;
 use Modules\Registrations\Models\RegistrationApprovalStage;
 use Carbon\Carbon;
@@ -202,7 +203,7 @@ protected function getInitialStageId()
     return RegistrationApprovalStage::orderBy('order')->first()->id;
 }
 
-protected function resetApprovalsFromStage(Application $application, $stageId)
+protected function resetApprovalsFromStage(Registration $application, $stageId)
 {
     // instead of Delete approvals at or after rollback stage, update all above current stage to rejected, so that the reject trail will show
     
