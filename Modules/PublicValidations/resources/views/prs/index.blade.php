@@ -24,8 +24,8 @@
     <form method="GET" action="{{ route('prvschvalidlist.index') }}" class="space-y-4 mb-6">
 
 
-        <div class="grid grid-cols-3 gap-2 w-2/3">
-        <!-- Row 1: Name Search -->
+        <div class="grid md:grid-cols-3 gap-2">
+        <!-- Row 1: Name Search  w-2/3 -->
         <div>
             <label class="block font-semibold">School Name</label>
             <input type="text" name="school_name" x-model="filters.school_name"
@@ -65,7 +65,7 @@
 	        </div>
 	    </div>
 
-        <!-- Row 4: Level + Category -->
+        <!-- Row 4: Level + Category 
         <div class="grid grid-cols-2 gap-4 w-2/3">
             <div>
                 <label class="block font-semibold">School Level</label>
@@ -88,7 +88,7 @@
                     <option value="C">C</option>
                 </select>
             </div>
-        </div>
+        </div>-->
 
         <!-- Submit -->
         <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">Filter</button>
@@ -100,9 +100,9 @@
             <tr class="bg-gray-200">
                 <th class="p-2 border">School Name</th>
                 <th class="p-2 border">LGA</th>
-                <th class="p-2 border">Ward</th>
+                <th class="p-2 border">Ward</th><!--
                 <th class="p-2 border">Level</th>
-                <th class="p-2 border">Category</th>
+                <th class="p-2 border">Category</th>-->
                 <th class="p-2 border">Action</th>
             </tr>
         </thead>
@@ -115,11 +115,11 @@
                     <td class="p-2 border">{{ $a['school_name']??'n/a' }}</td>
                     <td class="p-2 border">{{ $a['lga']??'n/a' }}</td>
                     <td class="p-2 border">{{ $a['ward']??'n/a' }}</td>
-                    <td class="p-2 border">{{ $a['school_level']??'n/a' }}</td>
-                    <td class="p-2 border">{{ $a['school_category']??'n/a' }}</td>
+                    <!--<td class="p-2 border">{{ $a['school_level']??'n/a' }}</td>
+                    <td class="p-2 border">{{ $a['school_category']??'n/a' }}</td>-->
 
                     <td class="p-2 border">
-                        <a href="{{ route('private.validation.preview', $school->id) }}"
+                        <a href="{{ route('public.validation.preview', $school->id) }}"
                            class="text-blue-600 underline">Show</a>
                     </td>
                 </tr>
