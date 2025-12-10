@@ -15,8 +15,8 @@ class RegistrationApproval extends Model
     /** 
      * The attributes that are mass assignable.
      */ 
-    
-    protected $fillable = ['registration_id', 'registration_approval_stage_id', 'user_id', 'status', 'comments', 'decision_at'];
+     
+    protected $fillable = ['registration_id', 'registration_approval_stage_id', 'user_id', 'status', 'comments', 'decision_at','rollback_stage_id'];
 
 
     public function approvedRegistrationPayment()

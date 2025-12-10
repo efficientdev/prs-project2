@@ -87,6 +87,7 @@ class ApprovalService
             RegistrationApproval::create([
                 'registration_id' => $approval->registration_id,
                 'registration_approval_stage_id' => $nextStage->id,
+                'rollback_stage_id' => ($nextStage->id??2)-1,
                 'status' => 'pending',
             ]);
 
@@ -149,7 +150,8 @@ class ApprovalService
         $stage=$approval->stage;
 
     // Decide rollback or final rejection
-    if ($this->shouldRollbackOnRejection($approval)) {
+    //if ($this->shouldRollbackOnRejection($approval)) {
+    if (true) {//allow roleback for all
         // Rollback - restart from initial stage or a specific stage
         $rollbackStageId = $approval->rollback_stage_id ?? $this->getInitialStageId();
 
@@ -202,17 +204,20 @@ protected function getInitialStageId()
 
 protected function resetApprovalsFromStage(Application $application, $stageId)
 {
-    // Delete approvals at or after rollback stage
+    // instead of Delete approvals at or after rollback stage, update all above current stage to rejected, so that the reject trail will show
+    
     RegistrationApproval::where('registration_id', $application->id)
         ->whereHas('stage', function ($q) use ($stageId) {
             $rollbackOrder = RegistrationApprovalStage::find($stageId)->order;
-            $q->where('order', '>=', $rollbackOrder);
-        })->delete();
-
-    // Create a new approval record at rollback stage
+            $q->where('order', '>=', $rollbackOrder); 
+        })->update(['status' => 'rejected']);//->delete();
+       
+    
+    // Create a new approval record at rollback stage, this allows a new stage that can be modified to be accessed
     RegistrationApproval::create([
         'registration_id' => $application->id,
         'registration_approval_stage_id' => $stageId,
+        'rollback_stage_id' => ($stageId??2)-1,
         'status' => 'pending',
     ]);
 }
