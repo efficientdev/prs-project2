@@ -71,10 +71,10 @@
 
 
 <div class="mt-5 border-b pb-1">Validation List </div>
-<a href="{{route('pubschvalidlist.index')}}">Public Schools</a>
+{{--<a href="{{route('pubschvalidlist.index')}}">Public Schools</a>
 
 <a href="{{route('prvschvalidlist.index')}}">Private Schools</a>
-
+--}}
 
 <br/>
 
