@@ -6,12 +6,12 @@ use Modules\PublicValidations\Http\Controllers\PublicValidationsController;
 use Modules\PublicValidations\Http\Controllers\{
     SectionAController, SectionBController, SectionCController,
     SectionDController, SectionEController, SectionFController,
-    SectionGController
+    SectionGController,PRScontroller
 };
 
 
 //role:ADM
-Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS'])->prefix('prv/sch')->group(function () {
+Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS'])->prefix('pub/sch')->group(function () {
  
     Route::prefix('validlist')->name('pubschvalidlist.')->group(function () {
         Route::get('/list', [PRScontroller::class, 'index'])->name('index');
