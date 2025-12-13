@@ -92,7 +92,7 @@ $tabslist=[
     @elseif($ss==9)
         <x-slot name="tab9">
     @endif
-
+        <div>
         <!--
         <li class="mt-2 pb-2 border-b">-->
             <strong>{{ $approval->stage->name }}</strong> - {{ $approval->status }}
@@ -124,6 +124,8 @@ $tabslist=[
             <div> <i class="far fa-clock mr-1"></i>
                                     Created {{ $approval->created_at->format('M j, Y') }}</div>
         <!--</li>-->
+    </div>
+    
     </x-slot>
     @endforeach
 <!--</ul>--> 
