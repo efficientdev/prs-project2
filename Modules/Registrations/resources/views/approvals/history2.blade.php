@@ -122,10 +122,10 @@ $tabslist=[
 
             <div class="flex justify-between"><div>Comment: {{ $approval->comments ?? 'None' }}.</div>
             <div> <i class="far fa-clock mr-1"></i>
-                                    Created {{ $approval->created_at->format('M j, Y') }}</div>
+                                    Created {{ $approval->created_at->format('M j, Y') }}</div></div>
         <!--</li>-->
     </div>
-    
+
     </x-slot>
     @endforeach
 <!--</ul>--> 
