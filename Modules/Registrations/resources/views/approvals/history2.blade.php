@@ -69,9 +69,30 @@ $tabslist=[
 
     @php 
     $ss=$i+2;
-    $xzz='tab'.$ss;
+
+
+    //$xzz='tab'.$ss;
     @endphp
-<x-slot :name="$xzz">
+
+
+    @if($ss==2)
+        <x-slot name="tab2">
+    @elseif($ss==3)
+        <x-slot name="tab3">
+    @elseif($ss==4)
+        <x-slot name="tab4">
+    @elseif($ss==5)
+        <x-slot name="tab5">
+    @elseif($ss==6)
+        <x-slot name="tab6">
+    @elseif($ss==7)
+        <x-slot name="tab7">
+    @elseif($ss==8)
+        <x-slot name="tab8">
+    @elseif($ss==9)
+        <x-slot name="tab9">
+    @endif
+
         <!--
         <li class="mt-2 pb-2 border-b">-->
             <strong>{{ $approval->stage->name }}</strong> - {{ $approval->status }}
