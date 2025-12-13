@@ -14,7 +14,7 @@ class RegistrationsController extends BaseSectionController
         $application = Registration::findOrFail($form_id);
         //dd($application);
 
-        $application->load('registrationPayment','approvedRegistrationPayment');
+        $application->load('registrationPayment','approvedRegistrationPayment','approvals');  
 
     //public function show(Registration $application)
     //{
