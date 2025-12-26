@@ -12,7 +12,7 @@ use Modules\CIEs\Http\Controllers\{
     SectionDController,
     SectionGController,SummaryController
 };
-
+ 
 Route::middleware(['auth',
     'role:CIE,ADM'
 ])->group(function () {

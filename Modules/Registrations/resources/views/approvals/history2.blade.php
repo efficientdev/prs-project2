@@ -102,6 +102,23 @@ $tabslist=[
             @endif
             <br>
 
+            @if($approval->stage->role_name=="PRS")
+
+                @php
+                    $report=$application;
+                    //
+                @endphp
+
+
+                @if(isset($report->prs_4_report))
+                    @include('prss::print')
+                @else
+                    <div class="text-xl">Not yet available</div>
+                @endif
+
+            @endif
+
+
             @if($approval->stage->role_name=="CIE")
 
                 @php

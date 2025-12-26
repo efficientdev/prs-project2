@@ -30,13 +30,21 @@ $approval->stage->name.' Report',
 'Proprietor Form'
 ];
     
-    $form=$approval->application;
+    $form=$report=$approval->application;
     $data=$form->data??[];
 @endphp
 
-    @if($approval->stage->role_name=="CIE")
+
+
+
+    @if($approval->stage->role_name=="CIE" && empty($form->cies_reports))
     <div class="py-5">
     <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('cies.sectionA.show',['report'=>$form->id])}}">Fill CIE Report</a>
+</div>
+    
+    @elseif($approval->stage->role_name=="PRS" && empty($form->prs_4_report))
+    <div class="py-5">
+    <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('prss.sectionA.show',['report'=>$form->id])}}">Fill PRS Report</a>
 </div>
     
     @else
@@ -44,8 +52,20 @@ $approval->stage->name.' Report',
 
 
     <x-slot name="tab0"> 
+
+        @if($approval->stage->role_name=="CIE")
+            @include('cies::print') 
+        @endif
+
+        @if($approval->stage->role_name=="PRS")
+            @include('prss::print') 
+        @endif
     <form method="POST" action="{{ route('srapprovals.approve', $approval) }}">
         @csrf
+
+
+
+
         @if($approval->stage->role_name=="DPRS")
         
         <div>

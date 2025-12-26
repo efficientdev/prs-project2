@@ -71,10 +71,10 @@ class PRSsController extends Controller
 
         $registration=Registration::findOrFail($request->id);
 
-        $cies_reports=$registration->cies_reports??[];
+        $prss_reports=$registration->prss_reports??[];
 
         $approvals = [];
-        $yourFileLookup=$cies_reports['sectionH']['uploads']??[]; 
+        $yourFileLookup=$prss_reports['sectionH']['uploads']??[]; 
         foreach ($request->input('approvals', []) as $category => $items) {
             foreach ($items as $index => $data) {
                 $approvals[$category][$index] = [
@@ -123,14 +123,14 @@ class PRSsController extends Controller
 
         $data=$registration->prs_4_report??[];
         $pdata=$registration->data??[];
-        $cies_reports=$registration->cies_reports??[];
+        $prss_reports=$registration->prss_reports??[];
 
-        $data['teacher_qualifications']=$cies_reports['sectionC']['teacher_qualifications']??[];
-        $data['levels']=$cies_reports['sectionB']['levels']??[];
-        $sectionH=$cies_reports['sectionH']??[];
+        $data['teacher_qualifications']=$prss_reports['sectionC']['teacher_qualifications']??[];
+        $data['levels']=$prss_reports['sectionB']['levels']??[];
+        $sectionH=$prss_reports['sectionH']??[];
         $approval=$registration->currentApproval();
 
-        return view('prss::formparts.show',compact('data','cies_reports','registration','pdata','approval','sectionH'));
+        return view('prss::formparts.show',compact('data','prss_reports','registration','pdata','approval','sectionH'));
     }
 
     /**

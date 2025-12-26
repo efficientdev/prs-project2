@@ -25,10 +25,10 @@ class ReportController extends Controller
 
          $data=$registration->prs_4_report??[];
         $pdata=$registration->data??[];
-        $cies_reports=$registration->cies_reports??[];
+        $prss_reports=$registration->prss_reports??[];
 
-        //$data['teacher_qualifications']=$cies_reports['sectionC']['teacher_qualifications']??[];
-        //$data['levels']=$cies_reports['sectionC']['levels']??[];
+        //$data['teacher_qualifications']=$prss_reports['sectionC']['teacher_qualifications']??[];
+        //$data['levels']=$prss_reports['sectionC']['levels']??[];
 
     	
         return view('prss::summary',compact('report'));

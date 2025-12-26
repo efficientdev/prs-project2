@@ -70,6 +70,26 @@ class Registration extends Model
     }
 
 
+    /**
+     * Get a section’s data (or default).
+     */
+    public function getPrs1(string $section)
+    {
+        $data = $this->prs_4_report ?? [];
+        return $data[$section] ?? null;
+    }
+
+    /**
+     * Set a section’s data.
+     */
+    public function setPrs1(string $section, array $data)
+    {
+        $all = $this->prs_4_report ?? [];
+        $all[$section] = $data;
+        $this->prs_4_report = $all;
+    }
+//
+
     public function getCategoryAttribute(){
         try {
             $m=$this->data??[];

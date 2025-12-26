@@ -125,7 +125,7 @@
 @yield('content')
 </div>
 
-        <div class="text-center text-sm my-5 capitalize">This portal is managed by the department of planniing, Research & Statistics (PRS), Edo state Ministry of Education. <br/>All Information provided is subject to verification.</div>
+        <div class="text-center text-sm my-5 capitalize">This portal is managed by the department of planning, Research & Statistics (PRS), Edo state Ministry of Education. <br/>All Information provided is subject to verification.</div>
 
 
             </main></div>
