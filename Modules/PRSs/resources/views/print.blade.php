@@ -1,3 +1,43 @@
+@php
+use Illuminate\Support\Collection;
+if (!function_exists('sumKeys')) {
+function sumKeys(Collection $collection, array $keys): array
+{
+    try{
+    return collect($keys)->mapWithKeys(function ($key) use ($collection) {
+        return [
+            $key => $collection->sum(fn ($row) => (int) ($row[$key] ?? 0))
+        ];
+    })->toArray();}catch(\Exception $e){return [];}
+}}
+if (!function_exists('sumNumericFields')) {
+function sumNumericFields(array $data)
+{
+    $totals = 0;
+
+try{
+    foreach (array_values($data) as $key => $value) {
+            if (is_numeric($value)) {
+                $totals += (int) $value;
+            }
+        }
+    }catch(\Exception $e){return 0;}
+
+    /*foreach ($data as $row) {
+    //dd($row);
+        foreach ($row as $key => $value) {
+            if (is_numeric($value)) {
+                $totals[$key] = ($totals[$key] ?? 0) + (int) $value;
+            }
+        }
+    }*/
+
+    return $totals;
+}}
+
+
+@endphp
+
 
  @php
     //$sectionC = $report->prs_4_report ?? [];
@@ -7,7 +47,7 @@
     // Define order you want keys to appear
     $order = [
         'school_name','type_of_school','school_address',
-    'year_founded','','inspection_date','','','philosophy','motto','school_fees','teacher_salary','physical_facilities','learning_facilities','games_facilities','',
+    'year_founded','inspection_date','', 'philosophy','motto','school_fees','teacher_salary','physical_facilities','learning_facilities','games_facilities','',
     'school_records',
     'other_records'
     ];
@@ -31,6 +71,7 @@
  @php
     $sectionB = $report->prs_4_report['sectionB'] ?? [];
 
+/*
  //print_r(implode("','",array_keys( $sectionB)));
     // Define order you want keys to appear
     $order = [
@@ -46,9 +87,41 @@
         'levels' =>['level','male', 'female'],
      ];
         $data=$report->prs_4_report;
+
+*/
+
+    $levels_total = sumKeys(collect($sectionB['levels']), ['male', 'female']);
+
+    $levels_final_total =sumNumericFields($levels_total);
+//dd($levels_total);
+
+        $rcie=$data['sectionB']??[];
+        $rcie['levels_total']=[$levels_total];
+
+        //print_r($levels_total);
+
+        $rcie['levels_final_total']=$levels_final_total;
+
+    //print_r(implode("','",array_keys( $sectionB)));
+    // Define order you want keys to appear
+    $order = [
+        'levels','levels_total','levels_final_total'
+    ];
+     
+    // Define groups (tables) of multiple keys to show side by side
+    $groups = [
+        //'levels' =>['level','male', 'female'],
+        // add more groups if needed
+    ];
+    $arrayTableColumns =[ 
+        'levels' =>['level','male', 'female'],
+        'levels_total'=>['male', 'female'],
+     ];
+        //$data=$report->cies_reports;
+
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionB']??[], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $rcie, 'groups' => $groups, 'order' => $order])
 
 
 
@@ -58,6 +131,43 @@
 
  @php
     $sectionC = $report->prs_4_report['sectionC'] ?? [];
+
+
+ //print_r(implode("','",array_keys( $sectionC)));
+    // Define order you want keys to appear
+    $total_staffing = sumKeys(collect($sectionC['staffing']), ['male', 'female']);
+    
+    $final_total_staffing =sumNumericFields($total_staffing);
+    
+    $total_teacher_qualifications = sumKeys(collect($sectionC['teacher_qualifications']), ['male', 'female']);
+    
+    $final_teacher_qualifications =sumNumericFields($total_teacher_qualifications);
+
+        $rcie=$data['sectionC']??[];
+
+        $rcie['final_total_staffing']=$final_total_staffing;
+        $rcie['total_staffing']=[$total_staffing];
+
+        $rcie['final_teacher_qualifications']=$final_teacher_qualifications;
+        $rcie['total_teacher_qualifications']=[$total_teacher_qualifications];
+
+    $order = [
+        'staffing','total_staffing','final_total_staffing',
+        'teacher_qualifications','total_teacher_qualifications','final_teacher_qualifications'
+    ];
+     
+    // Define groups (tables) of multiple keys to show side by side
+    $groups = [
+        //'levels' =>['level','male', 'female'],
+        // add more groups if needed
+    ];
+    $arrayTableColumns =[ 
+        'staffing' =>['category','male', 'female'],
+        'total_staffing'=>['male', 'female'],
+        'teacher_qualifications' =>['category','male', 'female'],
+        'total_teacher_qualifications'=>['male', 'female'],
+     ];
+/*
 
  //print_r(implode("','",array_keys( $sectionC)));
     // Define order you want keys to appear
@@ -75,10 +185,12 @@
         'staffing' =>['category','male', 'female'],
         'teacher_qualifications' =>['category','male', 'female'],
      ];
+
+     */
         $data=$report->prs_4_report;
 @endphp
  
-@include('registrations::preview.render_section', ['data' => $data['sectionC']??[], 'groups' => $groups, 'order' => $order])
+@include('registrations::preview.render_section', ['data' => $rcie, 'groups' => $groups, 'order' => $order])
 
 
 
