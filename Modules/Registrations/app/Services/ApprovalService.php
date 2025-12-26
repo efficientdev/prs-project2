@@ -85,10 +85,13 @@ class ApprovalService
             ->first();
 
         if ($nextStage) {
-            RegistrationApproval::create([
+            $ra=RegistrationApproval::firstOrCreate([
                 'registration_id' => $approval->registration_id,
                 'registration_approval_stage_id' => $nextStage->id,
                 'rollback_stage_id' => ($nextStage->id??2)-1,
+                'status' => 'pending',
+            ]);
+            $ra->update([
                 'status' => 'pending',
             ]);
 
