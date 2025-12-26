@@ -10,7 +10,8 @@ class SectionCController extends PRSBaseController
     public function show(int $reportId)
     {
         $report = $this->findReportOrFail($reportId);
-        $data = $report->getPrs1('sectionC') ?? [];
+        $data = $report->getSection('sectionC') ?? null;//always use cie copy
+        //$data = $report->getPrs1('sectionC') ?? [];
 
         //
 

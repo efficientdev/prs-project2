@@ -11,8 +11,8 @@ class SectionBController extends PRSBaseController
     {
         $report = $this->findReportOrFail($reportId);
         //$sectionB = $report->getPrs1('sectionB') ?? [];
-        $sectionBa = $report->getSection('sectionB') ?? null;
-        $sectionB = $report->getPrs1('sectionB') ?? $sectionBa?? [];
+        $sectionB = $report->getSection('sectionB') ?? null;//always use cie copy
+        //$sectionB = $report->getPrs1('sectionB') ?? $sectionBa?? [];
 
         $formId = 'form-section-b';
 
