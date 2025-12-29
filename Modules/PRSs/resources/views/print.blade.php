@@ -135,11 +135,11 @@ try{
 
  //print_r(implode("','",array_keys( $sectionC)));
     // Define order you want keys to appear
-    $total_staffing = sumKeys(collect($sectionC['staffing']), ['male', 'female']);
+    $total_staffing = sumKeys(collect($sectionC['staffing']??[]), ['male', 'female']);
     
     $final_total_staffing =sumNumericFields($total_staffing);
     
-    $total_teacher_qualifications = sumKeys(collect($sectionC['teacher_qualifications']), ['male', 'female']);
+    $total_teacher_qualifications = sumKeys(collect($sectionC['teacher_qualifications']??[]), ['male', 'female']);
     
     $final_teacher_qualifications =sumNumericFields($total_teacher_qualifications);
 
