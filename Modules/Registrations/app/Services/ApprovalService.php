@@ -95,7 +95,7 @@ class ApprovalService
                 'status' => 'pending',
             ]);
 
-            $neednotif=['DPRS', 'PS', 'COMM'];
+            $neednotif=['DPRS', 'PS', 'COMM','PRS','CIE','PAYCONF','ADM','DED','DFA','DG','OFF','SSA'];
              
             if(in_array($nextStage->role_name, $neednotif)){
                 $userstonotify=User::role($nextStage->role_name)->get();
