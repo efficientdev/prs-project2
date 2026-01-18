@@ -69,9 +69,20 @@ class SectionGController extends CiesBaseController
         }*/
 
         $photos=CieKonstants::getCompulsoryPhotoList();
+
+        //$photos=CieKonstants::getPhotoList();
+
         $data2 = $report->getSection('sectionH') ?? [];
         //$data3 = array_keys($data2['uploads']??[]);
         $missing = $this->findMissingKeys($photos, $data2['uploads']??[]);
+
+        $hasenough=CieKonstants::hasAtLeast3($data2['uploads']??[]);
+        if ($hasenough) {}else{
+            # code...
+            $message="At least 3 photos are required for each photo upload category.";
+            return back()->withErrors(['uploads' => $message]);
+        }
+
         if (count($missing) !== 0) {
             $message = implode(', ', $missing) . (count($missing) === 1 ? " upload is required" : " uploads are required");
             //return back()->with('errors', $message);
