@@ -25,6 +25,7 @@ class CieKonstants
         ];
 	}
 	public static function hasAtLeast3($u){
+		$passed=[];
 		$hasthem=CieKonstants::getCompulsoryPhotoList();
 		foreach ($hasthem as $key => $it) {
 			# code...
