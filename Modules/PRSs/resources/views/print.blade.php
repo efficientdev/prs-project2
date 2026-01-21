@@ -90,7 +90,7 @@ try{
 
 */
 
-    $levels_total = sumKeys(collect($sectionB['levels']), ['male', 'female']);
+    $levels_total = sumKeys(collect($sectionB['levels']??[]), ['male', 'female']);
 
     $levels_final_total =sumNumericFields($levels_total);
 //dd($levels_total);
