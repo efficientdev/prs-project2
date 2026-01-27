@@ -16,7 +16,7 @@ use Modules\ADMs\Models\LgaAssignment;
 
 class ApprovalController extends Controller
 {
-    public function myApprovals()
+    public function myApprovals(Request $request)
     {
   
         /*$approvals = RegistrationApproval::with('application', 'stage')
