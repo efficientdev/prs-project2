@@ -158,7 +158,7 @@ $tabslist=[
     window.addEventListener('load', function () {
         setTimeout(() => {
             window.print();
-        }, 300);
+        }, 800);
     });
 </script>
 

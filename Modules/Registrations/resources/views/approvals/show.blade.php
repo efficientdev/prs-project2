@@ -26,6 +26,7 @@
 $tabslist=[
 $approval->stage->name.' Report',
 'History',
+'PRS Report',
 'CIE Report',
 'Proprietor Form'
 ];
@@ -48,6 +49,12 @@ $approval->stage->name.' Report',
 </div>
     
     @else
+
+                @php
+                    $report=$application;
+                    //
+                @endphp
+
 <x-tabs :labels="$tabslist">
 
 
@@ -58,14 +65,20 @@ $approval->stage->name.' Report',
         @endif
 
         @if($approval->stage->role_name=="PRS")
-            @include('prss::print') 
-        @endif
+            @if(isset($report->prs_4_report)) 
+                @include('prss::print') 
+            @else
+                <div class="text-xl">Not yet available</div>
+            @endif
+        @endif 
+        
+        
 
 @if($approval->stage->role_name=="DPRS")
-        <a target="_blank" href="{{ route('registration.reportstack', ['form_id' => $form->id ?? 'default']) }}" 
+        <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" target="_blank" href="{{ route('registration.reportstack', ['form_id' => $form->id ?? 'default']) }}" 
                                >
                                  
-                                <span> Report Stack</span>
+                                <span>Download Report Stack</span>
                             </a>@endif
 
 
