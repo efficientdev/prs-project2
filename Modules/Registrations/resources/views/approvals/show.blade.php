@@ -64,14 +64,6 @@ $approval->stage->name.' Report',
             @include('cies::print') 
         @endif
 
-        @if($approval->stage->role_name=="PRS")
-            @if(isset($report->prs_4_report)) 
-                @include('prss::print') 
-            @else
-                <div class="text-xl">Not yet available</div>
-            @endif
-        @endif 
-        
         
 
 @if($approval->stage->role_name=="DPRS")
@@ -130,7 +122,18 @@ $approval->stage->name.' Report',
 
  @include('registrations::approvals.history')
     </x-slot>
-    <x-slot name="tab2">
+
+    <x-slot name="tab2"> 
+
+ 
+    @if(isset($report->prs_4_report)) 
+        @include('prss::print') 
+    @else
+        <div class="text-xl">Not yet available</div>
+    @endif
+         
+        </x-slot>
+    <x-slot name="tab3">
 
 @php
 $report=$application;
@@ -152,7 +155,9 @@ $report=$application;
 
 </x-slot>
 
-    <x-slot name="tab3"> 
+
+
+    <x-slot name="tab4"> 
 
 
  @include('registrations::print')
