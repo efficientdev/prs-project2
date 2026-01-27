@@ -18,7 +18,7 @@ class ApprovalController extends Controller
 {
     public function myApprovals()
     {
- 
+  
         /*$approvals = RegistrationApproval::with('application', 'stage')
             ->whereHas('stage.users', fn($q) => $q->where('user_id', auth()->id()))
             ->where('status', 'pending')
@@ -45,17 +45,22 @@ class ApprovalController extends Controller
             //$approvals->whereHas( 'stage');
             $approvals->whereHas('application' );
         }
-        
-            $approvals = $approvals->whereNotIn('registration_approval_stage_id',ApprovalService::$onlyForProprietors)
-            ->where('status', 'pending')
-            ->whereHas('approvedRegistrationPayment')
-            ->whereHas('stage', function ($q) {
-                if (!in_array('ADM', auth()->user()->roles->pluck('name')->toArray())) {
-                $q->where('role_name', auth()->user()->roles->pluck('name'));
-                }
 
-            })
-            ->paginate(10);
+        //important for filter
+        if ($request->filled('stage_id')) {
+            $approvals->where('registration_approval_stage_id', $request->stage_id);
+        }
+    
+        $approvals = $approvals->whereNotIn('registration_approval_stage_id',ApprovalService::$onlyForProprietors)
+        ->where('status', 'pending')
+        ->whereHas('approvedRegistrationPayment')
+        ->whereHas('stage', function ($q) {
+            if (!in_array('ADM', auth()->user()->roles->pluck('name')->toArray())) {
+            $q->where('role_name', auth()->user()->roles->pluck('name'));
+            }
+
+        })
+        ->paginate(10);
 
 
             /*
@@ -63,9 +68,10 @@ class ApprovalController extends Controller
 
 {{ $approvals->links() }}
             */
+        
+        $stages=RegistrationApprovalStage::all();
 
-
-        return view('registrations::approvals.index', compact('approvals'));
+        return view('registrations::approvals.index', compact('approvals','stages'));
     }
 
     public function show(RegistrationApproval $approval)

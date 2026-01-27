@@ -3,6 +3,11 @@
  
 <div class="shadow p-2 rounded">
 
+
+<div class="flex">
+    Submitted: {{$form->created_at??'N/A'}}
+</div>
+
  @php
     //$owner=\App\Models\User::find()
     $sectionA = $data['sectionA'] ?? [];
@@ -233,6 +238,11 @@ also generate llaravel validations too
     I, {{$sectionA['surname']??''}} {{$sectionA['other_names']??''}} hereby affirm that all information and documents provided in this school registration application are true, and accurate. I understand that any false or misleading information may result in the loss of my registration status.
 
 @endif
+</div>
+
+
+<div class="flex mt-2">
+    Submitted: {{$form->created_at??'N/A'}}
 </div>
 
 </div>

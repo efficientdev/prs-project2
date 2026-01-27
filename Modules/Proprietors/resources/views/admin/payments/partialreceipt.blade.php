@@ -60,7 +60,12 @@
 
 @if ($payment->payment_type === 'online')
 
- @if ($payment->status === 'approved') 
+        @if ($payment->status === 'approved') 
+
+         <div>
+            <span class="font-medium">Approved:</span>
+                            {{ $payment->updated_at }}
+         </div>
             @php 
             try{
 
@@ -81,11 +86,24 @@
 
         @endif
         
-            @else
+    @else
 
-             <p>No Evidence</p>
+     <p>No Evidence</p>
 
-        @endif
+     @if ($payment->status === 'approved') 
+     <div>
+         <div>
+            <span class="font-medium">Created:</span>
+                            {{ $payment->created_at }}
+         </div>
+         <div>
+            <span class="font-medium">Approved:</span>
+                            {{ $payment->updated_at }}
+         </div>
+     </div>
+     @endif
+
+@endif
 
 
             @endforelse

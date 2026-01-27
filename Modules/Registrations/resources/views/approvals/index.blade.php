@@ -1,6 +1,22 @@
  <x-app-layout>
+    <div class="flex justify-between items-center">
 <div class="mb-3 text-xl font-bold">Pending Approvals</div>
 
+
+<form method="GET" action="{{ url()->current() }}">
+    <select name="stage_id" onchange="this.form.submit()">
+        <option value="">-- Select Stage --</option>
+
+        @foreach ($stages as $stage1)
+            <option value="{{ $stage1->id }}"
+                {{ request('stage_id') == $stage1->id ? 'selected' : '' }}>
+                {{ $stage1->name }}
+            </option>
+        @endforeach
+    </select>
+</form>
+
+</div>
 
  @if($approvals->count() == 0)
         <div class="text-center py-12">

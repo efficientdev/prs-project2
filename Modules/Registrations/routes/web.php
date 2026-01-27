@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Registrations\Http\Controllers\RegistrationsController;
+use Modules\Registrations\Http\Controllers\{RegistrationsController,Registrations2Controller};
 
 
 use Modules\Registrations\Http\Controllers\{ApprovalController,ApprovedCtrl,ApprovalFeePending};
@@ -68,6 +68,10 @@ Route::middleware(['auth', 'verified'])->prefix('school/registration')->group(fu
     Route::get('/my-list', [RegistrationsController::class, 'index'])->name('registration.list'); 
     Route::get('/new/{cat_id}', [RegistrationsController::class, 'create'])->name('registration.create');
     Route::get('/{form_id}/timeline', [RegistrationsController::class, 'show'])->name('registration.timeline');
+
+    Route::get('/{form_id}/reportstack', [Registrations2Controller::class, 'show'])->name('registration.reportstack');
+
+    //Registrations2Controller
 
     Route::get('section-a/{form_id}', [SectionAController::class, 'show'])->name('registration.sectionA.show');
     Route::post('section-a/{form_id}', [SectionAController::class, 'store'])->name('registration.sectionA.store');

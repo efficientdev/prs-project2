@@ -60,6 +60,15 @@ $approval->stage->name.' Report',
         @if($approval->stage->role_name=="PRS")
             @include('prss::print') 
         @endif
+
+@if($approval->stage->role_name=="DPRS")
+        <a target="_blank" href="{{ route('registration.reportstack', ['form_id' => $form->id ?? 'default']) }}" 
+                               >
+                                 
+                                <span> Report Stack</span>
+                            </a>@endif
+
+
     <form method="POST" action="{{ route('srapprovals.approve', $approval) }}">
         @csrf
 
