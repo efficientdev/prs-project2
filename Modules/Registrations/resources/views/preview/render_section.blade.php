@@ -46,11 +46,11 @@
 
 
 <div class="mb-6">
-    <div class="grid grid-cols-2 ">
+    <div class="grid grid-cols-2 gap-2 ">
     @foreach ($order as $key)
 
         @if (isset($groups[$key]) && !in_array($key, $renderedGroups))
-            </div><div class="grid  gap-2">
+            </div><div class="grid shadow gap-2">
             {{-- Render entire group table here --}}
             @php
                 $keys = $groups[$key];
@@ -98,7 +98,7 @@
                 </table>
             </div>
 
-            </div><div class="grid grid-cols-2 ">
+            </div><div class="grid grid-cols-2 gap-3 ">
         {{-- 2. Handle array of objects like "levels" --}}
     @elseif (isset($data[$key]) && is_array($data[$key]) && isset($arrayTableColumns[$key]) && !in_array($key, $renderedGroups))
         @php
@@ -121,8 +121,8 @@
             )));
         @endphp
 
-        </div><div class="grid gap-2">
-        <div class="my-3 rounded">
+        </div><div class="grid gap-2 shadow">
+        <div class="my-3 rounded shadow">
             <h3 class="font-semibold capitalize my-2">{{  ucfirst(str_replace('_', ' ', $key) ) }}</h3>
                 
             <table class="w-full border-collapse border border-gray-300">
@@ -148,11 +148,11 @@
                 </tbody>
             </table>
         </div>
-        </div><div class="grid grid-cols-2">
+        </div><div class="grid grid-cols-2 gap-3">
 
         @elseif (!in_array($key, $groupKeys) && isset($data[$key]))
             {{-- Render single key-value normally --}}
-            <div class="mb-1 ">
+            <div class="mb-1 shadow">
                 @php
                     $label = ucfirst(str_replace('_', ' ', $key));
                     $val = $data[$key];
@@ -165,7 +165,7 @@
                         }
                         echo "</ol>";
                     } else {
-                        echo "<div class='grid'><span class='capitalize font-semibold'>$label:</span> " . e_or_link($val) . "</div>";
+                        echo "<div class='grid shadow'><span class='capitalize font-semibold'>$label:</span> " . e_or_link($val) . "</div>";
                     }
                 @endphp
             </div>
