@@ -21,15 +21,15 @@ $photos= \Modules\CIEs\Services\CieKonstants::getPhotoList()??[];
 
     @include('cies::report.lightbox')
 
-<form method="post" action="{{route('ciedoc.uploads')}}" class="flex justify-between  items-center   p-2   my-2" enctype="multipart/form-data">
+<form method="post" action="{{route('ciedoc.uploads.multiple')}}" class="flex justify-between  items-center   p-2   my-2" enctype="multipart/form-data">
         @csrf
 
     <div  >
-        Upload single {{$uploadItem}} <br/>
-        <input type="file" name="uploads[{{$uploadItem}}]" />
+        Upload multiple {{$uploadItem}} <br/>
+        <input type="file" name="uploads[{{$uploadItem}}][]" multiple />
         <input type="hidden" name="application_id" value="{{$report->id??0}}" />
     </div>
-            <div><x-primary-button   class="ms-0 mt-2">
+            <div  class="mt-3"><x-primary-button   class="ms-0 mt-2">
                 Upload
             </x-primary-button></div>
 </form>

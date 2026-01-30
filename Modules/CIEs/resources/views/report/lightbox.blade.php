@@ -4,8 +4,8 @@
 
     @if(!empty($data['docs']))
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            @foreach($data['docs'] as $doc)
-                @if(!empty($doc))
+            @foreach($data['docs'] as $doci => $doc)
+                @if(!empty($doc))<div class="grid">
                     @php
                         $ext = pathinfo($doc, PATHINFO_EXTENSION);
                         $isImage = in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif', 'webp']);
@@ -37,6 +37,12 @@
                             </a>
                         </div>
                     @endif
+                    @if(isset($uploadItem) && isset($report) && isset($allowdelete))
+                     
+
+                    <a href="{{route('ciedoc.uploads.drop')}}?label={{$uploadItem}}&path={{$doc}}&application_id={{$report->id??0}}" class="text-red-500">Delete</a>
+                    @endif
+                </div>
                 @endif
             @endforeach
         </div>

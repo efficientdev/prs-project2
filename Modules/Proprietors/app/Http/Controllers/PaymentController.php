@@ -140,7 +140,7 @@ class PaymentController extends Controller
                 'type' => $type,
                 'ownerId' => $ownerId,
                 'paymentId' => $payment->id,
-            ])->with('success', 'Await Confirmation');
+            ])->with('success', 'Await Payment Confirmation');
         }
     }
 

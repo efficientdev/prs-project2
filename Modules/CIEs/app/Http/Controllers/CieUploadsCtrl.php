@@ -20,7 +20,65 @@ use Illuminate\Support\Facades\Storage;
 class CieUploadsCtrl extends Controller
 {
 
+	public function destroy(Request $request){
+		$a=$request->validate([
+	        'application_id' => 'required|integer|exists:registrations,id',
+	        'label' => 'required', 
+	        'path' => 'required'
+	    ]);
 
+	    $upload= (object) $a;
+	    //dd($upload);
+
+	    $label=$a['label'];
+	    $applicationId = $request->input('application_id');
+
+		$a=Registration::where('id',$applicationId) 
+		->first();
+		if ($a!=null) {  
+ 
+			$meta=$a->cies_reports??[];
+
+			$meta['sectionH']=$meta['sectionH']??[];
+			$meta['sectionH']['uploads']=$meta['sectionH']['uploads']??[];
+
+			$sG=$meta['sectionH']??[];
+			$uploads=$sG['uploads']??[];
+			$uploads[$label]=$uploads[$label]??[];
+
+
+			$array = $uploads[$label];//copy the array content
+			if (($key = array_search($upload->path, $array)) !== false) {
+			    unset($array[$key]);//remove the path
+
+
+		        // Delete file from storage
+		        if (Storage::disk('public')->exists($upload->path)) {
+		            Storage::disk('public')->delete($upload->path);
+		        }
+
+
+			}
+			$uploads[$label]=$array;//update with new array
+
+
+			$meta['sectionH']['uploads']=$uploads;
+
+			$a->cies_reports=$meta;
+			$a->save();
+
+	        return back()->with('success', 'File deleted successfully.');
+
+    	}else{
+
+	        return back()->with('error', 'Operation Failed');
+    	}
+
+
+	    //dd($a);
+
+
+	}
 
 
 	public function upload(Request $request)
@@ -61,6 +119,57 @@ class CieUploadsCtrl extends Controller
 				$a->cies_reports=$meta;
 				$a->save();
 
+			}
+
+	    }
+
+	    return back()->with('success', 'File uploaded successfully.');
+	}
+
+
+
+	public function multiple(Request $request)
+	{
+	    // Validate required fields
+	    $request->validate([
+	        'application_id' => 'required|integer|exists:registrations,id',
+	        'uploads' => 'required|array',
+		    'uploads.*' => 'array',
+		    'uploads.*.*' => 'file|mimes:jpg,png,pdf|max:5120',
+	        //'uploads.*' => 'file|max:5120', // max 5MB per file
+	    ]);
+
+	    $applicationId = $request->input('application_id');
+	    $uploads = $request->file('uploads'); // associative array
+
+	    foreach ($uploads as $label => $files) {
+	    	foreach ($files as $file) {
+		        // Generate a filename or path
+		        //$filename = $file->getClientOriginalName(); // or use ->hashName() 
+
+				$a=Registration::where('id',$applicationId) 
+				->first();
+				if ($a!=null) {  
+
+			        // Store the file
+			        $path = $file->store('attachments', 'public'); 
+
+					$meta=$a->cies_reports??[];
+
+					$meta['sectionH']=$meta['sectionH']??[];
+					$meta['sectionH']['uploads']=$meta['sectionH']['uploads']??[];
+
+					$sG=$meta['sectionH']??[];
+					$uploads=$sG['uploads']??[];
+					$uploads[$label]=$uploads[$label]??[];
+					$uploads[$label][]=$path;
+
+					$meta['sectionH']['uploads']=$uploads;
+
+					$a->cies_reports=$meta;
+					$a->save();
+
+				}
 			}
 
 	    }

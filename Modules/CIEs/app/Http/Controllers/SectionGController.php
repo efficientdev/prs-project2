@@ -89,7 +89,9 @@ class SectionGController extends CiesBaseController
             return back()->withErrors(['uploads' => $message]);
         }
 
-
+        //to be used to infer entry in progress
+        $validated['submitted']='yes';
+        $validated['submitted_at']=now();
 
 
         $this->saveSection($report, 'sectionG', $validated);
@@ -110,6 +112,15 @@ class SectionGController extends CiesBaseController
                 'registration_id'=>$reportId,
                 'registration_approval_stage_id'=>$stage_id
             ])->first();
+            //dd($stage_id);
+            if (!$approval) {
+                # code...
+                $approval=RegistrationApproval::create([
+                    'registration_id'=>$reportId,
+                    'registration_approval_stage_id'=>$stage_id,
+                    'user_id'=>$request->user()->id
+                ]);
+            }
 
             (new ApprovalService)->approve($approval, auth()->user(), $request->observations??'n/a');
         //}

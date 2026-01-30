@@ -41,7 +41,26 @@
         @if(!empty($approval))
         <tr>
             <td>{{ $approval->application->data['sectionA']['proposed_name']??'' }}<br/> {{ $approval->application->category->category_name??'' }}</td>
-            <td>{{ $approval->stage->name??'n/a' }}</td>
+            <td>{{ $approval->stage->name??'n/a' }} 
+ 
+
+@php
+
+$status='';
+if(isset($approval->application->cies_reports) && !empty(isset($approval->application->cies_reports))){
+    $status='- On Going';
+
+    $b111=$approval->application->cies_reports['sectionG']['submitted']??'no';
+    if($b111=='yes'){
+        $status='- Done';
+    }
+}
+
+@endphp
+
+{{$status}}
+
+            </td>
             <td>
                 
 

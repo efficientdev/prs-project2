@@ -206,7 +206,7 @@ public function export(Request $request): StreamedResponse
         } catch (\Exception $e) {
             
         }
-
+ 
 
         /*if ($application->current_application_status_id==1) {
             $application->current_application_status_id=0;

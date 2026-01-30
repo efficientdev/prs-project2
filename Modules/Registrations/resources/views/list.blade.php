@@ -204,9 +204,9 @@ $perc=0;
                 <i class="fas fa-inbox text-gray-400 text-2xl"></i>
             </div>
             <h3 class="text-lg font-medium text-gray-900 mb-1">No forms yet</h3>
-            <p class="text-gray-500 max-w-md mx-auto">Get started by creating your first school Registration form.</p>
+            <p class="text-gray-500 max-w-md mx-auto my-3">Get started by creating your first school Registration form.</p>
             <a href="{{route('application.types.index')}}" class="btn-primary mt-4">
-                <i class="fas fa-plus mr-2"></i> new school Registration</a>
+                <i class="fas fa-plus mr-2 capitalize"></i> new school Registration</a>
         </div>
         @else
 

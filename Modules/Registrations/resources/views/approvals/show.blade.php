@@ -38,12 +38,12 @@ $approval->stage->name.' Report',
 
 
 
-    @if($approval->stage->role_name=="CIE" && empty($form->cies_reports))
+    @if($approval->stage->role_name=="CIE" || empty($form->cies_reports) || empty($form->cies_reports['sectionG']))
     <div class="py-5">
     <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('cies.sectionA.show',['report'=>$form->id])}}">Fill CIE Report</a>
 </div>
     
-    @elseif($approval->stage->role_name=="PRS" && empty($form->prs_4_report))
+    @elseif($approval->stage->role_name=="PRS" || empty($form->prs_4_report))
     <div class="py-5">
     <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('prss.sectionA.show',['report'=>$form->id])}}">Fill PRS Report</a>
 </div>

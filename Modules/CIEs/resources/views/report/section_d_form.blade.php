@@ -105,6 +105,7 @@
 
     <div class="flex justify-between">
         <a href="{{ route('cies.sectionC.show', $report->id) }}" class="btn bg-gray-500 text-white px-6 py-2 rounded">Previous</a>
-        <button type="submit" class="btn bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Next</button>
+        <button type="submit" class="btn bg-blue-500 text-white px-6 py-2 rounded hover:bg-indigo-700">Next</button>
+        <button type="submit" class="btn bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Save Progress</button>
     </div>
 </form></x-cies::layouts.master>

@@ -50,7 +50,7 @@
     @foreach ($order as $key)
 
         @if (isset($groups[$key]) && !in_array($key, $renderedGroups))
-            </div><div class="grid border-b p-2 gap-2">
+            </div><div class="grid border-b px-2 gap-2">
             {{-- Render entire group table here --}}
             @php
                 $keys = $groups[$key];
@@ -121,8 +121,8 @@
             )));
         @endphp
 
-        </div><div class="grid gap-2 border-b p-2">
-        <div class="my-3 rounded border-b p-2">
+        </div><div class="grid gap-2 border-b px-2">
+        <div class="my-3 rounded border-b px-2">
             <h3 class="font-semibold capitalize my-2">{{  ucfirst(str_replace('_', ' ', $key) ) }}</h3>
                 
             <table class="w-full border-collapse border border-gray-300">
@@ -152,7 +152,7 @@
 
         @elseif (!in_array($key, $groupKeys) && isset($data[$key]))
             {{-- Render single key-value normally --}}
-            <div class="mb-1 border-b p-2">
+            <div class="mb-1 border-b px-2">
                 @php
                     $label = ucfirst(str_replace('_', ' ', $key));
                     $val = $data[$key];
@@ -165,7 +165,7 @@
                         }
                         echo "</ol>";
                     } else {
-                        echo "<div class='grid border-b p-2'><span class='capitalize font-semibold'>$label:</span> " . e_or_link($val) . "</div>";
+                        echo "<div class='grid border-b px-2'><span class='capitalize font-semibold'>$label:</span> " . e_or_link($val) . "</div>";
                     }
                 @endphp
             </div>

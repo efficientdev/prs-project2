@@ -30,7 +30,8 @@ class CieKonstants
 		foreach ($hasthem as $key => $it) {
 			# code...
 			$ins=$u[$it]??[];
-			if(count($ins)>=3){
+			if(count($ins)>=1){
+			//if(count($ins)>=3){
 				$passed[]=1;
 			}
 		}
