@@ -13,7 +13,7 @@ $photos= \Modules\CIEs\Services\CieKonstants::getPhotoList()??[];
     @endif
     */
     ?>
-    <div class="text-xl font-bold capitalize mb-2 border-b">photos of {{$uploadItem}}</div>
+    <div class="text-xl font-bold capitalize my-4 border-b">photos of {{$uploadItem}}</div>
     
     @php
     $data['docs']=$data2['uploads'][$uploadItem]??[];

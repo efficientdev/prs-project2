@@ -39,6 +39,13 @@
                     @endif
                     @if(isset($uploadItem) && isset($report) && isset($allowdelete))
                      
+                    
+                     @if(isset($reasons[$doc]))
+                     @if(isset($rejected[$doc]))
+                     <div class="text-red-500">rejected -</div>
+                     @endif
+                     <div class="text-red-500">{{$reasons[$doc]??''}}</div>
+                     @endif
 
                     <a href="{{route('ciedoc.uploads.drop')}}?label={{$uploadItem}}&path={{$doc}}&application_id={{$report->id??0}}" class="text-red-500">Delete</a>
                     @endif

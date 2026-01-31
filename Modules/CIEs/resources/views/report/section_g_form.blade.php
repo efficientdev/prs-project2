@@ -23,6 +23,9 @@ $tabslist=[
 
 $allowdelete='yes';
 
+$reasons=$prsObservation['reasons']??[];
+$rejected=$prsObservation['rejected']??[];
+
 @endphp
 
 <x-tabs :labels="$tabslist"> 

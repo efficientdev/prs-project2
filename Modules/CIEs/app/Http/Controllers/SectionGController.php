@@ -21,9 +21,12 @@ class SectionGController extends CiesBaseController
         $data2 = $report->getSection('sectionH') ?? [];
 
 
+        $prsObservation = $report->getPrs1('sectionD') ?? [];
+
+
         $photos=CieKonstants::getPhotoList();
 
-        return view('cies::report.section_g_form', compact('report', 'data','reportId','photos','data2'));
+        return view('cies::report.section_g_form', compact('report', 'data','reportId','photos','data2','prsObservation'));
     }
     protected function findMissingKeys(array $keysToCheck, array $arrayToCheckAgainst): array {
         $missingKeys = [];
