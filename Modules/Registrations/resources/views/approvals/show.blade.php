@@ -34,10 +34,9 @@ $approval->stage->name.' Report',
     $form=$report=$approval->application;
     $data=$form->data??[];
 @endphp
+ 
 
-{{$approval->stage->role_name}}
-
-@if (!auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('adm')) {
+@if (!auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('adm')) 
 
     @if($approval->stage->role_name=="CIE" &&  empty($form->cies_reports) || empty($form->cies_reports['sectionG']))
     <div class="py-5">
