@@ -20,7 +20,7 @@
 
         @include('proprietors::admin.payments.partialreceipt')
 
-                
+                 
         <!-- Action Buttons -->
         @if ($payment->payment_type === 'bank' && $payment->status === 'pending')
             <div class="flex space-x-4">
@@ -28,7 +28,7 @@
                 <form action="{{ route('admin.payments.approve', $payment->id) }}"
                   method="POST"
                   enctype="multipart/form-data">
-                @csrf
+                @csrf 
 
                 <label class="block mb-2 text-sm font-medium text-gray-700">Upload Bank Payment Receipt</label>
                 <input type="file"

@@ -32,7 +32,7 @@ Route::middleware(['auth','role:proprietor'])->prefix('proprietor')
 
     Route::get('payments/history', [UserPaymentController::class, 'history'])->name('payments.history');
 });
-
+ 
 Route::prefix('admin')->middleware(['auth', 'role:ADM,DFA'
 ])->group(function () {
 

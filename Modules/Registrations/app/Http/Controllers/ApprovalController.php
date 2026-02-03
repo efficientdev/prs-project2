@@ -60,7 +60,7 @@ class ApprovalController extends Controller
             }
 
         })
-        ->paginate(10);
+        ->paginate(10)->withQueryString();
 
 
             /*

@@ -17,7 +17,7 @@ class SectionGController extends Controller
 
     public function show($form_id)
     {
-        //submitted
+        //submitted 
         
         $form = Registration::findOrFail($form_id);
 //'sectionC','sectionD','sectionE',
