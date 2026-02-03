@@ -37,6 +37,7 @@ $approval->stage->name.' Report',
 
 {{$approval->stage->role_name}}
 
+@if (!auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('adm')) {
 
     @if($approval->stage->role_name=="CIE" &&  empty($form->cies_reports) || empty($form->cies_reports['sectionG']))
     <div class="py-5">
@@ -49,6 +50,7 @@ $approval->stage->name.' Report',
 </div>
     
     @endif
+     @endif
 
                 @php
                     $report=$application;
