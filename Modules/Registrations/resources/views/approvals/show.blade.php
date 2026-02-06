@@ -7,6 +7,7 @@
 <?php
 //this can be made to simulate points where the applicant pays approval fee or application fee
 ?>
+<!--
 @if($application->currentApproval() && $application->currentApproval()->status === 'needs_applicant_input')
     <form method="POST" action="{{ route('applications.respond', $application) }}">
         @csrf
@@ -17,7 +18,7 @@
         <button type="submit" class="btn btn-primary">Submit Response</button>
     </form>
 @endif
-
+-->
 
 
 @if (auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('ADM'))
@@ -35,26 +36,41 @@ $approval->stage->name.' Report',
     $data=$form->data??[];
 @endphp
  
+ @if(auth()->user()->hasRole('adm'))
+ <div>Admin role </div>
+ @endif
 
-@if (!auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('adm')) 
+@if (auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('adm')) 
 
-    @if($approval->stage->role_name=="CIE" &&  empty($form->cies_reports) || empty($form->cies_reports['sectionG']))
-    <div class="py-5">
-    <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('cies.sectionA.show',['report'=>$form->id])}}">Fill CIE Report</a>
-</div>
-    
-    @elseif($approval->stage->role_name=="PRS" &&  empty($form->prs_4_report))
-    <div class="py-5">
-    <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('prss.sectionA.show',['report'=>$form->id])}}">Fill PRS Report</a>
-</div>
-    
+    @if($approval->stage->role_name=="CIE" )
+        <div class="py-5">
+            <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('cies.sectionA.show',['report'=>$form->id])}}">
+                @if(empty($form->cies_reports))
+                Fill
+                @endif
+                @if(empty($form->cies_reports['sectionG']))
+                Complete
+                @endif
+              CIE Report</a>
+        </div>
     @endif
-     @endif
+    
+    @php
+    // &&  empty($form->prs_4_report)
+    @endphp
 
-                @php
-                    $report=$application;
-                    //
-                @endphp
+    @if($approval->stage->role_name=="PRS")
+        <div class="py-5">
+            <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('prss.sectionA.show',['report'=>$form->id])}}">Fill PRS Report</a>
+        </div> 
+    @endif
+@endif
+
+
+        @php
+            $report=$application;
+            //
+        @endphp
 
 <x-tabs :labels="$tabslist">
 
@@ -109,6 +125,7 @@ $approval->stage->name.' Report',
         <button type="submit" class="btn btn-danger">Reject</button>
     </form>
 
+<!--
     <form method="POST" action="{{ route('srapprovals.request-input', $approval) }}" class="mt-2">
     @csrf
     <div class="mb-3">
@@ -116,7 +133,7 @@ $approval->stage->name.' Report',
         <textarea name="comments" class="form-control" required></textarea>
     </div>
     <button type="submit" class="btn btn-warning">Request Applicant Input</button>
-</form>
+</form>-->
 </x-slot>
 
     <x-slot name="tab1">
