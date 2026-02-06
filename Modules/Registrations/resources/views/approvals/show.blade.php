@@ -46,7 +46,7 @@ $approval->stage->name.' Report',
         <div class="py-5">
             <a class="bg-blue-500 text-white my-5 rounded px-5 py-1" href="{{route('cies.sectionA.show',['report'=>$form->id])}}">
                 @if(empty($form->cies_reports))
-                Fill
+                Fill/
                 @endif
                 @if(empty($form->cies_reports['sectionG']))
                 Complete
