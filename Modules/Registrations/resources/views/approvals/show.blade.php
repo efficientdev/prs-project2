@@ -36,11 +36,11 @@ $approval->stage->name.' Report',
     $data=$form->data??[];
 @endphp
  
- @if(auth()->user()->hasRole('adm'))
+ @if(auth()->user()->hasRole('ADM'))
  <div>Admin role </div>
  @endif
 
-@if (auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('adm')) 
+@if (auth()->user()->hasRole($approval->stage->role_name) || auth()->user()->hasRole('ADM')) 
 
     @if($approval->stage->role_name=="CIE" )
         <div class="py-5">
