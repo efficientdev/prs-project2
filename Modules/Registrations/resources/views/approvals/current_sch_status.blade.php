@@ -11,7 +11,7 @@
 
 <form method="GET" action="{{ url()->current() }}" class="flex gap-2 items-center">
 	<div>
-		<input type="text" name="name" value="{{ request('name')}}" class="w-full" />
+		<input type="text" placeholder="Enter School Name" name="name" value="{{ request('name')}}" class="w-full" />
 	</div>
     <select name="stage_id" ><!--onchange="this.form.submit()"-->
         <option value="">-- Select Stage --</option>
@@ -51,7 +51,7 @@
         @if(!empty($approval))
         <tr>
             <td>{{ $approval->data['sectionA']['proposed_name']??'' }}<br/> {{ $approval->category->category_name??'' }}</td>
-            <td>{{ $approval->stage->name??'n/a' }} 
+            <td>{{ $approval->latestStage->stage->name??'n/a' }} 
  
 
 @php
@@ -71,14 +71,14 @@ if(isset($approval->cies_reports) && !empty(isset($approval->cies_reports))){
 {{$status}}
 
             </td>
-            <td>
+            <!--<td>
                 
 
 <a href="{{ route('registration.timeline', $approval->id??0) }}" class="btn btn-sm btn-primary">Summary</a>
 
 <a href="{{ route('srapprovals.show', $approval??0) }}" class="btn btn-sm btn-primary">Review</a>
 
-            </td>
+            </td>-->
         </tr>
         @endif
         @endforeach
