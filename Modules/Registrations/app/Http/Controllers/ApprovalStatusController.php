@@ -33,7 +33,7 @@ class ApprovalStatusController extends Controller
             }
         }
 
-        $q=Registration::with('latestStage')->query();
+        $q=Registration::with('latestStage');//->query();
         if (in_array('CIE', auth()->user()->roles->pluck('name')->toArray())) {
             $q->where('data->sectionA->school_lga_id',$lga_id);
         }
