@@ -6,7 +6,7 @@
 
  <x-app-layout>
     <div class="flex justify-between items-center">
-<div class="mb-3 text-xl font-bold">Pending Approvals</div>
+<div class="mb-3 text-xl font-bold">Current Stages</div>
 
 
 <form method="GET" action="{{ url()->current() }}" class="flex gap-2 items-center">
@@ -42,8 +42,8 @@
     <thead>
         <tr>
             <th>Application</th>
-            <th>Stage</th>
-            <th>Actions</th>
+            <th>Current Stage</th>
+            <!--<th>Actions</th>-->
         </tr>
     </thead>
     <tbody>
