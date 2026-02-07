@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Registrations\Http\Controllers\{RegistrationsController,Registrations2Controller};
 
 
-use Modules\Registrations\Http\Controllers\{ApprovalController,ApprovedCtrl,ApprovalFeePending};
+use Modules\Registrations\Http\Controllers\{ApprovalController,ApprovalStatusController,ApprovedCtrl,ApprovalFeePending};
 
 use Modules\Registrations\Http\Controllers\{
     SectionAController, SectionBController, SectionCController,
@@ -46,6 +46,8 @@ Route::middleware(['auth', 'verified','role:ADM,CIE,COMM,DG,DPRS,PRS,PS,PAYCONF'
     //middleware([])->
 	Route::prefix('approvals')->name('srapprovals.')->group(function () {
 	    Route::get('/my', [ApprovalController::class, 'myApprovals'])->name('my');
+        Route::get('/current-school-status', [ApprovalStatusController::class, 'myApprovals'])->name('current.sch.status');
+        //
 	    Route::get('/{approval}', [ApprovalController::class, 'show'])->name('show');
 
 	// 

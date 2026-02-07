@@ -83,6 +83,10 @@
 
 @if(auth()->user()->hasAnyRole(['ADM','CIE']) )
 <a href="{{route('srapprovals.my')}}">Pending School Approvals</a> 
+<br/>
+<a href="{{route('srapprovals.current.sch.status')}}">Current School Status</a> 
+
+
 @endif
 
 

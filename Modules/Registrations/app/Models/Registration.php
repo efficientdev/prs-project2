@@ -104,6 +104,18 @@ class Registration extends Model
     {
         return $this->hasMany(RegistrationApproval::class,'registration_id');
     }
+
+
+    /*public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }*/
+
+    public function latestStage()
+    {
+        return $this->hasOne(RegistrationApproval::class,'registration_id')->latestOfMany();
+    }
+
     public function pendingApprovalPay()
     {
         return $this->hasOne(RegistrationApproval::class,'registration_id')->where('status', 'pending')->where('registration_approval_stage_id',ApprovalService::$firstLetter);
